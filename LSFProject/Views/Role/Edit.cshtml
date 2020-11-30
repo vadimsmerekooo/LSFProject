@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model LSFProject.ViewModels.ChangeRoleViewModel
+
+@{
+    ViewData["Title"] = "Изменение роли";
+}
+
+<div class="container-fluid container-fluid-site">
+    <h2>Изменение ролей для пользователя @Model.UserEmail</h2>
+
+    <form asp-action="Edit" method="post">
+        <input type="hidden" name="userId" value="@Model.UserId" />
+        <div class="form-group">
+            @foreach (IdentityRole role in Model.AllRoles)
+            {
+                if (role.Name == "Admin" && !User.IsInRole("Admin"))
+                {
+
+                }
+                else
+                {
+                    <input type="checkbox" name="roles" value="@role.Name"
+                           @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") /> @role.Name <br />
+
+                    }
+                }
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <a class="btn btn btn-primary" asp-page="./UserList">Назад к списку пользователей</a>
+    </form>
+</div>

@@ -1,0 +1,30 @@
+﻿@page
+@model UserListModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<LSFProject.Areas.Identity.Data.LSFUser> SignInManager
+@inject UserManager<LSFProject.Areas.Identity.Data.LSFUser> UserManager
+
+@{
+    ViewData["Title"] = "Список пользователей";
+}
+
+<div class="container-fluid container-fluid-site">
+    <h2>Список пользователей</h2>
+    <table class="table text-dark">
+        @foreach (var user in Model.users)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-page="./EditRolesUser" asp-route-userid="@user.Id">Права доступа</a>
+                </td>
+                <td>
+                    @if (User.IsInRole("Admin") && UserManager.GetUserId(User) != user.Id)
+                    {
+                        <a class="btn btn-sm btn-danger" asp-page-handler="DeleteUser" asp-route-userid="@user.Id">Удалить</a>
+                    }
+                <td>
+            </tr>
+        }
+    </table>
+</div>

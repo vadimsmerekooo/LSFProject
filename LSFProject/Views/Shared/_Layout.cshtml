@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <partial name="MetatagsPartial.cshtml" />
+    <partial name="CssPartial.cshtml" />
+</head>
+
+<body>
+    <header>
+        <partial name="HeaderPartial.cshtml" />
+    </header>
+
+    @RenderBody()
+
+    <footer>
+        <partial name="FooterPartial.cshtml" />
+    </footer>
+
+    <partial name="ScriptsPartial.cshtml" />
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

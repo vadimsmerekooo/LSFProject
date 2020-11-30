@@ -1,0 +1,13 @@
+﻿@page
+@model AccessDeniedModel
+@{
+    ViewData["Title"] = "Ошибка доступа";
+}
+
+<div class="container-fluid container-fluid-site text-center" style="margin-top: 100px; margin-bottom: 100px;">
+    <div>
+        <h1 class="text-danger">@ViewData["Title"]</h1>
+        <p class="text-danger" style="font-size: 20px;">К сожалению, Вы не имеете права доступа к данной странице! <br />Обратитесь к администрации сайта.</p>
+    </div>
+    <img src="~/img/bg/stop_mvd.png" style="margin-left: 30px;" />
+</div>

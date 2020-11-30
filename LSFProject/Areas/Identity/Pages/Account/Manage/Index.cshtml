@@ -1,0 +1,51 @@
+﻿@page
+@model LSFProject.Areas.Identity.Pages.Account.Manage.IndexModel
+@{
+    ViewData["Title"] = "Аккаунт";
+}
+<h3 class="account-h3">Информация аккаунта</h3>
+<div style="display: flex;">
+    <div class="text-center" style="margin-top: 10px;">
+        <div style="display: flex;">
+            <div class="account-logo-ellipse-4">
+            </div>
+            <div class="account-logo-ellipse-3">
+            </div>
+            <div class="account-logo-ellipse-2">
+            </div>
+            <div class="account-logo-ellipse-1">
+                <img class="account-logo-img" src="~/img/account/8ea1168fa53ct.jpg" />
+            </div>
+        </div>
+        <div style="margin-top: 180px;">
+            <h3 class="account-h3" style="margin-left: 0;">@User.Identity.Name</h3>
+        </div>
+        <a class="btn btn-outline-warning" style="display: block; margin-top: 20px;">Stat</a>
+    </div>
+    <hr class="account-border-line"/>
+    <div style="margin-top: 10px;">
+        <div style="display: flex;">
+            <img src="~/img/account/yellow-star-big.png"style="margin-top: 10px;" width="53" height="53"/>
+            <h3 class="account-h3 text-light" style="margin: 15px 0 0 -35px;">0</h3>
+            <div style="margin-left: 50px;">
+                <h3 class="account-h3">Твои игровые очки</h3>
+                <h3 class="account-h3 text-success" style="float: left;">0</h3>
+            </div>
+        </div>
+        <h3 class="account-h3" style="margin-top: 30px;">Лучшая твоя игра</h3>
+        <div class="best-game" style="margin-top: 30px;">
+            <img src="~/img/account/yellow-star-big.png"/>
+            <h3 class="account-h3" style="font-size: 16px; margin-left: 10px;">Сортировка предметов</h3>
+            <div>
+                <ul class="account-list-star">
+                    <li><img src="~/img/account/enable-star-small.png" /></li>
+                    <li><img src="~/img/account/enable-star-small.png" /></li>
+                    <li><img src="~/img/account/enable-star-small.png" /></li>
+                    <li><img src="~/img/account/enable-star-small.png" /></li>
+                    <li><img src="~/img/account/dezable-star-small.png" /></li>
+                </ul>
+                <a class="btn btn-outline-warning" style="display: block; margin-top: 15px;">Играть</a>
+            </div>
+        </div>
+    </div>
+</div>

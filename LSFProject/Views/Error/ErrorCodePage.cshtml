@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Error - " + ViewData["ErrorCode"];
+}
+
+<div class="container-fluid container-fluid-site" style="padding: 150px; display: inline-flex;">
+    <div style="">
+        <h3 class="text-danger">Ошибка @ViewData["ErrorCode"]!</h3>
+        <h4 style="margin-top: 30px;">Ооооооойййй :( @ViewData["ErrorMessage"]</h4>
+        <h5 style="margin-top: 30px;"><a asp-action="Index" asp-controller="Home">Нажмите для перехода на главную страницу</a></h5>
+    </div>
+    <div class="error-page-container">
+        <h3 class="error-page-text-1 text-white">@ViewData["ErrorCode"]</h3>
+        <h6 class="error-page-text-2 text-white">@ViewData["ErrorCode"]</h6>
+        <h6 class="error-page-text-3 text-white">@ViewData["ErrorCode"]</h6>
+        <h5 class="error-page-text-4 text-white">@ViewData["ErrorCode"]</h5>
+    </div>
+</div>
