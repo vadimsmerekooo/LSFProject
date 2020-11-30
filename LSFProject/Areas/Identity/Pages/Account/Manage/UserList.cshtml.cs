@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace LSFProject.Areas.Identity.Pages.Account.Manage
 {
+    [Authorize(Roles ="Admin, Manager")]
     public class UserListModel : PageModel
     {
         RoleManager<IdentityRole> _roleManager;
@@ -28,6 +29,26 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
             if (user != null)
             {
                 IdentityResult result = await _userManager.DeleteAsync(user);
+            }
+            return RedirectToPage("./UserList");
+        }
+        public async Task<IActionResult> OnGetLockoutEnabledUser(string userId)
+        {
+            LSFUser user = await _userManager.FindByIdAsync(userId);
+            if(user != null)
+            {
+                user.LockoutEnd = DateTime.Now.AddYears(200);
+                await _userManager.UpdateAsync(user);
+            }
+            return RedirectToPage("./UserList");
+        }
+        public async Task<IActionResult> OnGetLockoutEndUser(string userId)
+        {
+            LSFUser user = await _userManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                user.LockoutEnd = null;
+                await _userManager.UpdateAsync(user);
             }
             return RedirectToPage("./UserList");
         }

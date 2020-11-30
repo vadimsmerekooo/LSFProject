@@ -14392,6 +14392,11 @@
   "RootNamespace": "LSFProject",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\Vadim\\Desktop\\GitHub\\LSFProject\\LSFProject\\Areas\\Identity\\Pages\\Account\\Manage\\Sliders.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\Sliders.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Vadim\\Desktop\\GitHub\\LSFProject\\LSFProject\\Areas\\Identity\\Pages\\Account\\ForgotPassword.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\ForgotPassword.cshtml",
       "FileKind": "mvc"
@@ -14557,11 +14562,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Vadim\\Desktop\\GitHub\\LSFProject\\LSFProject\\Areas\\Identity\\Pages\\Account\\Manage\\Posts\\Index.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\Posts\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\Vadim\\Desktop\\GitHub\\LSFProject\\LSFProject\\Views\\Error\\ErrorCodePage.cshtml",
       "TargetPath": "Views\\Error\\ErrorCodePage.cshtml",
       "FileKind": "mvc"
@@ -14599,6 +14599,11 @@
     {
       "FilePath": "c:\\Users\\Vadim\\Desktop\\GitHub\\LSFProject\\LSFProject\\Views\\Shared\\ScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\ScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Vadim\\Desktop\\GitHub\\LSFProject\\LSFProject\\Areas\\Identity\\Pages\\Account\\Manage\\Posts.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\Posts.cshtml",
       "FileKind": "mvc"
     },
     {

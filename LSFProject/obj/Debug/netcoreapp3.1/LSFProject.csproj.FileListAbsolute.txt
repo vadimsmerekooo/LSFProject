@@ -200,6 +200,7 @@ C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razo
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\UserList.cshtml.g.cs
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\EditRolesUser.cshtml.g.cs
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\CreateRole.cshtml.g.cs
-C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\Posts\Index.cshtml.g.cs
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\AddedPost.cshtml.g.cs
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\RemovePosts.cshtml.g.cs
+C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\Posts.cshtml.g.cs
+C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\Sliders.cshtml.g.cs

@@ -1,10 +1,18 @@
-﻿@page
+﻿@page 
 @model LockoutModel
 @{
-    ViewData["Title"] = "Locked out";
+    ViewData["Title"] = "Аккаунт заблокирован";
+    string years = (Model.lockoutEndTime.Value.Days / 365).ToString();
+    string days = (Model.lockoutEndTime.Value.Days % 365).ToString();
+    string hourse = Model.lockoutEndTime.Value.Hours.ToString();
+    string minute = Model.lockoutEndTime.Value.Minutes.ToString();
 }
 
-<header>
-    <h1 class="text-danger">@ViewData["Title"]</h1>
-    <p class="text-danger">This account has been locked out, please try again later.</p>
-</header>
+<div class="container-fluid container-fluid-site text-center" style="margin-top: 100px; margin-bottom: 100px;">
+    <div>
+        <h1 class="text-danger">@ViewData["Title"]</h1>
+        <h2 class="text-center text-danger">До конца блокировки осталось: @years лет @days дней @hourse часов @minute минут</h2>
+        <p class="text-danger" style="font-size: 20px;">К сожалению, Ваш аккаунт заблокирован, на срок 200 лет!<br />При воможности, свяжитесь с администрацией сайта, для уточнения причины.</p>
+    </div>
+    <img src="~/img/bg/stop_mvd.png" style="margin-left: 30px;" />
+</div>

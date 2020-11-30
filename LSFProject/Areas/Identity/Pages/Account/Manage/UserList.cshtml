@@ -21,6 +21,19 @@
                 <td>
                     @if (User.IsInRole("Admin") && UserManager.GetUserId(User) != user.Id)
                     {
+                        if (user.LockoutEnd != null)
+                        {
+                            <a class="btn btn-sm btn-success" asp-page-handler="LockoutEndUser" asp-route-userid="@user.Id">Разблокировать</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-sm btn-danger" asp-page-handler="LockoutEnabledUser" asp-route-userid="@user.Id">Заблокировать</a>
+                        }
+                    }
+                <td>
+                <td>
+                    @if (User.IsInRole("Admin") && UserManager.GetUserId(User) != user.Id)
+                    {
                         <a class="btn btn-sm btn-danger" asp-page-handler="DeleteUser" asp-route-userid="@user.Id">Удалить</a>
                     }
                 <td>

@@ -8155,7 +8155,6 @@ input.full-width {
 }
 
     .form input {
-        font-family: "Roboto", sans-serif;
         outline: 0;
         background: #f2f2f2;
         width: 100%;
@@ -8167,7 +8166,6 @@ input.full-width {
     }
 
     .form button {
-        font-family: "Roboto", sans-serif;
         text-transform: uppercase;
         outline: 0;
         background: #4CAF50;
@@ -8342,6 +8340,8 @@ input.full-width {
     display: block;
     float: left;
     left: 0;
+    margin-left: 10px;
+    margin-right: 10px;
     margin-top: 15px;
     height: 0;
     width: 0;
@@ -8350,15 +8350,32 @@ input.full-width {
     border-top-color: #4169E1;
     box-sizing: border-box;
 }
-.nav-item-children{
+.nav-pills .activeli::before {
+    border-top-color: #fff;
+}
+.nav-pills .activelili::before {
+    border-top-color: #fff;
+}
+.nav-pills .activelilili::before {
+    border-top-color: #fff;
+}
+.nav-item-children {
     margin-left: 30px;
+    padding-left: 10px;
 }
-.nav-item-children li::before {
-    color: #4169E1;
-    content: "\2022";
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 18px;
-    position: absolute;
-    margin-top: 10px;
-}
+    .nav-item-children li::before {
+        color: #4169E1;
+        content: "\2022";
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 18px;
+        position: absolute;
+        margin-top: 10px;
+        margin-left: 15px;
+    }
+    .nav-item-children a{
+        margin-left: 10px;
+    }
+    .nav-item-children .activeli::before {
+        color: #fff;
+    }
