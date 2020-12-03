@@ -1,27 +1,27 @@
 ﻿@*<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LifeSafetyFundamentals</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                </ul>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LifeSafetyFundamentals</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <partial name="_LoginPartial.cshtml" />
+                </div>
             </div>
-            <div>
-                <partial name="_LoginPartial.cshtml" />
-            </div>
-        </div>
-    </nav>
-</header>*@
+        </nav>
+    </header>*@
 <div class="preloader"></div>
 
 <!--Top bar area start-->
@@ -70,9 +70,9 @@
                             </a>
                         </li>
                         <li><a class="closeme" href="#"><i class="fa fa-times"></i></a></li>
-                        <li class="fc-red out-link"><a asp-action="Index" asp-controller="Home">Home</a></li>
+                        <li class="fc-red out-link"><a asp-action="Index" asp-controller="Home">Главная</a></li>
                         <li>
-                            <div class="link font-sky">Pages<i class="fa fa-chevron-down"></i></div>
+                            <div class="link font-sky">Новости<i class="fa fa-chevron-down"></i></div>
                             <ul class="submenu font-sky">
                                 <li><a href="index-2.html">Home two</a></li>
                                 <li><a href="about-us.html">About us</a></li>
@@ -198,7 +198,7 @@
                 <div class="mainmenu-two style-two float-left">
                     <ul id="navigation">
                         <li class="fc-orange">
-                            <a href="index.html">Home</a>
+                            <a href="index.html">Главная</a>
                             <ul class="sub-menu">
                                 <li><a href="index.html">home 1</a></li>
                                 <li><a href="index-2.html">home 2</a></li>
@@ -213,7 +213,7 @@
                             </ul>
                         </li>
                         <li class="fc-sky hav-sub">
-                            <a href="#">pages<i class="fa fa-angle-down"></i></a>
+                            <a href="#">Новости<i class="fa fa-angle-down"></i></a>
                             <div class="mega-menu">
                                 <div class="mega-catagory">
                                     <div class="mega-button">
@@ -256,6 +256,9 @@
                                     </div>
                                 </div>
                             </div>
+                        </li>
+                        <li class="fc-sky hav-sub">
+                            <a href="#">Игры<i class="fa fa-angle-down"></i></a>
                         </li>
                     </ul>
                 </div>

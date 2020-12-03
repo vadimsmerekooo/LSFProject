@@ -7,66 +7,66 @@
 
 <form class="col-lg" id="form-addpost" enctype="multipart/form-data" method="post">
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label" asp-for="Input.Header">Title</label>
+        <label class="col-sm-2 col-form-label" asp-for="Input.Header">Заголовок</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="first_input" placeholder="Title posts" asp-for="Input.Header" maxlength="50">
+            <input type="text" class="form-control" id="first_input" placeholder="Заголовок" asp-for="Input.Header" maxlength="50">
         </div>
-        <span asp-validation-for="Input.Header" class="col col-form-label"></span>
+        <span asp-validation-for="Input.Header" class="col col-form-label text-danger"></span>
     </div>
     <hr class="my-4 bg-light">
     <div class="form-group-row">
         <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" asp-for="Input.PreviewPhoto">Preview Image</span>
+            <div class="col-sm-2 col-form-label">
+                <span class="input-group-text" asp-for="Input.PreviewPhoto">Изображение для превью</span>
             </div>
-            <div class="custom-file">
-                <input type="file" name="inputImage" class="custom-file-input inputImage" asp-for="Input.PreviewPhoto">
-                <label class="custom-file-label" asp-for="Input.PreviewPhoto">Choose image</label>
-            </div>
+            <label class="custom-file col-sm-10" id="customFile">
+                <input name="inputImage" type="file" class="custom-file-input" id="inputImage" aria-describedby="fileHelp" placeholder="Выбери фото..." asp-for="Input.PreviewPhoto">
+                <span class="custom-file-control form-control-file">Выбери фото...</span>
+            </label>
         </div>
-        <span asp-validation-for="Input.PreviewPhoto" class="col col-form-label"></span>
+        <span asp-validation-for="Input.PreviewPhoto" class="col col-form-label text-danger"></span>
     </div>
     <hr class="my-4 bg-light">
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label" asp-for="Input.PreviewText">Preview Description</label>
+        <label class="col-sm-2 col-form-label" asp-for="Input.PreviewText">Описание превью</label>
         <div class="col-sm-10">
-            <textarea type="text" class="form-control" asp-for="Input.PreviewText" placeholder="Preview description"></textarea>
+            <textarea type="text" class="form-control" asp-for="Input.PreviewText" placeholder="Описание превью"></textarea>
         </div>
-        <span asp-validation-for="Input.PreviewText" class="col col-form-label"></span>
+        <span asp-validation-for="Input.PreviewText" class="col col-form-label text-danger"></span>
     </div>
     <hr class="my-4 bg-light">
     <div class="form-group row">
         <label class="col-sm-2 col-form-label" asp-for="Input.Url">Url</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" asp-for="Input.Url" id="second_input" placeholder="Url posts">
+            <input type="text" class="form-control" asp-for="Input.Url" id="second_input" placeholder="Url поста">
         </div>
-        <span asp-validation-for="Input.Url" class="col col-form-label"></span>
+        <span asp-validation-for="Input.Url" class="col col-form-label text-danger" text-danger></span>
     </div>
     <hr class="my-4 bg-light">
     <!--Scripts CKEditor-->
     <script src="~/js/ckeditor4/ckeditor.js"></script>
     <!--Scripts CKEditor-->
     <div class="form-group-row">
-        <label class="col-sm-2 col-form-label">Description</label>
+        <label class="col-sm-2 col-form-label">Полное описание</label>
         <textarea asp-for="Input.Description" name="editor" id="editor" rows="10" cols="80"></textarea>
-        <span asp-validation-for="Input.Description" class="col col-form-label"></span>
+        <span asp-validation-for="Input.Description" class="col col-form-label text-danger" text-danger></span>
         <script>
             CKEDITOR.replace('editor');
         </script>
     </div>
     <hr class="my-4 bg-light">
     <div class="form-group-row">
-        <span asp-validation-for="Input.Author" class="col-sm-2 field-validation-valid"></span>
-        <label for="inputEmail3" class="col col-form-label" asp-for="Input.Author">Author</label>
+        <span asp-validation-for="Input.Author " class="col-sm-2 field-validation-valid text-danger" ></span>
+        <label for="inputEmail3" class="col col-form-label" asp-for="Input.Author">Автор</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" placeholder="Author" asp-for="Input.Author" value="@User.Identity.Name">
+            <input type="text" class="form-control" placeholder="Автор" asp-for="Input.Author" value="@User.Identity.Name">
         </div>
     </div>
     <hr class="my-4 bg-light">
     <div class="form-group-row">
         <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Create</button>
-            <button type="submit" class="btn btn-primary">Create and watching</button>
+            <button type="submit" class="btn btn-primary">Добавить</button>
+            <button type="submit" class="btn btn-primary">Добавить и просмотреть</button>
         </div>
     </div>
 </form>

@@ -1865,7 +1865,6 @@ button {
 /*Footer widget area */
 
 .footer-widget {
-    margin-top: 50px;
     background-image: url(img/bg/footer-top-bg-2.png);
     padding: 165px 0 50px;
     color: #666666;
@@ -8379,3 +8378,17 @@ input.full-width {
     .nav-item-children .activeli::before {
         color: #fff;
     }
+
+
+/*when a value is selected, this class removes the content */
+.custom-file-control.selected::after {
+    content: "" !important;
+}
+
+.custom-file {
+    overflow: hidden;
+}
+
+.custom-file-control {
+    white-space: nowrap;
+}

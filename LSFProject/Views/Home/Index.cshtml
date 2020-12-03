@@ -1,5 +1,7 @@
-﻿@{
+﻿@using LSFProject.ViewModels;
+@{
     ViewData["Title"] = "Главная";
+    LSFProjectContext _context = new LSFProjectContext();
 }
 <!-- Slides start -->
 <div class="slider-wrapper">
@@ -12,8 +14,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="area-heading font-per style-two">Choose Classes For Your Child</h1>
-                <p class="heading-para">we promised you that, we always try to take care of your childdren.Early child care is a very important and often overlooked component of child development</p>
+                <h1 class="area-heading font-per style-two" style="font-weight: bold;">Основные экстренные службы Республики Беларусь</h1>
+                <p class="heading-para" style="font-size: 20px; font-weight: bold;">Ниже представлен краткий список основных служб Республики Беларусь, для экстренного вызова.</p>
             </div>
         </div>
         <div class="row no-gutters justify-content-center">
@@ -24,27 +26,27 @@
                             <div class="feat-two-img">
                                 <img src="img/icon/feature-icon-50.png" alt="">
                             </div>
-                            <h3>Outdoor Games</h3>
-                            <p>Donec vel massa sit amet massa posuere luctus et eget nisi. Nulla et commodo mauris, ac ornare ipsum. Morbi augue maximus.</p>
+                            <h3 style="text-align: center; font-weight: bold;">Министерство по ЧС</h3>
+                            <p style="font-size: 16px;">Министерство по чрезвычайным ситуациям Республики Беларусь — республиканский орган государственного управления Беларусь.</p>
                         </div>
                     </div>
 
                     <div class="col-md-6 col-lg-3 col-xl-3">
                         <div class="sin-feature-two wow fadeInUp" data-wow-delay=".6s">
                             <div class="feat-two-img">
-                                <img src="img/icon/feature-icon-5.png" alt="">
+                                <img src="img/icon/feature-icon-6.png" alt="">
                             </div>
-                            <h3>Great Facilities</h3>
-                            <p>Donec vel massa sit amet massa posuere luctus et eget nisi. Nulla et commodo mauris, ac ornare ipsum. Morbi augue maximus.</p>
+                            <h3 style="text-align: center; font-weight: bold;">Милиция</h3>
+                            <p style="font-size: 16px;">Милиция Республики Беларусь — правоохранительный орган Республики Беларусь.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 col-xl-3">
                         <div class="sin-feature-two wow fadeInUp" data-wow-delay=".7s">
                             <div class="feat-two-img">
-                                <img src="img/icon/feature-icon-6.png" alt="">
+                                <img src="img/icon/feature-icon-5.png" alt="">
                             </div>
-                            <h3>Science Practice</h3>
-                            <p>Donec vel massa sit amet massa posuere luctus et eget nisi. Nulla et commodo mauris, ac ornare ipsum. Morbi augue maximus.</p>
+                            <h3 style="text-align: center; font-weight: bold;">Скорая помощь</h3>
+                            <p style="font-size: 16px;">Скорая медицинская помощь — вид медицинской помощи, оказываемой гражданам при заболеваниях, несчастных случаях, травмах, отравлениях и других состояниях, требующих срочного медицинского вмешательства.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 col-xl-3">
@@ -52,8 +54,8 @@
                             <div class="feat-two-img">
                                 <img src="img/icon/feature-icon-7.png" alt="">
                             </div>
-                            <h3>Color Philosophy</h3>
-                            <p>Donec vel massa sit amet massa posuere luctus et eget nisi. Nulla et commodo mauris, ac ornare ipsum. Morbi augue maximus.</p>
+                            <h3 style="text-align: center; font-weight: bold;">Аварийная служба газа</h3>
+                            <p style="font-size: 16px;">Аварийно-диспетчерская служба (АДС) - это подразделение экстренного реагирования вашего Оператора ГРМ (газораспределительной компании), в котором работают высококвалифицированные специалисты.</p>
                         </div>
                     </div>
                 </div>
@@ -65,7 +67,7 @@
 </section>
 <!--Features area end-->
 <!--Wellcome area start-->
-<div class="wellcome-area-wrapper ">
+@*<div class="wellcome-area-wrapper ">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 col-xl-6">
@@ -77,7 +79,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 <!--Wellcome area end-->
 <!--About kids school style three start-->
 <!--<div class="about-kids-three">
@@ -172,40 +174,40 @@
 </div>-->
 <!--About kids school style three end-->
 <!--Counter up Area start-->
-<!--<section class="counter-area d-flex align-items-center">
+<section class="counter-area d-flex align-items-center">
     <div class="container-fluid">
         <div class="row">
             <div class="col-6 offset-md-0 col-md-3 offset-lg-2 col-lg-2">
                 <div class="sin-counter">
-                    <p class="counter">1521</p>
-                    <span>New Students</span>
+                    <p class="counter">6127</p>
+                    <span>Общее кол-во ЧС</span>
                 </div>
             </div>
             <div class="col-6 col-md-3 col-lg-2">
 
                 <div class="sin-counter">
-                    <p class="counter">3851</p>
-                    <span>Gold Medals</span>
+                    <p class="counter">6116</p>
+                    <span>Пожары</span>
                 </div>
             </div>
             <div class="col-6 col-md-3 col-lg-2">
 
                 <div class="sin-counter">
-                    <p class="counter">1850</p>
-                    <span>Total Courses</span>
+                    <p class="counter">4</p>
+                    <span>Взрывы</span>
                 </div>
             </div>
             <div class="col-6 col-md-3 col-lg-2">
 
                 <div class="sin-counter">
-                    <p class="counter">4052</p>
-                    <span>Total Activities</span>
+                    <p class="counter">490</p>
+                    <span>Погибло людей</span>
                 </div>
             </div>
 
         </div>
     </div>
-</section>-->
+</section>
 <!--Counter up Area end-->
 <!--Our class area start-->
 <!--<div class="our-class-area">
@@ -671,85 +673,45 @@
 </section>-->
 <!--Parent say area end-->
 <!--Latest News area start-->
-<!--<section class="latest-news-area">
+<section class="latest-news-area">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="area-heading font-sky style-two">Kids latest news</h1>
-                <p class="heading-para">
-                    we promised you that, we always try to take care of your childdren.
-                    Early child care is a very important and often overlooked compaonent of child development
-                </p>
+                <h1 class="area-heading font-sky style-two">Последние новости</h1>
             </div>
         </div>
         <div class="row justify-content-center no-gutters">
             <div class="col-xl-8">
                 <div class="row">
-                    <div class="col-md-4 col-xl-4">
-                        <div class="single-news wow wow flipInY" data-wow-delay=".7s">
-                            <img src="img/latest-news/latest-news-1.jpg" alt="">
-                            <div class="news-det">
-                                <h4>Maecenas venenatis tortor</h4>
-                                <p>Pellentesque eu dui quis orci interdum lobot am viverra elit et dui ultrices, quis ngue sem hendre rituttortor placerat.</p>
-                                <div class="news-meta">
-                                    <span>
-                                        <i class="fa fa-comment"></i>
-                                        20 Comments
-                                    </span><span>
-                                        <i class="fa fa-share-alt-square"></i>
-                                        205 Share
-                                    </span>
-                                    <a href=""><i class="fa fa-angle-right"></i></a>
+                    @foreach (News newsItem in _context.News.OrderByDescending(date => date.Date).Where(news => !news.Blocked).Take(3))
+                    {
+                        <div class="col-md-4 col-xl-4">
+                            <div class="single-news wow wow flipInY" data-wow-delay=".7s">
+                                <img src="@newsItem.PreviewPhoto" alt="">
+                                <div class="news-det">
+                                    <h4>@newsItem.Header</h4>
+                                    <p>@newsItem.PreviewText</p>
+                                    <div class="news-meta">
+                                        <span>
+                                            <i class="fa fa-comment"></i>
+                                            @_context.Comments.Where(id => id.NewsId == newsItem.Id).ToList().Count() Comments
+                                        </span><span>
+                                            <i class="fa fa-share-alt-square"></i>
+                                            @newsItem.Share Share
+                                        </span>
+                                        <a href=""><i class="fa fa-angle-right"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                    </div>
-                    <div class="col-md-4 col-xl-4">
-                        <div class="single-news wow  flipInY" data-wow-delay=".85s">
-                            <img src="img/latest-news/latest-news-2.jpg" alt="">
-                            <div class="news-det">
-                                <h4>Maecenas venenatis tortor</h4>
-                                <p>Pellentesque eu dui quis orci interdum lobot am viverra elit et dui ultrices, quis ngue sem hendre rituttortor placerat.</p>
-                                <div class="news-meta">
-                                    <span>
-                                        <i class="fa fa-comment"></i>
-                                        20 Comments
-                                    </span><span>
-                                        <i class="fa fa-share-alt-square"></i>
-                                        205 Share
-                                    </span>
-                                    <a href=""><i class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div>
                         </div>
-
-                    </div>
-                    <div class="col-md-4 col-xl-4">
-                        <div class="single-news wow flipInY" data-wow-delay=".99s">
-                            <img src="img/latest-news/latest-news-3.jpg" alt="">
-                            <div class="news-det">
-                                <h4>Maecenas venenatis tortor</h4>
-                                <p>Pellentesque eu dui quis orci interdum lobot am viverra elit et dui ultrices, quis ngue sem hendre rituttortor placerat.</p>
-                                <div class="news-meta">
-                                    <span>
-                                        <i class="fa fa-comment"></i>
-                                        20 Comments
-                                    </span><span>
-                                        <i class="fa fa-share-alt-square"></i>
-                                        205 Share
-                                    </span>
-                                    <a href=""><i class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
 
             </div>
         </div>
     </div>
-</section>-->
+</section>
 <!--Latest News area area end-->
 <!--Newsletter style two area start-->
 <!--<section class="newsletter-two d-flex align-items-center">
