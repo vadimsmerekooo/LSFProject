@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LSFProject.ViewModels;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace LSFProject.Areas.Identity.Pages.Account.Manage
 {
+    [Authorize(Roles =("Admin,Manager"))]
     public class AddedPostModel : PageModel
     {
         [BindProperty]
@@ -22,6 +24,8 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
 
         public string ReturnUrl { get; set; }
 
+        [TempData]
+        public string StatusMessage { get; set; }
         [TempData]
         public string ErrorMessage { get; set; }
 
@@ -52,39 +56,48 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
         {
             if (ModelState.IsValid)
             {
-                Random rand = new Random();
-                if (_context.News.Where(news => news.Url == Input.Url).ToList().Count != 0)
-                    Input.Url = Input.Url + rand.Next(9999);
-                string path;
-                if (inputImage != null)
+                try
                 {
-                    path = "/img/latest-news/" + Input.Url + inputImage.FileName;
+                    Random rand = new Random();
+                    if (_context.News.Where(news => news.Url == Input.Url).ToList().Count != 0)
+                        Input.Url = Input.Url + rand.Next(9999);
+                    string path;
+                    if (inputImage != null)
+                    {
+                        path = "/img/latest-news/" + Input.Url + inputImage.FileName;
+                    }
+                    else
+                    {
+                        path = "/img/latest-news/Not-found-image.jpg";
+                    }
+                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                    {
+                        await inputImage.CopyToAsync(fileStream);
+                    }
+                    News news = new News()
+                    {
+                        Author = Input.Author,
+                        PreviewPhoto = path,
+                        Blocked = false,
+                        Date = DateTime.Now,
+                        Description = editor,
+                        Header = Input.Header,
+                        Likes = 0,
+                        PreviewText = Input.PreviewText,
+                        Share = 0,
+                        Url = Input.Url,
+                        Watching = 0
+                    };
+                    _context.News.Add(news);
+                    await _context.SaveChangesAsync();
+                    StatusMessage = "Новость успешно добавлена на сайт!";
+                    return RedirectToPage("./Posts");
                 }
-                else
+                catch
                 {
-                    path = "/img/latest-news/Not-found-image.jpg";
+                    ErrorMessage = "Произошла ошибка, новость не добавлена!";
+                    return RedirectToPage("./Posts");
                 }
-                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
-                {
-                    await inputImage.CopyToAsync(fileStream);
-                }
-                News news = new News()
-                {
-                    Author = Input.Author,
-                    PreviewPhoto = path,
-                    Blocked = false,
-                    Date = DateTime.Now,
-                    Description = editor,
-                    Header = Input.Header,
-                    Likes = 0,
-                    PreviewText = Input.PreviewText,
-                    Share = 0,
-                    Url = Input.Url,
-                    Watching = 0
-                };
-                _context.News.Add(news);
-                await _context.SaveChangesAsync();
-                return RedirectToPage("./Posts");
             }
             else
             {

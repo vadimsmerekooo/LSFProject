@@ -9,6 +9,10 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
 {
     public class PostsModel : PageModel
     {
+        [TempData]
+        public string StatusMessage { get; set; }
+        [TempData]
+        public string ErrorMessage { get; set; }
         public void OnGet()
         {
         }

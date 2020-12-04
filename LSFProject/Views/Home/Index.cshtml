@@ -673,7 +673,7 @@
 </section>-->
 <!--Parent say area end-->
 <!--Latest News area start-->
-<section class="latest-news-area">
+<section id="news" class="latest-news-area">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -699,7 +699,7 @@
                                             <i class="fa fa-share-alt-square"></i>
                                             @newsItem.Share Share
                                         </span>
-                                        <a href=""><i class="fa fa-angle-right"></i></a>
+                                        <a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})"><i class="fa fa-angle-right"></i></a>
                                     </div>
                                 </div>
                             </div>

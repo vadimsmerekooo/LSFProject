@@ -206,3 +206,5 @@ C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\bin\Debug\netcoreapp3.1\runt
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\bin\Debug\netcoreapp3.1\Humanizer.dll
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\LSFProject.csprojAssemblyReference.cache
+C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\NewsDetails.cshtml.g.cs
+C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\NewsNotFound.cshtml.g.cs

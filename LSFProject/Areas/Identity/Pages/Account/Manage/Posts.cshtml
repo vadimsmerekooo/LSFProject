@@ -6,6 +6,7 @@
     LSFProjectContext _context = new LSFProjectContext();
 }
 <h3>@ViewData["Title"]</h3>
+<partial name="_StatusMessage" model="Model.StatusMessage" />
 <table class="table">
     <thead>
         <tr>
@@ -28,33 +29,33 @@
         @foreach (var newsItem in _context.News.Where(news => !news.Blocked).ToList())
         {
             <tr class="text-center">
-                <th scope="row"><a href="@Url.Action("PostDetails", "Post", new { url = newsItem.Url})">@newsItem.Id</a></th>
-                <th><a href="@Url.Action("PostDetails", "Post", new { url = newsItem.Url})">@newsItem.Author</a></th>
-                <th><a href="@Url.Action("PostDetails", "Post", new { url = newsItem.Url})">@newsItem.Header</a></th>
-                <th><a href="@Url.Action("PostDetails", "Post", new { url = newsItem.Url})">@newsItem.Likes</a></th>
-                <th><a href="@Url.Action("PostDetails", "Post", new { url = newsItem.Url})">@newsItem.Share</a></th>
-                <th><a href="@Url.Action("PostDetails", "Post", new { url = newsItem.Url})">@newsItem.Date</a></th>
-                <th><a href="@Url.Action("PostDetails", "Post", new { url = newsItem.Url})">@newsItem.Watching</a></th>
-                <th><a href="@Url.Action("PostDetails", "Post", new { url = newsItem.Url})"><img src="@newsItem.PreviewPhoto" width="50" height="40" /></a></th>
+                <th scope="row"><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Id</a></th>
+                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Author</a></th>
+                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Header</a></th>
+                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Likes</a></th>
+                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Share</a></th>
+                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Date</a></th>
+                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Watching</a></th>
+                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})"><img src="@newsItem.PreviewPhoto" width="50" height="40" /></a></th>
                 @if (newsItem.Blocked)
                 {
-                    <th><img src="~/images/panel-images/No-button.png" /></th>
+                    <th><img src="~/img/admin-panel/No-button.png" /></th>
                 }
                 else
                 {
-                    <th><img src="~/images/panel-images/Yes-button.png" /></th>
+                    <th><img src="~/img/admin-panel/Yes-button.png" /></th>
                 }
-                <th scope="col"><a href="@Url.Action("EditPost", "Admin", new { idPost = newsItem.Id})" class="text-warning">Изменить</a></th>
-                @if (!newsItem.Blocked)
+                <th scope="col"><a asp-page-handler="ChangeNews" asp-route-newsId="@newsItem.Id" class="text-warning">Изменить</a></th>
+                @if (newsItem.Blocked)
                 {
-                    <th scope="col"><a href="@Url.Action("PostingPost", "Admin", new { idPost = newsItem.Id})" class="text-success">Опубликовать</a></th>
+                    <th scope="col"><a asp-page-handler="PublishNews" asp-route-newsId="@newsItem.Id" class="text-success">Опубликовать</a></th>
                 }
                 else
                 {
-                    <th scope="col"><a href="@Url.Action("BlockedPost", "Admin", new { idPost = newsItem.Id})" class="text-danger">Заблокировать</a></th>
-                    <th scope="col"><a href="@Url.Action("PostDetails", "Post", new { url = newsItem.Url})" class="text-primary">Просмотреть</a></th>
+                    <th scope="col"><a asp-page-handler="BlockedNews" asp-route-newsId="@newsItem.Id" class="text-danger">Заблокировать</a></th>
+                    <th scope="col"><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})" class="text-primary">Просмотреть</a></th>
                 }
-                <th scope="col"><a href="@Url.Action("DeletePost", "Admin", new { idPost = newsItem.Id})" class="text-danger">Удалить</a></th>
+                <th scope="col"><a asp-page-handler="DeleteNews" asp-route-newsId="@newsItem.Id" class="text-danger">Удалить</a></th>
             </tr>
         }
     </tbody>
