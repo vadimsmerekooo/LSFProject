@@ -13,7 +13,7 @@
             <th scope="col">#</th>
             <th scope="col">Автор</th>
             <th scope="col">Заголовок</th>
-            <th scope="col">Лайки</th>
+            <th scope="col">Коментарии</th>
             <th scope="col">Репосты</th>
             <th scope="col">Дата</th>
             <th scope="col">Просмотры</th>
@@ -32,7 +32,7 @@
                 <th scope="row"><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Id</a></th>
                 <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Author</a></th>
                 <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Header</a></th>
-                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Likes</a></th>
+                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@_context.Comments.Where(newss => newss.NewsId == newsItem.Id).ToList().Count()</a></th>
                 <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Share</a></th>
                 <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Date</a></th>
                 <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Watching</a></th>
@@ -45,7 +45,7 @@
                 {
                     <th><img src="~/img/admin-panel/Yes-button.png" /></th>
                 }
-                <th scope="col"><a asp-page-handler="ChangeNews" asp-route-newsId="@newsItem.Id" class="text-warning">Изменить</a></th>
+                <th scope="col"><a asp-page="./EditNews" asp-route-news="newsItem" asp-route-newsId="@newsItem.Id" class="text-warning"></a></th>
                 @if (newsItem.Blocked)
                 {
                     <th scope="col"><a asp-page-handler="PublishNews" asp-route-newsId="@newsItem.Id" class="text-success">Опубликовать</a></th>

@@ -208,3 +208,4 @@ C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\bin\Debug\netcoreapp3.1\Huma
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\LSFProject.csprojAssemblyReference.cache
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\NewsDetails.cshtml.g.cs
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\NewsNotFound.cshtml.g.cs
+C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\EditNews.cshtml.g.cs

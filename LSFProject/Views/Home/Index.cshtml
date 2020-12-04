@@ -694,10 +694,10 @@
                                     <div class="news-meta">
                                         <span>
                                             <i class="fa fa-comment"></i>
-                                            @_context.Comments.Where(id => id.NewsId == newsItem.Id).ToList().Count() Comments
+                                            @_context.Comments.Where(id => id.NewsId == newsItem.Id).ToList().Count() Коментарии
                                         </span><span>
                                             <i class="fa fa-share-alt-square"></i>
-                                            @newsItem.Share Share
+                                            @newsItem.Share Репосты
                                         </span>
                                         <a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})"><i class="fa fa-angle-right"></i></a>
                                     </div>
