@@ -49,15 +49,15 @@ namespace LSFProject.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "Поле Имя не заполнено!")]
             [StringLength(30, MinimumLength = 2, ErrorMessage = "Мин длинна имя 2 символов")]
             public string Name { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Поле Логин не заполнено!")]
             [Display(Name = "Логин")]
             public string Login { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Поле Пароль не заполнено!")]
             [StringLength(100, ErrorMessage = "Мин длинна пароля 8 символов, макс 100", MinimumLength = 8)]
             [Display(Name = "Пароль")]
             public string Password { get; set; }
