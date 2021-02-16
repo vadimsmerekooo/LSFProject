@@ -1,10 +1,9 @@
-﻿@using LSFProject.ViewModels;
-@inject Microsoft.AspNetCore.Identity.UserManager<LSFProject.Areas.Identity.Data.LSFUser> _userManager
-@model LSFProject.ViewModels.News
+﻿@inject Microsoft.AspNetCore.Identity.UserManager<LSFProject.Areas.Identity.Data.LSFUser> _userManager
+@model AspNetNews
 @{
     ViewData["Title"] = "Новость - " + Model.Header;
     LSFProjectContext _context = new LSFProjectContext();
-    Comment commentForm = new Comment();
+    AspNetNewsComment commentForm = new AspNetNewsComment();
 }
 @if (Model != null)
 {
@@ -17,14 +16,14 @@
                             <div class="col-lg-12">
                                 <div class="blog-post">
                                     <div class="blog-thumb">
-                                        <img src="@Model.PreviewPhoto" alt="">
+                                        <img src="@Model.PreviewPhoto" alt="" style="max-width: 300px;">
                                     </div>
                                     <div class="down-content">
                                         <a href="@Url.Action("PostDetails", "Post", new { url = Model.Url })"><h4>@Model.Header</h4></a>
                                         <ul class="post-info">
                                             <li><a href="@Url.Action("PostDetails", "Post", new { url = Model.Url })">@Model.Author</a></li>
                                             <li><a href="@Url.Action("PostDetails", "Post", new { url = Model.Url })">@Model.Date</a></li>
-                                            <li><a href="@Url.Action("PostDetails", "Post", new { url = Model.Url })">@_context.Comments.Where(comment => comment.NewsId == Model.Id).ToList().Count Comments</a></li>
+                                            <li><a href="@Url.Action("PostDetails", "Post", new { url = Model.Url })">@_context.AspNetNewsComments.Where(comment => comment.NewsId == Model.Id).ToList().Count Comments</a></li>
                                         </ul>
                                         @Html.Raw(Model.Description)
                                         <div class="post-options">
@@ -43,12 +42,12 @@
                             </div>
                             <div class="col">
                                 <div class="sidebar-heading">
-                                    <h2 class="text-dark">@_context.Comments.Where(comment => comment.NewsId == Model.Id).ToList().Count комментариев</h2>
+                                    <h2 class="text-dark">@_context.AspNetNewsComments.Count(comment => comment.NewsId == Model.Id) комментариев</h2>
                                 </div>
                                 <ul>
-                                    @foreach (var comment in _context.Comments.Where(commentModel => commentModel.NewsId == Model.Id).ToList())
+                                    @foreach (var comment in _context.AspNetNewsComments.Where(commentModel => commentModel.NewsId == Model.Id).ToList())
                                     {
-                                        if (!comment.Answer)
+                                        if (comment.Answer == 0)
                                         {
                                             <li>
                                                 <div class="right-content">

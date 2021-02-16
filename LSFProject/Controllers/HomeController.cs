@@ -35,30 +35,28 @@ namespace LSFProject.Controllers
 
         public IActionResult NewsDetails(string url)
         {
-            var news = _context.News.Where(news => news.Url == url).ToList();
-            if (news.Count == 0 || news[0].Blocked)
+            if (!_context.AspNetNews.Any(news => news.Url == url) || _context.AspNetNews.FirstOrDefault(news => news.Url == url).Blocked)
             {
                 Response.StatusCode = 404;
                 return View("NewsNotFound");
             }
-            _context.News.FirstOrDefault(newsItem => newsItem.Url == url).Watching++;
+            _context.AspNetNews.FirstOrDefault(newsItem => newsItem.Url == url).Watching++;
             _context.SaveChanges();
-            return View(_context.News.Where(newsIdItem => newsIdItem.Url == url).ToList()[0]);
+            return View(_context.AspNetNews.Where(newsIdItem => newsIdItem.Url == url).ToList()[0]);
         }
         [Authorize]
-        public async Task<IActionResult> CreateComment(Comment comment, string message, string idNews, string idUser)
+        public async Task<IActionResult> CreateComment(AspNetNewsComment comment, string message, string idNews, string idUser)
         {
-            Comment _comment = new Comment()
+            AspNetNewsComment _comment = new AspNetNewsComment()
             {
                 Date = DateTime.Now,
                 NewsId = int.Parse(idNews),
-                Answer = false,
                 Text = message,
                 UserId =  idUser
             };
-            _context.Comments.Add(_comment);
+            _context.AspNetNewsComments.Add(_comment);
             await _context.SaveChangesAsync();
-            return RedirectToAction("NewsDetails", "Home", new { url = _context.News.Where(news => news.Id == int.Parse(idNews)).ToList()?[0].Url });
+            return RedirectToAction("NewsDetails", "Home", new { url = _context.AspNetNews.Where(news => news.Id == int.Parse(idNews)).ToList()?[0].Url });
         }
     }
 }

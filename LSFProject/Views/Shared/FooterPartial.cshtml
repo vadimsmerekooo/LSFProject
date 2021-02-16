@@ -7,7 +7,7 @@
                     <div class="footer-logo">
                         <img src="~/img/logo.png" alt="">
                     </div>
-                    <p class="footer-about-text">Основная цель сайта - создание единого информационного поля, охватывающего основные направления обучения в области основ безопасности жизнедеятельности.</p>
+                    <p class="footer-about-text">@Config.SiteTitle.</p>
 
                 </div>
             </div>
@@ -51,15 +51,15 @@
                     <div class="footer-contact">
                         <div class="sin-con">
                             <i class="fa fa-instagram"></i>
-                            <p><a href="https://www.instagram.com/tvoy_prostoy_malchik/?hl=ru">tvoy_prostoy_malchik</a></p>
+                            <p><a href="@Config.Inst">@Config.InstTitle</a></p>
                         </div>
                         <div class="sin-con">
                             <i class="fa fa-phone"></i>
-                            <a href="tel:+80292865830">+375(29)2865830</a>
+                            <a href="tel:@Config.Tel">@Config.Tel</a>
                         </div>
                         <div class="sin-con">
                             <i class="fa fa-envelope"></i>
-                            <a href="mailto:obj.education@gmail.com">obj.education@gmail.com</a>
+                            <a href="mailto:@Config.Mail">@Config.Mail</a>
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                <p>&copy; 2020 Основы безопасности жизнедеятельности. Разработка - Дипломный проект("Вадим&Дима")</p>
+                <p>&copy; @DateTime.Now.Year @Config.SiteHeader. Разработка - Дипломный проект("Вадим&Дима")</p>
             </div>
             <div class="col-sm-12 col-md-6">
                 <ul class="social-icon float-right">

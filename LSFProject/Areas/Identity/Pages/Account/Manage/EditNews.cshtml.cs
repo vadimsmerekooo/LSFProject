@@ -36,7 +36,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
             public string Header { get; set; }
             [Required(ErrorMessage = "Не указан превью текст!")]
             public string PreviewText { get; set; }
-            public string PreviewPhoto { get; set; }
+            public int PreviewPhoto { get; set; }
             [Required(ErrorMessage = "Не указан Url-адрес новости!")]
             public string Url { get; set; }
             public string Description { get; set; }
@@ -52,7 +52,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
         {
             _appEnvironment = appEnvironment;
         }
-        public void OnGet(News news)
+        public void OnGet(AspNetNews news)
         {
             Input = new InputModel()
             {
@@ -71,7 +71,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
         public async Task<IActionResult> OnPostSaveChangeNewsAsync(string editor, IFormFile inputImage)
         {
             Random rand = new Random();
-            if (_context.News.Where(newsDb => newsDb.Url == Input.Url).ToList().Count != 0)
+            if (_context.AspNetNews.Where(newsDb => newsDb.Url == Input.Url).ToList().Count != 0)
                 Input.Url = Input.Url + rand.Next(9999999);
             if (inputImage != null)
             {
@@ -80,14 +80,14 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
                 {
                     await inputImage.CopyToAsync(fileStream);
                 }
-                _context.News.FirstOrDefault(post => post.Id == Input.Id).PreviewPhoto = path;
+                _context.AspNetNews.FirstOrDefault(post => post.Id == Input.Id).PreviewPhoto = _context.AspNetFiles.FirstOrDefault(p => p.Title == path).Id;
             }
-            _context.News.FirstOrDefault(post => post.Id == Input.Id).Author = Input.Author;
-            _context.News.FirstOrDefault(post => post.Id == Input.Id).Date = DateTime.Now;
-            _context.News.FirstOrDefault(post => post.Id == Input.Id).Description = editor;
-            _context.News.FirstOrDefault(post => post.Id == Input.Id).Header = Input.Header;
-            _context.News.FirstOrDefault(post => post.Id == Input.Id).PreviewText = Input.PreviewText;
-            _context.News.FirstOrDefault(post => post.Id == Input.Id).Url = Input.Url;
+            _context.AspNetNews.FirstOrDefault(post => post.Id == Input.Id).Author = Input.Author;
+            _context.AspNetNews.FirstOrDefault(post => post.Id == Input.Id).Date = DateTime.Now;
+            _context.AspNetNews.FirstOrDefault(post => post.Id == Input.Id).Description = editor;
+            _context.AspNetNews.FirstOrDefault(post => post.Id == Input.Id).Header = Input.Header;
+            _context.AspNetNews.FirstOrDefault(post => post.Id == Input.Id).PreviewText = Input.PreviewText;
+            _context.AspNetNews.FirstOrDefault(post => post.Id == Input.Id).Url = Input.Url;
             _context.SaveChanges();
             return RedirectToPage("./Posts");
         }

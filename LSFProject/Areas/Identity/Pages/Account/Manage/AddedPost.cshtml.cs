@@ -59,7 +59,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
                 try
                 {
                     Random rand = new Random();
-                    if (_context.News.Where(news => news.Url == Input.Url).ToList().Count != 0)
+                    if (_context.AspNetNews.Where(news => news.Url == Input.Url).ToList().Count != 0)
                         Input.Url = Input.Url + rand.Next(9999);
                     string path;
                     if (inputImage != null)
@@ -74,10 +74,10 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
                     {
                         await inputImage.CopyToAsync(fileStream);
                     }
-                    News news = new News()
+                    AspNetNews news = new AspNetNews()
                     {
                         Author = Input.Author,
-                        PreviewPhoto = path,
+                        PreviewPhoto = _context.AspNetFiles.FirstOrDefault(p => p.Title == path).Id,
                         Blocked = false,
                         Date = DateTime.Now,
                         Description = editor,
@@ -88,7 +88,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
                         Url = Input.Url,
                         Watching = 0
                     };
-                    _context.News.Add(news);
+                    _context.AspNetNews.Add(news);
                     await _context.SaveChangesAsync();
                     StatusMessage = "Новость успешно добавлена на сайт!";
                     return RedirectToPage("./Posts");

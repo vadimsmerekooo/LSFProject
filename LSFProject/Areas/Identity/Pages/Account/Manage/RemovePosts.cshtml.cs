@@ -9,7 +9,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage.Posts
 {
     public class RemovePosts : PageModel
     {
-        LSFProject.ViewModels.LSFProjectContext _context = new ViewModels.LSFProjectContext();
+        LSFProjectContext _context = new LSFProjectContext();
         [TempData]
         public string StatusMessage { get; set; }
         public void OnGet()
@@ -17,10 +17,9 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage.Posts
         }
         public async Task<IActionResult> OnGetPublishNewsAsync(int newsId)
         {
-            var news = _context.News.Where(newsItem => newsItem.Id == newsId).ToList();
-            if (news.Count != 0)
+            if (_context.AspNetNews.Any(newsItem => newsItem.Id == newsId))
             {
-                _context.News.FirstOrDefault(@post => post.Id == newsId).Blocked = false;
+                _context.AspNetNews.FirstOrDefault(@post => post.Id == newsId).Blocked = false;
                 await _context.SaveChangesAsync();
             }
             StatusMessage = "Новость разблокирована!";
@@ -28,10 +27,10 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage.Posts
         }
         public async Task<IActionResult> OnGetDeleteNews(int newsId)
         {
-            _context.News.Remove(_context.News.FirstOrDefault(post => post.Id == newsId));
-            foreach (var comments in _context.Comments.Where(comment => comment.NewsId == newsId))
+            _context.AspNetNews.Remove(_context.AspNetNews.FirstOrDefault(post => post.Id == newsId));
+            foreach (var comments in _context.AspNetNewsComments.Where(comment => comment.NewsId == newsId))
             {
-                _context.Comments.Remove(comments);
+                _context.AspNetNewsComments.Remove(comments);
             }
             _context.SaveChanges();
             StatusMessage = "Новость успешно удалена!";

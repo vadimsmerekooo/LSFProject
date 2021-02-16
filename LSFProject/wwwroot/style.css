@@ -1483,7 +1483,7 @@ button {
 
 .single-teacher:hover h4 {
     transform: translate(9px,0px);
-    -webkit-transition: all all 0.5s;
+    -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
@@ -1499,9 +1499,9 @@ button {
 
 .single-teacher:hover .teacher-detail p {
     transform: translate(9px,0px);
-    -webkit-transition: all all 0.5s;
+    -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
-    -o-transition: all 0.5s transition all 0.5s;
+    -o-transition: all 0.5s;
 }
 
 .single-teacher.twenty-per {
@@ -2201,7 +2201,7 @@ tr:nth-child(even) th {
     color: #fff;
     padding: 10px;
     text-align: center;
-    border-radius: 0px solid inherit;
+    border-radius: 0;
     border-bottom: 1px solid #fff;
 }
 
@@ -2548,9 +2548,22 @@ mainmenu-two .mega-catagory.mega-img {
     -o-transition: all 0.5s ease 0s;
     transition: all 0.5s ease 0s;
 }
-
+.feat-two-img .first-img {
+    position: absolute;
+    margin-top: 15px;
+    margin-left: -30px;
+    transition: all 1s ease-in-out;
+    -webkit-transition: all 1s ease-in-out; /** Chrome & Safari **/
+    -moz-transition: all 1s ease-in-out; /** Firefox **/
+    -o-transition: all 1s ease-in-out; /** Opera **/
+}
+.sin-feature-two:hover .first-img {
+    transform: translate(50px,0);
+    -webkit-transform: translate(50px,0); /** Chrome & Safari **/
+    -o-transform: translate(50px,0); /** Opera **/
+    -moz-transform: translate(50px,0); /** Firefox **/
+}
 /*----------About three css----------------*/
-
 .about-kids-three {
     padding: 70px 0px;
     background: #f8f8f8;
@@ -2991,6 +3004,8 @@ mainmenu-two .mega-catagory.mega-img {
     text-align: center;
     padding: 10px;
     border-radius: 20px;
+    height: 370px;
+    position: relative;
 }
 
 .news-det p {
@@ -3000,6 +3015,7 @@ mainmenu-two .mega-catagory.mega-img {
     line-height: 26px;
     padding-top: 16px;
     padding-bottom: 30px;
+    word-break: break-all;
 }
 
 .news-det p {
@@ -3017,6 +3033,8 @@ mainmenu-two .mega-catagory.mega-img {
 .news-det {
     text-align: left;
     padding: 20px 10px;
+    position: absolute;
+    bottom: -30px;
 }
 
     .news-det p {
@@ -6788,7 +6806,6 @@ ul.sort-by-age li {
         width: 740px;
         height: 70px;
         bottom: 62px;
-        border-left: 50%;
         margin-left: -370px;
         background: url(img/icon/ball-ball.png);
         content: '';
@@ -8175,8 +8192,8 @@ input.full-width {
         padding: 15px;
         color: #FFFFFF;
         font-size: 14px;
-        -webkit-transition: all 0.3 ease;
         transition: all 0.3 ease;
+        -webkit-transition: all 0.3 ease;
         cursor: pointer;
     }
 

@@ -2,7 +2,7 @@
 @model LSFProject.Areas.Identity.Pages.Account.Manage.Posts.RemovePosts
 @{
     ViewData["Title"] = "Заблокированные посты";
-    LSFProject.ViewModels.LSFProjectContext _context = new LSFProject.ViewModels.LSFProjectContext();
+    LSFProject.LSFProjectContext _context = new LSFProject.LSFProjectContext();
 }
 <h2>@ViewData["Title"]</h2>
 <partial name="_StatusMessage" model="Model.StatusMessage" />
@@ -23,13 +23,13 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var newsItem in _context.News.Where(news => news.Blocked).ToList())
+        @foreach (var newsItem in _context.AspNetNews.Where(news => news.Blocked).ToList())
         {
         <tr class="text-center">
             <th scope="row"><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Id</a></th>
             <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Author</a></th>
             <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Header</a></th>
-            <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@_context.Comments.Where(newss => newss.NewsId == newsItem.Id).ToList().Count()</a></th>
+            <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@_context.AspNetNewsComments.Where(newss => newss.NewsId == newsItem.Id).ToList().Count()</a></th>
             <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Share</a></th>
             <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Date</a></th>
             <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Watching</a></th>
