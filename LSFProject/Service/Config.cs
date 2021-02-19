@@ -18,5 +18,10 @@ namespace LSFProject
         public static string YouTube { get; set; }
         public static string SiteHeader { get; set; }
         public static string SiteTitle { get; set; }
+        public static string OpenJsonFileDataBase { get; set; }
+        public static string PrivateJsonFileDataBase { get; set; }
+        public static string RSAOpenKey { get; set; }
+        public static string RSAPrivateKey { get; set; }
+        
     }
 }
