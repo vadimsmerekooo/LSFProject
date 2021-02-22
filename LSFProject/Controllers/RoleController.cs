@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LSFProject.Areas.Identity.Data;
-using LSFProject.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,8 +12,8 @@ namespace LSFProject.Controllers
     [Authorize(Roles = "Admin, Manager")]
     public class RoleController : Controller
     {
-        RoleManager<IdentityRole> _roleManager;
-        UserManager<LSFUser> _userManager;
+        readonly RoleManager<IdentityRole> _roleManager;
+        readonly UserManager<LSFUser> _userManager;
         public RoleController(RoleManager<IdentityRole> roleManager, UserManager<LSFUser> userManager)
         {
             _roleManager = roleManager;
@@ -51,7 +50,7 @@ namespace LSFProject.Controllers
             IdentityRole role = await _roleManager.FindByIdAsync(id);
             if (role != null)
             {
-                IdentityResult result = await _roleManager.DeleteAsync(role);
+                await _roleManager.DeleteAsync(role);
             }
             return RedirectToAction("Index");
         }
@@ -63,7 +62,7 @@ namespace LSFProject.Controllers
             LSFUser user = await _userManager.FindByIdAsync(userId);
             if (user != null)
             {
-                IdentityResult result = await _userManager.DeleteAsync(user);
+                await _userManager.DeleteAsync(user);
             }
             return RedirectToAction("UserList");
         }
@@ -103,8 +102,6 @@ namespace LSFProject.Controllers
                 }
                 // получем список ролей пользователя
                 var userRoles = await _userManager.GetRolesAsync(user);
-                // получаем все роли
-                var allRoles = _roleManager.Roles.ToList();
                 // получаем список ролей, которые были добавлены
                 var addedRoles = roles.Except(userRoles);
                 // получаем роли, которые были удалены

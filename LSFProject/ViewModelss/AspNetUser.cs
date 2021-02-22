@@ -9,6 +9,7 @@ namespace LSFProject
     {
         public AspNetUser()
         {
+            AspNetFavTargets = new HashSet<AspNetFavTarget>();
             AspNetForumAnswers = new HashSet<AspNetForumAnswer>();
             AspNetForumQuestions = new HashSet<AspNetForumQuestion>();
             AspNetNews = new HashSet<AspNetNews>();
@@ -34,7 +35,10 @@ namespace LSFProject
         public DateTimeOffset? LockoutEnd { get; set; }
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
+        public int? Icon { get; set; }
 
+        public virtual AspNetIcon IconNavigation { get; set; }
+        public virtual ICollection<AspNetFavTarget> AspNetFavTargets { get; set; }
         public virtual ICollection<AspNetForumAnswer> AspNetForumAnswers { get; set; }
         public virtual ICollection<AspNetForumQuestion> AspNetForumQuestions { get; set; }
         public virtual ICollection<AspNetNews> AspNetNews { get; set; }

@@ -1,14 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using LSFProject.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -46,38 +42,19 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
             public int Blocked { get; set; }
             public int Watching { get; set; }
         }
-        LSFProjectContext _context = new LSFProjectContext();
-        IWebHostEnvironment _appEnvironment;
-        public AddedPostModel(IWebHostEnvironment appEnvironment)
-        {
-            _appEnvironment = appEnvironment;
-        }
-        public async Task<IActionResult> OnPostAsync(string editor, IFormFile inputImage)
+
+        readonly LSFProjectContext _context = new LSFProjectContext();
+
+        public async Task<IActionResult> OnPostAsync(string editor, string photo)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    Random rand = new Random();
-                    if (_context.AspNetNews.Where(news => news.Url == Input.Url).ToList().Count != 0)
-                        Input.Url = Input.Url + rand.Next(9999);
-                    string path;
-                    if (inputImage != null)
-                    {
-                        path = "/img/latest-news/" + Input.Url + inputImage.FileName;
-                    }
-                    else
-                    {
-                        path = "/img/latest-news/Not-found-image.jpg";
-                    }
-                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
-                    {
-                        await inputImage.CopyToAsync(fileStream);
-                    }
                     AspNetNews news = new AspNetNews()
                     {
                         Author = Input.Author,
-                        PreviewPhoto = _context.AspNetFiles.FirstOrDefault(p => p.Title == path).Id,
+                        PreviewPhoto = _context.AspNetFiles.FirstOrDefault(p => p.Title == photo).Id,
                         Blocked = false,
                         Date = DateTime.Now,
                         Description = editor,

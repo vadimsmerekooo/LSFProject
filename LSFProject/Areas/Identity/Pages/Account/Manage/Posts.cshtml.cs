@@ -7,7 +7,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
 {
     public class PostsModel : PageModel
     {
-        LSFProjectContext _context = new LSFProjectContext();
+        readonly LSFProjectContext _context = new LSFProjectContext();
         [TempData]
         public string StatusMessage { get; set; }
         [TempData]
@@ -44,7 +44,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
             StatusMessage = "Новость разблокирована!";
             return RedirectToPage("./Posts");
         }
-        public async Task<IActionResult> OnGetDeleteNews(int newsId)
+        public IActionResult OnGetDeleteNews(int newsId)
         {
             _context.AspNetNews.Remove(_context.AspNetNews.FirstOrDefault(post => post.Id == newsId));
             foreach (var comments in _context.AspNetNewsComments.Where(comment => comment.NewsId == newsId))

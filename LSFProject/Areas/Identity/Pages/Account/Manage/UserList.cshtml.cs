@@ -15,7 +15,10 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
     {
         RoleManager<IdentityRole> _roleManager;
         UserManager<LSFUser> _userManager;
+        private LSFProjectContext _context = new LSFProjectContext();
         public List<LSFUser> users;
+        [TempData]
+        public string StatusMessage { get; set; }
         public UserListModel(RoleManager<IdentityRole> roleManager, UserManager<LSFUser> userManager)
         {
             _roleManager = roleManager;
@@ -29,6 +32,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
             if (user != null)
             {
                 IdentityResult result = await _userManager.DeleteAsync(user);
+                StatusMessage = "Пользователь удален!";
             }
             return RedirectToPage("./UserList");
         }
@@ -38,7 +42,9 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
             if(user != null)
             {
                 user.LockoutEnd = DateTime.Now.AddYears(200);
+                _userManager.ResetAuthenticatorKeyAsync(_userManager.FindByIdAsync(userId).Result);
                 await _userManager.UpdateAsync(user);
+                StatusMessage = "Пользователь заблокирован!";
             }
             return RedirectToPage("./UserList");
         }
@@ -49,6 +55,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
             {
                 user.LockoutEnd = null;
                 await _userManager.UpdateAsync(user);
+                StatusMessage = "Пользователь разблокирован!";
             }
             return RedirectToPage("./UserList");
         }

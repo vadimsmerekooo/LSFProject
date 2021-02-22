@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@model LSFProject.ViewModels.ChangeRoleViewModel
+@model ChangeRoleViewModel
 
 @{
     ViewData["Title"] = "Изменение роли";
@@ -13,16 +13,11 @@
         <div class="form-group">
             @foreach (IdentityRole role in Model.AllRoles)
             {
-                if (role.Name == "Admin" && !User.IsInRole("Admin"))
-                {
-
-                }
-                else
+                if (role.Name != "Admin" && User.IsInRole("Admin"))
                 {
                     <input type="checkbox" name="roles" value="@role.Name"
                            @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") /> @role.Name <br />
-
-                    }
+                }
                 }
         </div>
         <button type="submit" class="btn btn-primary">Сохранить</button>

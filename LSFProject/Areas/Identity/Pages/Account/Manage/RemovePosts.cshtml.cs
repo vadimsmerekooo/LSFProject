@@ -1,15 +1,13 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace LSFProject.Areas.Identity.Pages.Account.Manage.Posts
+namespace LSFProject.Areas.Identity.Pages.Account.Manage
 {
     public class RemovePosts : PageModel
     {
-        LSFProjectContext _context = new LSFProjectContext();
+        readonly LSFProjectContext _context = new LSFProjectContext();
         [TempData]
         public string StatusMessage { get; set; }
         public void OnGet()
@@ -25,7 +23,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage.Posts
             StatusMessage = "Новость разблокирована!";
             return RedirectToPage("./Posts");
         }
-        public async Task<IActionResult> OnGetDeleteNews(int newsId)
+        public IActionResult OnGetDeleteNews(int newsId)
         {
             _context.AspNetNews.Remove(_context.AspNetNews.FirstOrDefault(post => post.Id == newsId));
             foreach (var comments in _context.AspNetNewsComments.Where(comment => comment.NewsId == newsId))

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using LSFProject.Models;
-using LSFProject.ViewModels;
 using LSFProject.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authorization;
 
@@ -14,13 +13,8 @@ namespace LSFProject.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        LSFProjectContext _context = new LSFProjectContext();
-
-        public HomeController( ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        readonly LSFProjectContext _context = new LSFProjectContext();
+        
 
         public IActionResult Index() => View();
 
@@ -45,7 +39,7 @@ namespace LSFProject.Controllers
             return View(_context.AspNetNews.Where(newsIdItem => newsIdItem.Url == url).ToList()[0]);
         }
         [Authorize]
-        public async Task<IActionResult> CreateComment(AspNetNewsComment comment, string message, string idNews, string idUser)
+        public async Task<IActionResult> CreateComment(string message, string idNews, string idUser)
         {
             AspNetNewsComment _comment = new AspNetNewsComment()
             {

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace LSFProject.ViewModels
+namespace LSFProject
 {
     public class ChangeRoleViewModel
     {

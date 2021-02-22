@@ -1,12 +1,11 @@
 ﻿@page
-@using LSFProject.ViewModels;
 @model LSFProject.Areas.Identity.Pages.Account.Manage.PostsModel
 @{
     ViewData["Title"] = "Новости";
     LSFProject.LSFProjectContext _context = new LSFProject.LSFProjectContext();
 }
 <h3>@ViewData["Title"]</h3>
-@Html.Partial("_StatusMessage", Model.StatusMessage)
+<partial name="_StatusMessage" model="Model.StatusMessage" />
 
 <table class="table">
     <thead>

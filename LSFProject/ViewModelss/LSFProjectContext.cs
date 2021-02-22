@@ -17,17 +17,21 @@ namespace LSFProject
         {
         }
 
+        public virtual DbSet<AspNetFavTarget> AspNetFavTargets { get; set; }
         public virtual DbSet<AspNetFile> AspNetFiles { get; set; }
         public virtual DbSet<AspNetForum> AspNetForums { get; set; }
         public virtual DbSet<AspNetForumAnswer> AspNetForumAnswers { get; set; }
         public virtual DbSet<AspNetForumQuestion> AspNetForumQuestions { get; set; }
         public virtual DbSet<AspNetForumStatus> AspNetForumStatuses { get; set; }
+        public virtual DbSet<AspNetIcon> AspNetIcons { get; set; }
         public virtual DbSet<AspNetNews> AspNetNews { get; set; }
         public virtual DbSet<AspNetNewsCategory> AspNetNewsCategories { get; set; }
         public virtual DbSet<AspNetNewsComment> AspNetNewsComments { get; set; }
         public virtual DbSet<AspNetPage> AspNetPages { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }
+        public virtual DbSet<AspNetTarget> AspNetTargets { get; set; }
+        public virtual DbSet<AspNetTraficRule> AspNetTraficRules { get; set; }
         public virtual DbSet<AspNetTreeMenu> AspNetTreeMenus { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
@@ -39,17 +43,29 @@ namespace LSFProject
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=LAPTOP-GMR70BN0\\MSSQLSERVER01;Database=LSFProject;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AspNetFavTarget>(entity =>
+            {
+                entity.Property(e => e.UserId).HasMaxLength(450);
+
+                entity.HasOne(d => d.Target)
+                    .WithMany(p => p.AspNetFavTargets)
+                    .HasForeignKey(d => d.TargetId)
+                    .HasConstraintName("FK_AspNetFavTargets_AspNetTargets");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.AspNetFavTargets)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK_AspNetFavTargets_AspNetUsers");
+            });
+
             modelBuilder.Entity<AspNetFile>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.DateAdd).HasColumnType("datetime");
 
                 entity.Property(e => e.Path).IsRequired();
@@ -222,6 +238,13 @@ namespace LSFProject
                     .HasForeignKey(d => d.RoleId);
             });
 
+            modelBuilder.Entity<AspNetTarget>(entity =>
+            {
+                entity.Property(e => e.StatesIds)
+                    .HasMaxLength(50)
+                    .HasColumnName("StatesIDs");
+            });
+
             modelBuilder.Entity<AspNetTreeMenu>(entity =>
             {
                 entity.ToTable("AspNetTreeMenu");
@@ -251,6 +274,11 @@ namespace LSFProject
                 entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
 
                 entity.Property(e => e.UserName).HasMaxLength(256);
+
+                entity.HasOne(d => d.IconNavigation)
+                    .WithMany(p => p.AspNetUsers)
+                    .HasForeignKey(d => d.Icon)
+                    .HasConstraintName("FK_AspNetUsers_AspNetIcons");
             });
 
             modelBuilder.Entity<AspNetUserClaim>(entity =>

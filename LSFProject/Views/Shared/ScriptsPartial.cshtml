@@ -62,3 +62,8 @@
         $(this).next('.form-control-file').addClass("selected").html(fileName);
     })
 </script>
+<script>
+    function updatePhoto() {
+        $("#inputGroupSelectPhoto").load('@Url.Action("UpdatePhotoInput", "UpdateInput")');
+    }
+</script>

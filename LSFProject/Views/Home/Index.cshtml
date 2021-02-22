@@ -1,5 +1,4 @@
-﻿@using LSFProject.ViewModels;
-@{
+﻿@{
     ViewData["Title"] = "Главная";
     LSFProjectContext _context = new LSFProjectContext();
 }
@@ -691,7 +690,7 @@
                     {
                         <div class="col-md-4 col-xl-4">
                             <div class="single-news wow wow flipInY" data-wow-delay=".7s">
-                                <img src="@newsItem.PreviewPhoto" alt="">
+                                <img src="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Photo" alt="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Title">
                                 <div class="news-det">
                                     <h4>@newsItem.Header</h4>
                                     <p>@newsItem.PreviewText</p>
@@ -703,7 +702,7 @@
                                             <i class="fa fa-share-alt-square"></i>
                                             @newsItem.Share Репосты
                                         </span>
-                                        <a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})"><i class="fa fa-angle-right"></i></a>
+                                        <a asp-controller="Home" asp-action="NewsDetails" asp-route-url="@newsItem.Url"><i class="fa fa-angle-right"></i></a>
                                     </div>
                                 </div>
                             </div>

@@ -60,7 +60,7 @@
                                         {
                                             <li class="replied">
                                                 <div class="right-content" style="display: block;">
-                                                    <h4>@(((LSFProject.Areas.Identity.Data.LSFUser)_userManager.FindByIdAsync(comment.UserId).Result).UserName))<span>@comment.Date</span></h4>
+                                                    <h4>@(_userManager.FindByIdAsync(comment.UserId).Result).UserName)<span>@comment.Date</span></h4>
                                                     <p>@comment.Text</p>
                                                 </div>
                                             </li>

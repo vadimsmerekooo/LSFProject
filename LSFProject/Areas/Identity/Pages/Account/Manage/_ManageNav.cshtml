@@ -4,7 +4,9 @@
 }
 <ul class="nav nav-pills flex-column list-group">
     <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Профиль</a></li>
-    <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Пароль</a></li>
+    
+    
+    
     @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
     {
         <li class="nav-item"><a class="nav-link @ManageNavPages.UserListNavClass(ViewContext) @ManageNavPages.EditRolesUserNavClass(ViewContext)" id="user-list" asp-page="./UserList">Список пользователей</a></li>
@@ -13,15 +15,25 @@
             <hr />
         </li>
 
-        <li class="@ManageNavPages.PostsNavClass(ViewContext)li @ManageNavPages.AddedPostNavClass(ViewContext)li @ManageNavPages.RemovePostsNavClass(ViewContext)li nav-item nav-item-parent">
-            <a class="nav-link @ManageNavPages.PostsNavClass(ViewContext) @ManageNavPages.AddedPostNavClass(ViewContext) @ManageNavPages.RemovePostsNavClass(ViewContext)" id="posts" asp-page="./Posts">Посты</a>
+        <li class="nav-item nav-item-parent">
+            <a class="nav-link @ManageNavPages.PostsNavClass(ViewContext)" id="posts" asp-page="./Posts">Посты</a>
             <hr style="margin: 0;" />
             <ul class="list-group nav-item-children" style="margin-top: -1px;">
-                <li class="@ManageNavPages.AddedPostNavClass(ViewContext)li">
+                <li>
                     <a class="nav-link @ManageNavPages.AddedPostNavClass(ViewContext)" id="added-post" asp-page="./AddedPost">Добавить пост</a>
                 </li>
-                <li class="@ManageNavPages.RemovePostsNavClass(ViewContext)li">
+                <li>
                     <a class="nav-link @ManageNavPages.RemovePostsNavClass(ViewContext)" id="remove-posts" asp-page="./RemovePosts">Заблокированные посты</a>
+                </li>
+            </ul>
+            <hr style="margin: 0;" />
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @ManageNavPages.FilesNavClass(ViewContext)" asp-page="./Files">Фото/Видео/Файлы</a>
+            <hr style="margin: 0;" />
+            <ul class="list-group nav-item-children" style="margin-top: -1px;">
+                <li>
+                    <a class="nav-link @ManageNavPages.UploadPhotoNavClass(ViewContext)" id="added-post" asp-page="./UploadPhoto">Загрузить фото</a>
                 </li>
             </ul>
             <hr style="margin: 0;" />

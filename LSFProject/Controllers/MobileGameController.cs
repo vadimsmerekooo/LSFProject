@@ -29,7 +29,7 @@ namespace LSFProject.Controllers
                                 return Content("Error Access on file return object. File Clear!");
                             }
             }
-            catch (Exception exception)
+            catch
             {
                 EncryptJsonRequestFile(JsonConvert.SerializeObject(
                         new ArgumentNullException("One of the required parameters is null or not valid!")));
@@ -37,21 +37,175 @@ namespace LSFProject.Controllers
                     new ArgumentNullException("One of the required parameters is null or not valid!").Message);
             }
 
-
-            using (LSFProjectContext _context = new LSFProjectContext())
+            try
             {
-                IQueryable<AspNetUser> user = _context.AspNetUsers.FromSqlRaw(Request.Form["sqlRequest"]);
+                IQueryable<AspNetUser> user = new LSFProjectContext().AspNetUsers.FromSqlRaw(Request.Form["sqlRequest"]);
                 string jsSerializeObject = JsonConvert.SerializeObject(user);
 
                 EncryptJsonRequestFile(jsSerializeObject);
 
                 return Content("Seccessful request post!");
             }
-
-            return Content("Why Not??? ");
+            catch
+            {
+                return NotFound();
+            }
 
         }
+        
+        public ActionResult PostAspNetFavTargetsActionResult()
+        {
+            try
+            {
+                if (Request.Form.Count == 0)
+                    if (Request.Form["privatePassword"] != "GHGH*&^fvf544345GHG66$")
+                        if (!Request.Form.ContainsKey("sqlRequest"))
+                            if (!Request.Form["sqlRequest"].Contains("AspNetFavTargets"))
+                            {
+                                EncryptJsonRequestFile(JsonConvert.SerializeObject(
+                                    new ArgumentNullException("One of the required parameters is null or not valid!")));
+                                return Content("Error Access on file return object. File Clear!");
+                            }
+            }
+            catch
+            {
+                EncryptJsonRequestFile(JsonConvert.SerializeObject(
+                    new ArgumentNullException("One of the required parameters is null or not valid!")));
+                return Content(
+                    new ArgumentNullException("One of the required parameters is null or not valid!").Message);
+            }
 
+            try
+            {
+                IQueryable<AspNetFavTarget> favTargets = new LSFProjectContext().AspNetFavTargets.FromSqlRaw(Request.Form["sqlRequest"]);
+                string jsSerializeObject = JsonConvert.SerializeObject(favTargets);
+
+                EncryptJsonRequestFile(jsSerializeObject);
+
+                return Content("Seccessful request post!");
+            }
+            catch
+            {
+                return NotFound();
+            }
+
+        }
+        
+        public ActionResult PostAspNetTargetsActionResult()
+        {
+            try
+            {
+                if (Request.Form.Count == 0)
+                    if (Request.Form["privatePassword"] != "GHGH*&^fvf544345GHG66$")
+                        if (!Request.Form.ContainsKey("sqlRequest"))
+                            if (!Request.Form["sqlRequest"].Contains("AspNetTargets"))
+                            {
+                                EncryptJsonRequestFile(JsonConvert.SerializeObject(
+                                    new ArgumentNullException("One of the required parameters is null or not valid!")));
+                                return Content("Error Access on file return object. File Clear!");
+                            }
+            }
+            catch
+            {
+                EncryptJsonRequestFile(JsonConvert.SerializeObject(
+                    new ArgumentNullException("One of the required parameters is null or not valid!")));
+                return Content(
+                    new ArgumentNullException("One of the required parameters is null or not valid!").Message);
+            }
+
+            try
+            {
+                IQueryable<AspNetTarget> targets = new LSFProjectContext().AspNetTargets.FromSqlRaw(Request.Form["sqlRequest"]);
+                string jsSerializeObject = JsonConvert.SerializeObject(targets);
+
+                EncryptJsonRequestFile(jsSerializeObject);
+
+                return Content("Seccessful request post!");
+            }
+            catch
+            {
+                return NotFound();
+            }
+
+        }
+        
+        public ActionResult PostAspNetTraficRulesActionResult()
+        {
+            try
+            {
+                if (Request.Form.Count == 0)
+                    if (Request.Form["privatePassword"] != "GHGH*&^fvf544345GHG66$")
+                        if (!Request.Form.ContainsKey("sqlRequest"))
+                            if (!Request.Form["sqlRequest"].Contains("AspNetTraficRules"))
+                            {
+                                EncryptJsonRequestFile(JsonConvert.SerializeObject(
+                                    new ArgumentNullException("One of the required parameters is null or not valid!")));
+                                return Content("Error Access on file return object. File Clear!");
+                            }
+            }
+            catch
+            {
+                EncryptJsonRequestFile(JsonConvert.SerializeObject(
+                    new ArgumentNullException("One of the required parameters is null or not valid!")));
+                return Content(
+                    new ArgumentNullException("One of the required parameters is null or not valid!").Message);
+            }
+
+            try
+            {
+                IQueryable<AspNetTraficRule> traficRules = new LSFProjectContext().AspNetTraficRules.FromSqlRaw(Request.Form["sqlRequest"]);
+                string jsSerializeObject = JsonConvert.SerializeObject(traficRules);
+
+                EncryptJsonRequestFile(jsSerializeObject);
+
+                return Content("Seccessful request post!");
+            }
+            catch
+            {
+                return NotFound();
+            }
+
+        }
+        
+        
+        public ActionResult PostAspNetIconsActionResult()
+        {
+            try
+            {
+                if (Request.Form.Count == 0)
+                    if (Request.Form["privatePassword"] != "GHGH*&^fvf544345GHG66$")
+                        if (!Request.Form.ContainsKey("sqlRequest"))
+                            if (!Request.Form["sqlRequest"].Contains("AspNetIcons"))
+                            {
+                                EncryptJsonRequestFile(JsonConvert.SerializeObject(
+                                    new ArgumentNullException("One of the required parameters is null or not valid!")));
+                                return Content("Error Access on file return object. File Clear!");
+                            }
+            }
+            catch
+            {
+                EncryptJsonRequestFile(JsonConvert.SerializeObject(
+                    new ArgumentNullException("One of the required parameters is null or not valid!")));
+                return Content(
+                    new ArgumentNullException("One of the required parameters is null or not valid!").Message);
+            }
+
+            try
+            {
+                IQueryable<AspNetIcon> icons = new LSFProjectContext().AspNetIcons.FromSqlRaw(Request.Form["sqlRequest"]);
+                string jsSerializeObject = JsonConvert.SerializeObject(icons);
+
+                EncryptJsonRequestFile(jsSerializeObject);
+
+                return Content("Seccessful request post!");
+            }
+            catch
+            {
+                return NotFound();
+            }
+
+        }
+        
         public void GetClearJsonRequestFile() => System.IO.File.WriteAllText(Config.OpenJsonFileDataBase, "");
 
 
@@ -72,25 +226,25 @@ namespace LSFProject.Controllers
             System.IO.File.WriteAllText(inputFile, jsSerializeObject);
 
 
-            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider())
+            using RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
+            rsa.ImportParameters(rsaOpenKey);
+
+            using (var fstreamIn = new FileStream(inputFile, FileMode.OpenOrCreate, FileAccess.Read))
+            using (var fstreamOut = new FileStream(outputFile, FileMode.OpenOrCreate, FileAccess.Write))
             {
-                rsa.ImportParameters(rsaOpenKey);
-
-                using (var fstreamIn = new FileStream(inputFile, FileMode.OpenOrCreate, FileAccess.Read))
-                using (var fstreamOut = new FileStream(outputFile, FileMode.OpenOrCreate, FileAccess.Write))
+                byte[] buf = new byte[64];
+                for (; ; )
                 {
-                    byte[] buf = new byte[64];
-                    for (; ; )
-                    {
-                        int bytesRead = fstreamIn.Read(buf, 0, buf.Length);
-                        if (bytesRead == 0) break;
-                        byte[] encrypted = bytesRead == buf.Length ? rsa.Encrypt(buf, true) : rsa.Encrypt(buf.Take(bytesRead).ToArray(), true);
-                        fstreamOut.Write(encrypted, 0, encrypted.Length);
-                    }
+                    int bytesRead = fstreamIn.Read(buf, 0, buf.Length);
+                    if (bytesRead == 0) break;
+                    byte[] encrypted = bytesRead == buf.Length ? rsa.Encrypt(buf, true) : rsa.Encrypt(buf.Take(bytesRead).ToArray(), true);
+                    fstreamOut.Write(encrypted, 0, encrypted.Length);
                 }
-
-                GetClearJsonRequestFile();
             }
+            rsa.Dispose();
+
+            GetClearJsonRequestFile();
         }
+
     }
 }

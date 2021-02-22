@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using LSFProject.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -46,8 +45,9 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
             public bool Blocked { get; set; }
             public int Watching { get; set; }
         }
-        LSFProjectContext _context = new LSFProjectContext();
-        IWebHostEnvironment _appEnvironment;
+
+        readonly LSFProjectContext _context = new LSFProjectContext();
+        readonly IWebHostEnvironment _appEnvironment;
         public EditNewsModel(IWebHostEnvironment appEnvironment)
         {
             _appEnvironment = appEnvironment;
