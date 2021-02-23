@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<LSFProject.Areas.Identity.Data.LSFUser> SignInManager
+@inject UserManager<LSFProject.Areas.Identity.Data.LSFUser> UserManager
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div style="display: flex;">
+        <a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-primary">Аккаунт</a>
+        <form id="logoutForm" style="padding: 0;" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button id="logout" type="submit" class="btn btn-primary" style="padding: 0; border: 1px solid transparent;">Выйти</button>
+        </form>
+    </div>
+}
+else
+{
+    <a asp-area="Identity" asp-page="/Account/Login">Войти</a><a>/</a><a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+}

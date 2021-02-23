@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace LSFProject.Areas.Identity.Pages.Account.Manage
 {
-    [Authorize(Roles = "Admin, Manager")]
+    // [Authorize(Roles = "Admin, Manager")]
     public class RoleModel : PageModel
     {
         RoleManager<IdentityRole> _roleManager;

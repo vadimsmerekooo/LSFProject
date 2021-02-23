@@ -29,7 +29,7 @@ namespace LSFProject.Controllers
                                 return Content("Error Access on file return object. File Clear!");
                             }
             }
-            catch
+            catch(Exception)
             {
                 EncryptJsonRequestFile(JsonConvert.SerializeObject(
                         new ArgumentNullException("One of the required parameters is null or not valid!")));
@@ -43,10 +43,10 @@ namespace LSFProject.Controllers
                 string jsSerializeObject = JsonConvert.SerializeObject(user);
 
                 EncryptJsonRequestFile(jsSerializeObject);
-
+                System.IO.File.WriteAllText("SqlStringDataTimeRequest.txt", $"{Request.Form["sqlRequest"]}, {Request.Form["timeRequest"]}");
                 return Content("Seccessful request post!");
             }
-            catch
+            catch(Exception)
             {
                 return NotFound();
             }
@@ -67,7 +67,7 @@ namespace LSFProject.Controllers
                                 return Content("Error Access on file return object. File Clear!");
                             }
             }
-            catch
+            catch(Exception)
             {
                 EncryptJsonRequestFile(JsonConvert.SerializeObject(
                     new ArgumentNullException("One of the required parameters is null or not valid!")));
@@ -84,7 +84,7 @@ namespace LSFProject.Controllers
 
                 return Content("Seccessful request post!");
             }
-            catch
+            catch(Exception)
             {
                 return NotFound();
             }
@@ -105,7 +105,7 @@ namespace LSFProject.Controllers
                                 return Content("Error Access on file return object. File Clear!");
                             }
             }
-            catch
+            catch(Exception)
             {
                 EncryptJsonRequestFile(JsonConvert.SerializeObject(
                     new ArgumentNullException("One of the required parameters is null or not valid!")));
@@ -122,7 +122,7 @@ namespace LSFProject.Controllers
 
                 return Content("Seccessful request post!");
             }
-            catch
+            catch(Exception)
             {
                 return NotFound();
             }
@@ -143,7 +143,7 @@ namespace LSFProject.Controllers
                                 return Content("Error Access on file return object. File Clear!");
                             }
             }
-            catch
+            catch(Exception)
             {
                 EncryptJsonRequestFile(JsonConvert.SerializeObject(
                     new ArgumentNullException("One of the required parameters is null or not valid!")));
@@ -160,7 +160,7 @@ namespace LSFProject.Controllers
 
                 return Content("Seccessful request post!");
             }
-            catch
+            catch(Exception)
             {
                 return NotFound();
             }
@@ -182,7 +182,7 @@ namespace LSFProject.Controllers
                                 return Content("Error Access on file return object. File Clear!");
                             }
             }
-            catch
+            catch(Exception)
             {
                 EncryptJsonRequestFile(JsonConvert.SerializeObject(
                     new ArgumentNullException("One of the required parameters is null or not valid!")));
@@ -199,7 +199,7 @@ namespace LSFProject.Controllers
 
                 return Content("Seccessful request post!");
             }
-            catch
+            catch(Exception)
             {
                 return NotFound();
             }

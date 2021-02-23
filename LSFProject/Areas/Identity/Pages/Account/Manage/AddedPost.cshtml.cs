@@ -45,7 +45,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
 
         readonly LSFProjectContext _context = new LSFProjectContext();
 
-        public async Task<IActionResult> OnPostAsync(string editor, string photo)
+        public async Task<IActionResult> OnPostCreateAsync(string editor, string photo)
         {
             if (ModelState.IsValid)
             {
@@ -66,11 +66,11 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
                         Watching = 0
                     };
                     _context.AspNetNews.Add(news);
-                    await _context.SaveChangesAsync();
+                    _context.SaveChanges();
                     StatusMessage = "Новость успешно добавлена на сайт!";
                     return RedirectToPage("./Posts");
                 }
-                catch
+                catch (Exception ex)
                 {
                     ErrorMessage = "Произошла ошибка, новость не добавлена!";
                     return RedirectToPage("./Posts");

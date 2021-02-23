@@ -2345,10 +2345,16 @@ tr:nth-child(even) th {
         content: '';
     }
 
-.menu-area-two {
+@keyframes animatedBackground {
+    from { background-position: 0 0; }
+    to { background-position: 100% 0; }
+}
+.menu-area-two	{
     background-image: url(img/bg/menu-two-bg.jpg);
-    background-position: center;
-    background-size: cover;
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+
+    animation: animatedBackground 20s linear infinite;
 }
 
 .reg-area {

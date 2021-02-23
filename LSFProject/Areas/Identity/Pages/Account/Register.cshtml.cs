@@ -87,9 +87,9 @@ namespace LSFProject.Areas.Identity.Pages.Account
                         var allRoles = _roleManager.Roles.ToList();
                         var addedRoles = roles.Except(userRoles);
                         var removedRoles = userRoles.Except(roles);
-
+                    
                         await _userManager.AddToRolesAsync(user1, addedRoles);
-
+                    
                         await _userManager.RemoveFromRolesAsync(user1, removedRoles);
                     }
                     await _signInManager.SignInAsync(user, isPersistent: false);

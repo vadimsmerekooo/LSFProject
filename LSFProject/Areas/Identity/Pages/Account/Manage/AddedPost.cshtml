@@ -6,7 +6,7 @@
 <h5>@ViewData["Title"]</h5>
 <partial name="_StatusMessage" model="Model.StatusMessage" />
 
-<form class="col-lg" id="form-addpost" enctype="multipart/form-data" method="post">
+<form class="col-lg" id="form-addpost" enctype="multipart/form-data" method="post" asp-page-handler="Create">
     <div class="form-group row">
         <label class="col-sm-2 col-form-label" asp-for="Input.Header">Заголовок</label>
         <div class="col-sm-10">

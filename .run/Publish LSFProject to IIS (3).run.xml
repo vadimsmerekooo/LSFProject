@@ -1,0 +1,6 @@
+﻿<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Publish LSFProject to IIS (3)" type="DotNetMsBuildPublish" factoryName="Publish to IIS">
+    <riderPublish publish_profile="FTPProfile.pubxml" save_password="true" user_name="diplomeproject-001" uuid_high="2867469400630772564" uuid_low="-6975799421517797007" />
+    <method v="2" />
+  </configuration>
+</component>

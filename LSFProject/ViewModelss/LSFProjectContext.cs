@@ -43,7 +43,7 @@ namespace LSFProject
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=LAPTOP-GMR70BN0\\MSSQLSERVER01;Database=LSFProject;Trusted_Connection=True;MultipleActiveResultSets=true");
+                optionsBuilder.UseSqlServer(Config.ConnectionString);
             }
         }
 

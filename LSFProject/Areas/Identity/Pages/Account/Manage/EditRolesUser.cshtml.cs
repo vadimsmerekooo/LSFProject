@@ -42,7 +42,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
         }
         public async Task<IActionResult> OnPostEditRolesUserAsync(string userId, List<string> roles)
         {
-            // получаем пользователя
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             LSFUser user = await _userManager.FindByIdAsync(userId);
             if (user != null)
             {
@@ -51,13 +51,13 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
                     if (!roles.Contains("Admin"))
                         roles.Add("Admin");
                 }
-                // получем список ролей пользователя
+                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 var userRoles = await _userManager.GetRolesAsync(user);
-                // получаем все роли
+                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
                 var allRoles = _roleManager.Roles.ToList();
-                // получаем список ролей, которые были добавлены
+                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 var addedRoles = roles.Except(userRoles);
-                // получаем роли, которые были удалены
+                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 var removedRoles = userRoles.Except(roles);
 
                 await _userManager.AddToRolesAsync(user, addedRoles);
