@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using LSFProject.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace LSFProject.Areas.Identity.Pages.Account.Manage
 {
@@ -24,6 +27,14 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
         public string StatusMessage { get; set; }
         [TempData]
         public string ErrorMessage { get; set; }
+
+
+        private UserManager<LSFUser> _userManager;
+
+        public AddedPostModel(UserManager<LSFUser> userManager)
+        {
+            _userManager = userManager;
+        }
 
         public class InputModel
         {
@@ -53,7 +64,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
                 {
                     AspNetNews news = new AspNetNews()
                     {
-                        Author = Input.Author,
+                        Author = ((LSFUser)_userManager.FindByNameAsync(Input.Author).Result).Id,
                         PreviewPhoto = _context.AspNetFiles.FirstOrDefault(p => p.Title == photo).Id,
                         Blocked = false,
                         Date = DateTime.Now,
@@ -63,10 +74,12 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
                         PreviewText = Input.PreviewText,
                         Share = 0,
                         Url = Input.Url,
-                        Watching = 0
+                        Watching = 0,
+                        
                     };
                     _context.AspNetNews.Add(news);
                     _context.SaveChanges();
+                    
                     StatusMessage = "Новость успешно добавлена на сайт!";
                     return RedirectToPage("./Posts");
                 }

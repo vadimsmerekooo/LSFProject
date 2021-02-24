@@ -6,7 +6,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using LSFProject.Areas.Identity.Data;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -15,6 +17,11 @@ namespace LSFProject.Controllers
 {
     public class MobileGameController : Controller
     {
+        private UserManager<LSFUser> _userManager;
+        public MobileGameController(UserManager<LSFUser> userManager)
+        {
+            _userManager = userManager;
+        }
         public ActionResult PostAspNetUsersActionResult()
         {
             try
@@ -51,6 +58,53 @@ namespace LSFProject.Controllers
                 return NotFound();
             }
 
+        }
+        public async Task<IActionResult> PostUserSignInActionResult()
+        {
+            try
+            {
+                if (Request.Form.Count == 0)
+                    if (Request.Form["privatePassword"] != "GHGH*&^fvf544345GHG66$")
+                        if (!Request.Form.ContainsKey("password"))
+                            if (!Request.Form.ContainsKey("login"))
+                            {
+                                EncryptJsonRequestFile(JsonConvert.SerializeObject(
+                                    new ArgumentNullException("One of the required parameters is null or not valid!")));
+                                return Content("Error Access on file return object. File Clear!");
+                            }
+            }
+            catch(Exception)
+            {
+                EncryptJsonRequestFile(JsonConvert.SerializeObject(
+                    new ArgumentNullException("One of the required parameters is null or not valid!")));
+                return Content(
+                    new ArgumentNullException("One of the required parameters is null or not valid!").Message);
+            }
+
+            try
+            {
+                var users = await _userManager.FindByNameAsync(Request.Form["login"]);
+                if(users != null && await _userManager.CheckPasswordAsync(users, Request.Form["password"]))
+                {
+                    IQueryable<AspNetUser> user = new LSFProjectContext().AspNetUsers.Where(u => u.Email == Request.Form["login"]);
+                    string jsSerializeObject = JsonConvert.SerializeObject(user);
+
+                    EncryptJsonRequestFile(jsSerializeObject);
+                    System.IO.File.WriteAllText("SqlStringDataTimeRequest.txt", $"{Request.Form["login"]}, {Request.Form["timeRequest"]}");
+                    return Content("Seccessful request post!");
+                }
+                else
+                {
+                    EncryptJsonRequestFile(JsonConvert.SerializeObject(
+                        new ArgumentNullException("One of the required parameters is null or not valid!")));
+                    return Content(
+                        new ArgumentNullException("One of the required parameters is null or not valid!").Message);
+                }
+            }
+            catch(Exception)
+            {
+                return NotFound();
+            }
         }
         
         public ActionResult PostAspNetFavTargetsActionResult()

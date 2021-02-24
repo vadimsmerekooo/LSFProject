@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using LSFProject.Areas.Identity.Data;
 
 #nullable disable
 

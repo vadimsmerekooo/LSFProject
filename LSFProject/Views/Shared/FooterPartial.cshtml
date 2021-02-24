@@ -22,7 +22,7 @@
                     @foreach(AspNetNews newsItem in _context.AspNetNews)
                     {
                         <div class="sin-post">
-                            <img src="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Photo" alt="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Title">
+                            <img src="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Path" alt="">
                             <div class="post-brif">
                                 <a asp-controller="Home" asp-action="NewsDetails" asp-route-url="@newsItem.Url">ПОЖАРНАЯ БЕЗОПАСНОСТЬ 2020</a>
                                 <p>05.02.2020</p>

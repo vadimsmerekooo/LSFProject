@@ -54,12 +54,12 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
                     return Page();
                 }
 
-                string path = "/img/upload/photo/" + uploadedFile.FileName;
+                string path = Path.Combine(_appEnvironment.WebRootPath, Path.GetFileName(uploadedFile.FileName));
 
                 if (System.IO.File.Exists(_appEnvironment.WebRootPath + path))
-                    path = "/img/upload/photo/" + new Random().Next(999999999) + uploadedFile.FileName;
+                    path = Path.Combine(_appEnvironment.WebRootPath, Path.GetFileName(uploadedFile.FileName), uploadedFile.FileName);
 
-                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                using (var fileStream = new FileStream(path, FileMode.Create))
                 {
                     await uploadedFile.CopyToAsync(fileStream);
                 }

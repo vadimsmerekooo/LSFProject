@@ -210,3 +210,4 @@ C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razo
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\Files.cshtml.g.cs
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\UploadPhoto.cshtml.g.cs
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\LSFProject.csprojAssemblyReference.cache
+C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartialMobile.cshtml.g.cs

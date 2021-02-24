@@ -3,5 +3,6 @@
   <component name="Encoding" addBOMForNewFiles="with BOM under Windows, with no BOM otherwise">
     <file url="file://$PROJECT_DIR$/LSFProject/Areas/Identity/Pages/Account/Manage/AddedPost.cshtml.cs" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/LSFProject/Areas/Identity/Pages/Account/Manage/Posts.cshtml.cs" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/LSFProject/Areas/Identity/Pages/Account/Manage/UploadPhoto.cshtml.cs" charset="windows-1251" />
   </component>
 </project>

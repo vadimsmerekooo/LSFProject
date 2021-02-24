@@ -28,11 +28,11 @@ namespace LSFProject
             {
                 options.ValidationInterval = TimeSpan.Zero;   
             });
-            services.AddHttpsRedirection(options =>
-            {
-                options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
-                options.HttpsPort = 44344;
-            });    
+            // services.AddHttpsRedirection(options =>
+            // {
+            //     options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+            //     options.HttpsPort = 44344;
+            // });    
             // services.AddHsts(options =>
             // {
             //     options.Preload = true;
