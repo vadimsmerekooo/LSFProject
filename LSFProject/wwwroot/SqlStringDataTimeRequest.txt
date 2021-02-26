@@ -1,0 +1,1 @@
+INSERT INTO AspNetTargets(Name, Description, ImagePath, StatesIDs) VALUES ('ewr', 'qwe', '1', '1');,12

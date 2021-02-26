@@ -8,15 +8,19 @@ using Microsoft.Extensions.Logging;
 using LSFProject.Models;
 using LSFProject.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace LSFProject.Controllers
 {
     public class HomeController : Controller
     {
         readonly LSFProjectContext _context = new LSFProjectContext();
-        
 
-        public IActionResult Index() => View();
+
+        public IActionResult Index()
+        {
+            return View();
+        } 
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

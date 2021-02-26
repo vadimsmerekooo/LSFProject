@@ -690,7 +690,7 @@
                     {
                         <div class="col-md-4 col-xl-4">
                             <div class="single-news wow wow flipInY" data-wow-delay=".7s">
-                                <img src="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Photo" alt="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Title">
+                                <img src="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Path" alt="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Title">
                                 <div class="news-det">
                                     <h4>@newsItem.Header</h4>
                                     <p>@newsItem.PreviewText</p>

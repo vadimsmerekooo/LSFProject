@@ -211,3 +211,4 @@ C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Ra
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Post\Index.cshtml.g.cs
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Post\PostDetails.cshtml.g.cs
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Shared\_LoginPartialMobile.cshtml.g.cs
+C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\bin\Release\netcoreapp3.1\FTPClient.Core.dll

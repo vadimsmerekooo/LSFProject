@@ -21,7 +21,8 @@ namespace LSFProject
         public static string OpenJsonFileDataBase { get; set; }
         public static string PrivateJsonFileDataBase { get; set; }
         public static string RSAOpenKey { get; set; }
-        public static string RSAPrivateKey { get; set; }
+        
+        public static string FTPServerPathFolder { get; set; }
         
     }
 }

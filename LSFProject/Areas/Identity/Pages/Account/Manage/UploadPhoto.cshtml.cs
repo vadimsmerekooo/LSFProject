@@ -1,11 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -30,14 +27,8 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
             [Required(ErrorMessage = "Напишите описание")]
             public string Title { get; set; }
         }
-
-        public UploadPhotoModel(IWebHostEnvironment appEnvironment)
-        {
-            _appEnvironment = appEnvironment;
-        }
-
+        
         readonly LSFProjectContext _context = new LSFProjectContext();
-        readonly IWebHostEnvironment _appEnvironment;
 
         public void OnGet()
         {
@@ -54,18 +45,18 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
                     return Page();
                 }
 
-                string path = Path.Combine(_appEnvironment.WebRootPath, Path.GetFileName(uploadedFile.FileName));
+                string path = Path.GetFileName(uploadedFile.FileName);
 
-                if (System.IO.File.Exists(_appEnvironment.WebRootPath + path))
-                    path = Path.Combine(_appEnvironment.WebRootPath, Path.GetFileName(uploadedFile.FileName), uploadedFile.FileName);
+                if (System.IO.File.Exists("wwwroot/" + path))
+                    path = new Random().Next(99999) + Path.GetFileName(uploadedFile.FileName);
 
-                using (var fileStream = new FileStream(path, FileMode.Create))
+                using (var fileStream = new FileStream("wwwroot/" + path, FileMode.Create))
                 {
                     await uploadedFile.CopyToAsync(fileStream);
                 }
                 AspNetFile photo = new AspNetFile()
                 {
-                    Path = path,
+                    Path = "http://diplomeproject-001-site1.gtempurl.com/" + path,
                     Photo = true,
                     Title = Input.Title,
                     DateAdd = DateTime.Now

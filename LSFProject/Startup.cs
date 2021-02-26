@@ -51,7 +51,8 @@ namespace LSFProject
                 app.UseDeveloperExceptionPage();
                 app.UseHsts();
             }
-            
+            app.UseDeveloperExceptionPage();
+
             app.UseStatusCodePagesWithRedirects("/Error/{0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();

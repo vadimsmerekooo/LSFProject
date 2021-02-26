@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "j/HN0lDyZst+7760DP3k8EuNJkNRkkuU/m00JBQ0reR+CpGCwU9Pg0tm/hf+PKLIG1XsLKTPHlqOY+IKNIlVPA==",
+  "dgSpecHash": "N3ZhDkQn7gJbta1JUq+0UNPZDyCtv6WLKslQ5Cc9yfPAe7S4JfIyPNAC8TjfBiosO+xEsMOwS2ThMmzfoRVPWg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Vadim\\Desktop\\GitHub\\LSFProject\\LSFProject\\LSFProject.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Vadim\\.nuget\\packages\\ftpclient.core\\1.0.0\\ftpclient.core.1.0.0.nupkg.sha512",
     "C:\\Users\\Vadim\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Vadim\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.0\\microsoft.aspnetcore.cryptography.internal.5.0.0.nupkg.sha512",
     "C:\\Users\\Vadim\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.0\\microsoft.aspnetcore.cryptography.keyderivation.5.0.0.nupkg.sha512",

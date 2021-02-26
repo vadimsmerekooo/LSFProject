@@ -9,11 +9,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace LSFProject.Areas.Identity.Pages.Account.Manage
 {
-    [Authorize(Roles =("Admin,Manager"))]
+    [Authorize(Roles = ("Admin,Manager"))]
     public class AddedPostModel : PageModel
     {
         [BindProperty]
@@ -29,7 +28,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
         public string ErrorMessage { get; set; }
 
 
-        private UserManager<LSFUser> _userManager;
+        private readonly UserManager<LSFUser> _userManager;
 
         public AddedPostModel(UserManager<LSFUser> userManager)
         {
@@ -58,35 +57,44 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostCreateAsync(string editor, string photo)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && _context.AspNetFiles.Any(p => p.Title == photo))
             {
                 try
                 {
-                    AspNetNews news = new AspNetNews()
+                    if (_context.AspNetFiles.Any(p => p.Title == photo))
                     {
-                        Author = ((LSFUser)_userManager.FindByNameAsync(Input.Author).Result).Id,
-                        PreviewPhoto = _context.AspNetFiles.FirstOrDefault(p => p.Title == photo).Id,
-                        Blocked = false,
-                        Date = DateTime.Now,
-                        Description = editor,
-                        Header = Input.Header,
-                        Likes = 0,
-                        PreviewText = Input.PreviewText,
-                        Share = 0,
-                        Url = Input.Url,
-                        Watching = 0,
-                        
-                    };
-                    _context.AspNetNews.Add(news);
-                    _context.SaveChanges();
-                    
-                    StatusMessage = "Новость успешно добавлена на сайт!";
-                    return RedirectToPage("./Posts");
+                        AspNetNews news = new AspNetNews()
+                        {
+                            Author = (_userManager.FindByNameAsync(Input.Author).Result).Id,
+                            // ReSharper disable once PossibleNullReferenceException
+                            PreviewPhoto = _context.AspNetFiles.FirstOrDefault(p => p.Title == photo).Id,
+                            Blocked = false,
+                            Date = DateTime.Now,
+                            Description = editor,
+                            Header = Input.Header,
+                            Likes = 0,
+                            PreviewText = Input.PreviewText,
+                            Share = 0,
+                            Url = Input.Url,
+                            Watching = 0,
+
+                        };
+                        await _context.AspNetNews.AddAsync(news);
+                        await _context.SaveChangesAsync();
+
+                        StatusMessage = "Новость успешно добавлена на сайт!";
+                        return RedirectToPage("./Posts");
+                    }
+                    else
+                    {
+                        ErrorMessage = "Произошла ошибка, новость не добавлена! Фото для превью удалено или не найдено!";
+                        return Page();
+                    }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     ErrorMessage = "Произошла ошибка, новость не добавлена!";
-                    return RedirectToPage("./Posts");
+                    return Page();
                 }
             }
             else
