@@ -212,3 +212,11 @@ C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Ra
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Post\PostDetails.cshtml.g.cs
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Shared\_LoginPartialMobile.cshtml.g.cs
 C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\bin\Release\netcoreapp3.1\FTPClient.Core.dll
+C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\AspNetTargets.cshtml.g.cs
+C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\EditTarget.cshtml.g.cs
+C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\UploadZnak.cshtml.g.cs
+C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\Znaks.cshtml.g.cs
+C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\AddAspNetTarget.cshtml.g.cs
+C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\EditIconUser.cshtml.g.cs
+C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\ChangePassword.cshtml.g.cs
+C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\_StatusMessage.cshtml.g.cs

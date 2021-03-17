@@ -3,7 +3,6 @@
 @model LSFProject.Areas.Identity.Pages.Account.Manage.FilesModel
 @{
     ViewData["Title"] = "Фото/изображения/Файлы";
-
 }
 <h5>@ViewData["Title"]</h5>
 <partial name="_StatusMessage" model="Model.StatusMessage"/>
@@ -26,9 +25,9 @@
         {
             <tr class="text-center">
                 <th scope="row">@photoItem.Id</th>
-                <th scope="row"><img src="@photoItem.Path" width="150" height="100" /></th>
+                <th scope="row"><img src="@(Config.DomainName + photoItem.Path)" width="150" height="100" /></th>
                 <th scope="row">@photoItem.Title</th>
-                <th scope="row">@photoItem.Photo</th>
+                <th scope="row">@photoItem.Type</th>
                 <th scope="row">@photoItem.DateAdd</th>
                 @if (Model._context.AspNetNews.Count(n => n.PreviewPhoto == photoItem.Id) == 0)
                 {

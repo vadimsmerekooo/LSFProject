@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Vadim\\Desktop\\GitHub\\LSFProject\\LSFProject\\LSFProject.csproj": {}
+    "D:\\GitHub\\LSFProject\\LSFProject\\LSFProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Vadim\\Desktop\\GitHub\\LSFProject\\LSFProject\\LSFProject.csproj": {
+    "D:\\GitHub\\LSFProject\\LSFProject\\LSFProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vadim\\Desktop\\GitHub\\LSFProject\\LSFProject\\LSFProject.csproj",
+        "projectUniqueName": "D:\\GitHub\\LSFProject\\LSFProject\\LSFProject.csproj",
         "projectName": "LSFProject",
-        "projectPath": "C:\\Users\\Vadim\\Desktop\\GitHub\\LSFProject\\LSFProject\\LSFProject.csproj",
+        "projectPath": "D:\\GitHub\\LSFProject\\LSFProject\\LSFProject.csproj",
         "packagesPath": "C:\\Users\\Vadim\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vadim\\Desktop\\GitHub\\LSFProject\\LSFProject\\obj\\",
+        "outputPath": "D:\\GitHub\\LSFProject\\LSFProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -71,7 +71,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.4, )"
+              "version": "[3.1.5, )"
             }
           },
           "imports": [

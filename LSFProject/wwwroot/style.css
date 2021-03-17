@@ -1,6 +1,4 @@
 
-
-@import url('file:///C:\Users\Vadim\Desktop\GitHub\LSFProject\LSFProject\wwwroot\style.css');
 @font-face {
     font-family: 'Museo-300';
     src: url('fonts/Museo-300.eot?#iefix') format('embedded-opentype'), url('fonts/Museo-300.otf') format('opentype'), url('fonts/Museo-300.woff') format('woff'), url('fonts/Museo-300.ttf') format('truetype'), url('fonts/Museo-300.svg#Museo-300') format('svg');
@@ -1862,9 +1860,27 @@ button {
 .in {
     margin-top: 9px;
 }
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
 
+    33.3% {
+        transform: rotate(10deg);
+    }
+
+    66.6% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+.animated-img {
+    animation: wiggle 5s infinite;
+}
 /*Footer widget area */
-
 .footer-widget {
     background-image: url(img/bg/footer-top-bg-2.png);
     padding: 165px 0 50px;

@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Threading.Tasks;
+using LSFProject.ViewModelss;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -47,18 +48,18 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
 
                 string path = Path.GetFileName(uploadedFile.FileName);
 
-                if (System.IO.File.Exists("wwwroot/" + path))
+                if (System.IO.File.Exists("wwwroot/img/upload/photo/" + path))
                     path = new Random().Next(99999) + Path.GetFileName(uploadedFile.FileName);
 
-                using (var fileStream = new FileStream("wwwroot/" + path, FileMode.Create))
+                using (var fileStream = new FileStream("wwwroot/img/upload/photo/" + path, FileMode.Create))
                 {
                     await uploadedFile.CopyToAsync(fileStream);
                 }
                 AspNetFile photo = new AspNetFile()
                 {
-                    Path = "http://diplomeproject-001-site1.gtempurl.com/" + path,
-                    Photo = true,
+                    Path = "img/upload/photo/" + path,
                     Title = Input.Title,
+                    Type = AspNetFileType.Photo,
                     DateAdd = DateTime.Now
                 };
                 _context.AspNetFiles.Add(photo);

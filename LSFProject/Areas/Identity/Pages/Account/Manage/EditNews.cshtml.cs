@@ -16,6 +16,11 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
     [Authorize(Roles = ("Admin,Manager"))]
     public class EditNewsModel : PageModel
     {
+        readonly LSFProjectContext _context = new LSFProjectContext();
+        readonly IWebHostEnvironment _appEnvironment;
+        public AspNetFile files;
+
+
         [BindProperty]
         public InputModel Input { get; set; }
 
@@ -46,49 +51,56 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
             public int Watching { get; set; }
         }
 
-        readonly LSFProjectContext _context = new LSFProjectContext();
-        readonly IWebHostEnvironment _appEnvironment;
+
         public EditNewsModel(IWebHostEnvironment appEnvironment)
         {
             _appEnvironment = appEnvironment;
         }
-        public void OnGet(AspNetNews news)
+        public void OnGet(int id)
         {
-            Input = new InputModel()
+            try
             {
-                Author = news.Author,
-                Date = news.Date,
-                Blocked = news.Blocked,
-                Id = news.Id,
-                Description = news.Description,
-                Header = news.Header,
-                PreviewPhoto = news.PreviewPhoto,
-                PreviewText = news.PreviewText,
-                Url = news.Url,
-                Watching = news.Watching
-            };
-        }
-        public async Task<IActionResult> OnPostSaveChangeNewsAsync(string editor, IFormFile inputImage)
-        {
-            Random rand = new Random();
-            if (_context.AspNetNews.Where(newsDb => newsDb.Url == Input.Url).ToList().Count != 0)
-                Input.Url = Input.Url + rand.Next(9999999);
-            if (inputImage != null)
-            {
-                string path = "/images/posts-images/" + Input.Url + inputImage.FileName;
-                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                if (_context.AspNetNews.Any(n => n.Id == id))
                 {
-                    await inputImage.CopyToAsync(fileStream);
+                    AspNetNews news = _context.AspNetNews.FirstOrDefault(n => n.Id == id);
+                    Input = new InputModel()
+                    {
+                        Author = news.Author,
+                        Date = news.Date,
+                        Blocked = news.Blocked,
+                        Id = news.Id,
+                        Description = news.Description,
+                        Header = news.Header,
+                        PreviewPhoto = news.PreviewPhoto,
+                        PreviewText = news.PreviewText,
+                        Url = news.Url,
+                        Watching = news.Watching
+                    };
+                    files = _context.AspNetFiles.FirstOrDefault(n => n.Id == Input.PreviewPhoto);
                 }
-                _context.AspNetNews.FirstOrDefault(post => post.Id == Input.Id).PreviewPhoto = _context.AspNetFiles.FirstOrDefault(p => p.Title == path).Id;
             }
-            _context.AspNetNews.FirstOrDefault(post => post.Id == Input.Id).Author = Input.Author;
-            _context.AspNetNews.FirstOrDefault(post => post.Id == Input.Id).Date = DateTime.Now;
-            _context.AspNetNews.FirstOrDefault(post => post.Id == Input.Id).Description = editor;
-            _context.AspNetNews.FirstOrDefault(post => post.Id == Input.Id).Header = Input.Header;
-            _context.AspNetNews.FirstOrDefault(post => post.Id == Input.Id).PreviewText = Input.PreviewText;
-            _context.AspNetNews.FirstOrDefault(post => post.Id == Input.Id).Url = Input.Url;
-            _context.SaveChanges();
+            catch
+            {
+            }
+        }
+
+        public async Task<IActionResult> OnPostSaveChangeNewsAsync(string photo)
+        {
+            if(ModelState.IsValid && _context.AspNetFiles.Any(p => p.Title == photo))
+            {
+                AspNetNews news = _context.AspNetNews.FirstOrDefault(n => n.Id == Input.Id);
+                news.Header = Input.Header;
+                news.PreviewPhoto = _context.AspNetFiles.FirstOrDefault(f => f.Title == photo).Id;
+                news.PreviewText = Input.PreviewText;
+                news.Author = Input.Author;
+                news.Date = DateTime.Now;
+                news.Description = Input.Description;
+                _context.AspNetNews.Update(news);
+                _context.SaveChanges();
+                StatusMessage = "Новость успешно обновлена!";
+                return RedirectToPage("./Posts");
+            }
+            StatusMessage = "Ошибка Новость не удалось обновить!";
             return RedirectToPage("./Posts");
         }
     }

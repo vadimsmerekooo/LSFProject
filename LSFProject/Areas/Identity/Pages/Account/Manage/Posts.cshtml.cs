@@ -10,8 +10,6 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
         readonly LSFProjectContext _context = new LSFProjectContext();
         [TempData]
         public string StatusMessage { get; set; }
-        [TempData]
-        public string ErrorMessage { get; set; }
         public void OnGet()
         {
         }

@@ -42,7 +42,7 @@ namespace LSFProject.Areas.Identity.Pages.Account
         public class InputModel
         {
 
-            [Required(ErrorMessage = "Поле Email не заполнено!")]
+            [Required(ErrorMessage = "Поле Логин не заполнено!")]
             public string Email { get; set; }
 
             [Required(ErrorMessage = "Поле Пароль не заполнено!")]

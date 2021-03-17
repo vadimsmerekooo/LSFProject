@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-#nullable disable
 
 namespace LSFProject
 {
     public partial class LSFProjectContext : DbContext
     {
+
         public LSFProjectContext()
         {
         }
@@ -38,6 +42,8 @@ namespace LSFProject
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -243,6 +249,11 @@ namespace LSFProject
                 entity.Property(e => e.StatesIds)
                     .HasMaxLength(50)
                     .HasColumnName("StatesIDs");
+                entity.HasOne(d => d.ImagePathNavigation)
+                    .WithMany(p => p.AspNetTargets)
+                    .HasForeignKey(d => d.ImagePath)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_AspNetFiles_AspNetTargets");
             });
 
             modelBuilder.Entity<AspNetTreeMenu>(entity =>

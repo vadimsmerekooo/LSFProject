@@ -4,11 +4,13 @@
 }
 <ul class="nav nav-pills flex-column list-group">
     <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Профиль</a></li>
-    
-    
-    
-    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
-    {
+    <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="profile" asp-page="./ChangePassword">Изменение пароля</a></li>
+</ul>
+@if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+{
+    <hr />
+    <h5 class="text-center">Панель сайта</h5>
+    <ul class="nav nav-pills flex-column list-group">
         <li class="nav-item"><a class="nav-link @ManageNavPages.UserListNavClass(ViewContext) @ManageNavPages.EditRolesUserNavClass(ViewContext)" id="user-list" asp-page="./UserList">Список пользователей</a></li>
         <li class="nav-item"><a class="nav-link @ManageNavPages.RoleNavClass(ViewContext) @ManageNavPages.CreateRoleNavClass(ViewContext)" id="roles" asp-page="./Role">Роли</a></li>
         <li class="no-padding">
@@ -39,5 +41,31 @@
             <hr style="margin: 0;" />
         </li>
         <li class="nav-item"><a class="nav-link @ManageNavPages.SlidersNavClass(ViewContext)" id="roles" asp-page="./Sliders">Слайдер</a></li>
-    }
-</ul>
+    </ul>
+}
+@if (User.IsInRole("Admin") || User.IsInRole("MobileAdmin"))
+{
+    <hr />
+    <h5 class="text-center">Панель админа приложения</h5>
+    <ul class="nav nav-pills flex-column list-group">
+        <li class="nav-item">
+            <a class="nav-link @ManageNavPages.TargetsNavClass(ViewContext)" asp-page="./AspNetTargets">AspNetTargets</a>
+            <hr style="margin: 0;" />
+            <ul class="list-group nav-item-children" style="margin-top: -1px;">
+                <li>
+                    <a class="nav-link @ManageNavPages.AddTargetNavClass(ViewContext)" asp-page="./AddAspNetTarget">Add AspNetTarget</a>
+                </li>
+            </ul>
+            <hr style="margin: 0;" />
+        <li class="nav-item">
+            <a class="nav-link @ManageNavPages.ZnaksNavClass(ViewContext)" asp-page="./Znaks">Знаки</a>
+            <hr style="margin: 0;" />
+            <ul class="list-group nav-item-children" style="margin-top: -1px;">
+                <li>
+                    <a class="nav-link @ManageNavPages.UploadZnaksNavClass(ViewContext)" asp-page="./UploadZnak">Добавить знак</a>
+                </li>
+            </ul>
+            <hr style="margin: 0;" />
+        </li>
+    </ul>
+}

@@ -1,5 +1,5 @@
 ﻿@page
-@model LSFProject.Areas.Identity.Pages.Account.Manage.AddedPostModel
+@model LSFProject.Areas.Identity.Pages.Account.Manage.EditNewsModel
 @{
     ViewData["Title"] = "Изменение поста";
 }
@@ -15,14 +15,16 @@
     </div>
     <hr class="my-4 bg-light">
     <div class="form-group-row">
-        <div class="input-group mb-3">
-            <div class="col-sm-2 col-form-label">
-                <span class="input-group-text" asp-for="Input.PreviewPhoto">Изображение для превью</span>
+        <label class="col-sm-2 col-form-label" asp-for="Input.PreviewPhoto">Изображение для превью</label>
+        <div class="col-sm-10">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <div class="select">
+                <input class="form-control col-sm-10" type="hidden" name="photo" asp-for="Input.PreviewPhoto" value="@Model.files.Title">
+                <div class="select__head" onclick="updatePhoto();">@Model.files.Title</div>
+                <ul class="select__list" id="inputGroupSelectPhoto" style="display: none;">
+                </ul>
             </div>
-            <label class="custom-file col-sm-10" id="customFile">
-                <input name="inputImage" type="file" class="custom-file-input" id="inputImage" aria-describedby="fileHelp" placeholder="Выбери фото..." asp-for="Input.PreviewPhoto" value="@Model.Input.PreviewPhoto">
-                <span class="custom-file-control form-control-file">Выбери фото...</span>
-            </label>
+            <a target="_blank" asp-page="./UploadPhoto">Добавить фото</a>
         </div>
         <span asp-validation-for="Input.PreviewPhoto" class="col col-form-label text-danger"></span>
     </div>

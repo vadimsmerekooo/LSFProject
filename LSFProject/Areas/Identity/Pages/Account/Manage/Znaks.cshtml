@@ -1,0 +1,42 @@
+﻿@page
+@using LSFProject
+@model LSFProject.Areas.Identity.Pages.Account.Manage.ZnaksModel
+@{
+    ViewData["Title"] = "Знаки";
+}
+<h5>@ViewData["Title"]</h5>
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Знак</th>
+                <th scope="col">Описание</th>
+                <th scope="col">Дата</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (AspNetFile photoItem in Model.znaks)
+            {
+                <tr class="text-center">
+                    <th scope="row">@photoItem.Id</th>
+                    <th scope="row"><img src="@(Config.DomainName + photoItem.Path)" width="150" height="100" /></th>
+                    <th scope="row">@photoItem.Title</th>
+                    <th scope="row">@photoItem.DateAdd</th>
+                    @if (Model._context.AspNetNews.Count(n => n.PreviewPhoto == photoItem.Id) == 0)
+                    {
+                        <th scope="row"><a asp-page-handler="DeleteFile" asp-route-id="@photoItem.Id" class="text-danger">Удалить</a></th>
+                    }
+                    else
+                    {
+                        <th scope="row">Некоторые таргеты содержат данный знак, и не могут быть удалены! Для удаления знака, удалите все таргеты, которые содержат данный знак!</th>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

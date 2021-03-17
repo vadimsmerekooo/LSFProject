@@ -14,6 +14,7 @@ namespace LSFProject
 
         public int Id { get; set; }
         public byte[] Icon { get; set; }
+        public string UserId { get; set; }
 
         public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }

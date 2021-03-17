@@ -4,18 +4,14 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using LSFProject.Models;
-using LSFProject.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
 
 namespace LSFProject.Controllers
 {
     public class HomeController : Controller
     {
         readonly LSFProjectContext _context = new LSFProjectContext();
-
 
         public IActionResult Index()
         {

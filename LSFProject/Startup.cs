@@ -28,6 +28,7 @@ namespace LSFProject
             {
                 options.ValidationInterval = TimeSpan.Zero;   
             });
+            Config.ConnectionString = "Data Source=SQL5102.site4now.net;Initial Catalog=DB_A7005B_diplomeproject;User Id=DB_A7005B_diplomeproject_admin;Password=1500009578403sem;MultipleActiveResultSets=true";
             // services.AddHttpsRedirection(options =>
             // {
             //     options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;

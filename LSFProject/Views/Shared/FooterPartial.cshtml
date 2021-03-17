@@ -22,10 +22,10 @@
                     @foreach(AspNetNews newsItem in _context.AspNetNews)
                     {
                         <div class="sin-post">
-                            <img src="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Path" alt="">
+                            <img src="@(Config.DomainName + _context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Path)" alt="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Title" width="150">
                             <div class="post-brif">
-                                <a asp-controller="Home" asp-action="NewsDetails" asp-route-url="@newsItem.Url">ПОЖАРНАЯ БЕЗОПАСНОСТЬ 2020</a>
-                                <p>05.02.2020</p>
+                                <a asp-controller="Home" asp-action="NewsDetails" asp-route-url="@newsItem.Url">@newsItem.PreviewText</a>
+                                <p>@newsItem.Date.ToShortDateString()</p>
                             </div>
                         </div>
                     }

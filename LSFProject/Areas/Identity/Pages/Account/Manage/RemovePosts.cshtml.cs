@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +9,15 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
     public class RemovePosts : PageModel
     {
         readonly LSFProjectContext _context = new LSFProjectContext();
+        public List<AspNetNews> news;
+        public List<AspNetFile> files;
+        public List<AspNetNewsComment> comments;
+        public RemovePosts()
+        {
+            news = _context.AspNetNews.Where(news => news.Blocked).ToList();
+            files = _context.AspNetFiles.ToList();
+            comments = _context.AspNetNewsComments.ToList();
+        }
         [TempData]
         public string StatusMessage { get; set; }
         public void OnGet()

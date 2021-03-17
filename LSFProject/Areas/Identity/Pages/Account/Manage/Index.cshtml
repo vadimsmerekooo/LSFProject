@@ -14,13 +14,21 @@
             <div class="account-logo-ellipse-2">
             </div>
             <div class="account-logo-ellipse-1">
-                <img class="account-logo-img" src="~/img/account/8ea1168fa53ct.jpg" />
+                @if (Model._context.AspNetIcons.Any(i => i.Id == Model.user.Icon))
+                {
+                    <img class="account-logo-img" src="data:image/png;base64,@System.Convert.ToBase64String(Model.Image)" />
+                }
+                else
+                {
+                    <img class="account-logo-img" src="~/img/account/8ea1168fa53ct.jpg" />
+                }
             </div>
         </div>
         <div style="margin-top: 180px;">
             <h3 class="account-h3" style="margin-left: 0;">@User.Identity.Name</h3>
         </div>
         <a class="btn btn-outline-warning" style="display: block; margin-top: 20px;">Stat</a>
+        <a class="btn btn-outline-warning" style="display: block; margin-top: 20px;" asp-page="./EditIconUser">Изменить аватарку</a>
     </div>
     <hr class="account-border-line"/>
     <div style="margin-top: 10px;">

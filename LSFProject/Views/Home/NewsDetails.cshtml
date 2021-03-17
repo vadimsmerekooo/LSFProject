@@ -7,6 +7,16 @@
 }
 @if (Model != null)
 {
+    <div class="text-bread-crumb d-flex align-items-center style-six blue">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>@Model.Header</h2>
+                    <div class="bread-crumb-line"><span>@Model.PreviewText</div>
+                </div>
+            </div>
+        </div>
+    </div>
     <section class="blog-posts grid-system">
         <div class="container-fluid">
             <div class="row">
@@ -16,7 +26,7 @@
                             <div class="col-lg-12">
                                 <div class="blog-post">
                                     <div class="blog-thumb">
-                                        <img src="@Model.PreviewPhoto" alt="" style="max-width: 300px;">
+                                        <img src="@(Config.DomainName + _context.AspNetFiles.FirstOrDefault(p => p.Id == Model.PreviewPhoto).Path)" alt="" style="max-width: 300px;">
                                     </div>
                                     <div class="down-content">
                                         <a href="@Url.Action("PostDetails", "Post", new { url = Model.Url })"><h4>@Model.Header</h4></a>

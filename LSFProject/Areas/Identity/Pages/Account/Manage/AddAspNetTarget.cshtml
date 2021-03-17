@@ -1,0 +1,74 @@
+﻿@page
+@model LSFProject.Areas.Identity.Pages.Account.Manage.AddAspNetTargetModel
+@{
+    ViewData["Title"] = "Добавление Targets";
+}
+
+<h5>@ViewData["Title"]</h5>
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<form class="col-lg" id="form-addpost" enctype="multipart/form-data" method="post" asp-page-handler="Create">
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" asp-for="Input.Name">Название</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="first_input" placeholder="Название" asp-for="Input.Name">
+        </div>
+        <span asp-validation-for="Input.Name" class="col col-form-label text-danger"></span>
+    </div>
+    <hr class="my-4 bg-light">
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" asp-for="Input.Description">Описание</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="first_input" placeholder="Описание" asp-for="Input.Description">
+        </div>
+        <span asp-validation-for="Input.Description" class="col col-form-label text-danger"></span>
+    </div>
+    <hr class="my-4 bg-light">
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" asp-for="Input.ImagePath">Знак</label>
+        <div class="col-sm-10">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <div class="select">
+                <input class="form-control col-sm-10" type="hidden" name="photo" asp-for="Input.ImagePath">
+                <div class="select__head" onclick="updateZnaksPhoto();">Выберите изображение для превью...</div>
+                <ul class="select__list" id="inputGroupSelectZnaks" style="display: none;">
+                </ul>
+            </div>
+            <a target="_blank" asp-page="./UploadPhoto">Добавить фото</a>
+        </div>
+        <span asp-validation-for="Input.ImagePath" class="col col-form-label text-danger"></span>
+    </div>
+    <hr class="my-4 bg-light">
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" asp-for="Input.StatesIds">StatesIds</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="first_input" placeholder="StatesIds" asp-for="Input.StatesIds">
+        </div>
+        <span asp-validation-for="Input.StatesIds" class="col col-form-label text-danger"></span>
+    </div>
+    <hr class="my-4 bg-light">
+    <div class="form-group-row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </div>
+    </div>
+</form>
+
+<environment exclude="Development">
+    <script src="~/Identity/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"
+            asp-fallback-src="~/Identity/lib/jquery-validation/dist/jquery.validate.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.validator"
+            crossorigin="anonymous"
+            integrity="sha384-rZfj/ogBloos6wzLGpPkkOr/gpkBNLZ6b6yLy4o+ok+t/SAKlL5mvXLr0OXNi1Hp">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.9/jquery.validate.unobtrusive.min.js"
+            asp-fallback-src="~/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive"
+            crossorigin="anonymous"
+            integrity="sha384-ifv0TYDWxBHzvAk2Z0n8R434FL1Rlv/Av18DXE43N/1rvHyOG4izKst0f2iSLdds">
+    </script>
+</environment>
+
+

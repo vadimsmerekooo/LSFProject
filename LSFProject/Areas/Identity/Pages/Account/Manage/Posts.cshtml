@@ -1,4 +1,5 @@
 ﻿@page
+@using LSFProject
 @model LSFProject.Areas.Identity.Pages.Account.Manage.PostsModel
 @{
     ViewData["Title"] = "Новости";
@@ -36,7 +37,7 @@
                 <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Share</a></th>
                 <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Date</a></th>
                 <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Watching</a></th>
-                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})"><img src="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Path" width="50" height="40" /></a></th>
+                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})"><img src="@(Config.DomainName + _context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Path)" width="50" height="40" /></a></th>
                 @if (newsItem.Blocked)
                 {
                     <th><img src="~/img/admin-panel/No-button.png" /></th>
@@ -45,7 +46,7 @@
                 {
                     <th><img src="~/img/admin-panel/Yes-button.png" /></th>
                 }
-                <th scope="col"><a asp-page="./EditNews" asp-route-news="newsItem" asp-route-newsId="@newsItem.Id" class="text-warning"></a></th>
+                <th scope="col"><a asp-page="./EditNews" asp-route-id="@newsItem.Id" class="text-warning">Изменить</a></th>
                 @if (newsItem.Blocked)
                 {
                     <th scope="col"><a asp-page-handler="PublishNews" asp-route-newsId="@newsItem.Id" class="text-success">Опубликовать</a></th>

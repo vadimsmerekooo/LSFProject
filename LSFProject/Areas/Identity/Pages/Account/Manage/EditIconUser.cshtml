@@ -1,0 +1,20 @@
+﻿@page
+@model LSFProject.Areas.Identity.Pages.Account.Manage.EditIconUserModel
+@{
+    ViewData["Title"] = "Изменение аватарки " + User.Identity.Name;
+}
+
+<h5>@ViewData["Title"]</h5>
+
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form asp-page-handler="AddedPhoto" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Input.Path">Путь к файлу</label>
+        <input type="file" id="uploadedFile" name="uploadedFile" class="form-control" />
+        <span asp-validation-for="Input.Path" class="col col-form-label text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить аватарку</button>
+</form>
