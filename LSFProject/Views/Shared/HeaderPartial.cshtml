@@ -152,7 +152,7 @@
                             </div>
                         </li>
                         <li class="text-primary">
-                            <partial name="_LoginPartialMobile"/>
+                            <partial name="_LoginPartialMobile" />
                         </li>
 
                     </ul>
@@ -207,22 +207,152 @@
                             <a href="#news">Новости</a>
                         </li>
                         <li class="fc-sky hav-sub">
-                            <a asp-controller="Game" asp-action="Index">Игры</a>
+                            <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/obj-for-child" asp-route-razdelName="child">для детей<i class="fa fa-angle-down"></i></a>
+                            <div class="mega-menu">
+                                <div class="mega-catagory">
+                                    <div class="mega-button">
+                                        <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/life-collective-safe" asp-route-razdelName="child">Личная и коллективная безопасность</a>
+                                        <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/safe-at-chs" asp-route-razdelName="child">Защита от ЧС</a>
+                                        <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/inside-and-safe" asp-route-razdelName="child">Окружающая среда и безопасность</a>
+                                        <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/health-life" asp-route-razdelName="child">Здоровый образ жизни</a>
+                                    </div>
+                                </div>
+                                <div class="mega-catagory">
+                                    <div class="mega-button">
+                                        <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/books" asp-route-razdelName="child">Литература</a>
+                                        <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/videos" asp-route-razdelName="child">Видео материалы</a>
+                                        <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/games" asp-route-razdelName="child">Развивающие игры</a>
+                                        <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/test" asp-route-razdelName="child">Тест</a>
+                                    </div>
+                                </div>
+                                <div class="mega-catagory">
+                                    <div class="mega-button">
+                                        <div class="mega-img">
+                                            <img src="~/img/mega-1.jpg" alt="">
+                                            <span>ОБЖ для детей от 0 до 10 лет</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mega-bg">
+                                    <img src="~/img/icon/preloader.gif" width="70" style="margin-left: 40px;" />
+                                    <hr class="bg-red" style="height: 5px;" />
+                                </div>
+                            </div>
                         </li>
+                        @*<li>
+                                <div class="link font-sky">ОБЖ для детей<i class="fa fa-chevron-down"></i></div>
+                                <ul class="submenu font-sky">
+                                    <li><a href="#">Личная и коллективная безопасность</a></li>
+                                    <li><a href="#">Защита от ЧС</a></li>
+                                    <li><a href="#">Окружающая среда и безопасность</a></li>
+                                    <li><a href="#">Здоровый образ жизни</a></li>
+                                    <li><a href="#">Литература для детей</a></li>
+                                    <li><a href="#">Видео материалы для детей</a></li>
+                                    <li><a href="#">Развивающие игры</a></li>
+                                    <li><a href="#">Тест</a></li>
+                                    <li>
+                                        <div class="mega-catagory mega-img">
+                                            <img src="img/mega-1.jpg" alt="">
+                                            <span>Admission Open</span>
+                                            <a href="#" class="bgc-orange">Apply now</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>*@
                         <li class="fc-sky hav-sub">
-                            <a asp-controller="Game" asp-action="Index">Учебные пособия</a>
+                            <a href="#">для подростков<i class="fa fa-angle-down"></i></a>
+                            <div class="mega-menu">
+                                <div class="mega-catagory">
+                                    <div class="mega-button">
+                                        <a href="#">Личная и коллективная безопасность</a>
+                                        <a href="#">Защита от ЧС</a>
+                                        <a href="#">Окружающая среда и безопасность</a>
+                                        <a href="#">Здоровый образ жизни</a>
+                                    </div>
+                                </div>
+                                <div class="mega-catagory">
+                                    <div class="mega-button">
+                                        <a href="#">Литература</a>
+                                        <a href="#">Видео материалы</a>
+                                        <a href="#">Развивающие игры</a>
+                                        <a href="#">Тест</a>
+                                    </div>
+                                </div>
+                                <div class="mega-catagory">
+                                    <div class="mega-button">
+                                        <div class="mega-img">
+                                            <img src="~/img/mega-2.jpg" alt="">
+                                            <span>ОБЖ для подростков от 11 до 17</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mega-bg">
+                                    <img src="~/img/icon/preloader.gif" width="70" style="margin-left: 40px;" />
+                                    <hr class="bg-red" style="height: 5px;" />
+                                </div>
+                            </div>
                         </li>
+                        @*<li>
+                                <div class="link font-sky">ОБЖ для подростков<i class="fa fa-chevron-down"></i></div>
+                                <ul class="submenu font-sky">
+                                    <li><a href="#">Личная и коллективная безопасность</a></li>
+                                    <li><a href="#">Защита от ЧС</a></li>
+                                    <li><a href="#">Окружающая среда и безопасность</a></li>
+                                    <li><a href="#">Здоровый образ жизни</a></li>
+                                    <li><a href="#">Литература для подростков</a></li>
+                                    <li><a href="#">Видео материалы для подростков</a></li>
+                                    <li><a href="#">Игры</a></li>
+                                    <li><a href="#">Тест</a></li>
+                                </ul>
+                            </li>*@
+                        <li class="fc-sky hav-sub">
+                            <a href="#">для взрослых<i class="fa fa-angle-down"></i></a>
+                            <div class="mega-menu">
+                                <div class="mega-catagory">
+                                    <div class="mega-button">
+                                        <a href="#">Личная и коллективная безопасность</a>
+                                        <a href="#">Защита от ЧС</a>
+                                        <a href="#">Здоровый образ жизни</a>
+                                        <a href="#">Окружающая среда и безопасность</a>
+                                    </div>
+                                </div>
+                                <div class="mega-catagory">
+                                    <div class="mega-button">
+                                        <a href="#">Литература</a>
+                                        <a href="#">Видео материалы</a>
+                                        <a href="#">Игры</a>
+                                        <a href="#">Тест</a>
+                                    </div>
+                                </div>
+                                <div class="mega-catagory">
+                                    <div class="mega-button">
+                                        <div class="mega-img">
+                                            <img src="~/img/mega-3.jpg" alt="">
+                                            <span>ОБЖ для взрослых</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mega-bg">
+                                    <img src="~/img/icon/preloader.gif" width="70" style="margin-left: 40px;"/>
+                                    <hr class="bg-red" style="height: 5px;" />
+                                </div>
+                            </div>
+                        </li>
+                        @*<li>
+                                <div class="link font-sky">ОБЖ для взрослых<i class="fa fa-chevron-down"></i></div>
+                                <ul class="submenu font-sky">
+                                    <li><a href="#">Личная и коллективная безопасность</a></li>
+                                    <li><a href="#">Защита от ЧС</a></li>
+                                    <li><a href="#">Здоровый образ жизни</a></li>
+                                    <li><a href="#">Окружающая среда и безопасность</a></li>
+                                    <li><a href="#">Литература для взрослых</a></li>
+                                    <li><a href="#">Видео материалы для взрослых</a></li>
+                                    <li><a href="#">Игры</a></li>
+                                    <li><a href="#">Тест</a></li>
+                                </ul>
+                            </li>*@
                         <li class="fc-sky hav-sub">
                             <a asp-controller="Game" asp-action="Index">Форум</a>
-                        </li>
-                        <li class="fc-sky hav-sub">
-                            <a asp-controller="Game" asp-action="Index">Видео</a>
-                        </li>
-                        <li class="fc-sky hav-sub">
-                            <a asp-controller="Game" asp-action="Index">Тесты</a>
-                        </li>
-                        <li class="fc-sky hav-sub">
-                            <a asp-controller="Game" asp-action="Index">Фотогалерея</a>
                         </li>
                     </ul>
                 </div>
@@ -233,7 +363,7 @@
                     <div class="reg-area" style="display: flex; padding: 0;">
                         <div class="search align-middle">
                             <input class="search-input" placeholder="Поиск" type="text">
-                            <a href=""><i class="fa fa-search"></i></a>
+                            <a href="javascript:void(0)"><i class="fa fa-search"></i></a>
                         </div>
                         <i class="fa fa-user" style="padding-top: 3px;"></i>
                         <partial name="_LoginPartial.cshtml" />

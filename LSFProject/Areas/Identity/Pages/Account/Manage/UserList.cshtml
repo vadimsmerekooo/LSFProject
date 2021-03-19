@@ -14,31 +14,32 @@
     <table class="table text-dark">
         @foreach (var user in Model.users)
         {
-            <tr>
-                <td>@user.Email</td>
-                <td>
-                    <a class="btn btn-sm btn-primary" asp-page="./EditRolesUser" asp-route-userid="@user.Id">Права доступа</a>
-                </td>
-                <td>
-                    @if (User.IsInRole("Admin") && UserManager.GetUserId(User) != user.Id)
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            <td>
+                <a class="btn btn-sm btn-primary" asp-page="./EditRolesUser" asp-route-userid="@user.Id">Права доступа</a>
+            </td>
+            <td>
+                @if (User.IsInRole("Admin") && UserManager.GetUserId(User) != user.Id)
+                {
+                    if (user.LockoutEnd != null)
                     {
-                        if (user.LockoutEnd != null)
-                        {
-                            <a class="btn btn-sm btn-success" asp-page-handler="LockoutEndUser" asp-route-userid="@user.Id">Разблокировать</a>
-                        }
-                        else
-                        {
-                            <a class="btn btn-sm btn-danger" asp-page-handler="LockoutEnabledUser" asp-route-userid="@user.Id">Заблокировать</a>
-                        }
+                        <a class="btn btn-sm btn-success" asp-page-handler="LockoutEndUser" asp-route-userId="@user.Id">Разблокировать</a>
                     }
-                <td>
-                <td>
-                    @if (User.IsInRole("Admin") && UserManager.GetUserId(User) != user.Id)
+                    else
                     {
-                        <a class="btn btn-sm btn-danger" asp-page-handler="DeleteUser" asp-route-userid="@user.Id">Удалить</a>
+                        <a class="btn btn-sm btn-danger" asp-page-handler="LockoutEnabledUser" asp-route-userId="@user.Id">Заблокировать</a>
                     }
-                <td>
-            </tr>
+                }
+            <td>
+            <td>
+                @if (User.IsInRole("Admin") && UserManager.GetUserId(User) != user.Id)
+                {
+                    <a class="btn btn-sm btn-danger" asp-page-handler="DeleteUser" asp-route-userid="@user.Id">Удалить</a>
+                }
+            <td>
+        </tr>
         }
     </table>
 </div>

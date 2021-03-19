@@ -162,7 +162,7 @@ namespace LSFProject.Controllers
 
             try
             {
-                var users = await _userManager.FindByEmailAsync(Request.Form["login"]);
+                var users = await _userManager.FindByNameAsync(Request.Form["login"]);
                 if (users != null && await _userManager.CheckPasswordAsync(users, Request.Form["password"] + "!"))
                 {
                     EncryptJsonRequestFile("true");

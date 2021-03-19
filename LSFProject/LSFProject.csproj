@@ -26,6 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Home\obj-razdel\adult\" />
+    <Folder Include="Views\Home\obj-razdel\teenager\" />
     <Folder Include="wwwroot\img\upload\photo\" />
   </ItemGroup>
 

@@ -442,3 +442,13 @@ D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\LSFProject.dll
 D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\LSFProject.pdb
 D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\LSFProject.genruntimeconfig.cache
 D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\LSFProject.csprojAssemblyReference.cache
+D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\RazdelOBJ.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\obj-razdel\child\obj-for-child.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\obj-razdel\child\books.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\obj-razdel\child\games.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\obj-razdel\child\health-life.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\obj-razdel\child\inside-and-safe.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\obj-razdel\child\life-collective-safe.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\obj-razdel\child\safe-at-chs.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\obj-razdel\child\test.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\obj-razdel\child\videos.cshtml.g.cs

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace LSFProject.Areas.Identity.Pages.Account.Manage
 {
-    [Authorize(Roles ="Admin, Manager")]
+    [Authorize(Roles = "Admin, Manager")]
     public class UserListModel : PageModel
     {
         RoleManager<IdentityRole> _roleManager;
@@ -38,23 +38,30 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
         }
         public async Task<IActionResult> OnGetLockoutEnabledUser(string userId)
         {
-            LSFUser user = await _userManager.FindByIdAsync(userId);
-            if(user != null)
+            try
             {
-                user.LockoutEnd = DateTime.Now.AddYears(200);
-                _userManager.ResetAuthenticatorKeyAsync(_userManager.FindByIdAsync(userId).Result);
-                await _userManager.UpdateAsync(user);
-                StatusMessage = "Пользователь заблокирован!";
+                if (_context.AspNetUsers.Any(u => u.Id == userId))
+                {
+                    _context.AspNetUsers.FirstOrDefault(u => u.Id == userId).LockoutEnd = DateTime.Now.AddYears(200);
+                    _context.SaveChanges();
+                    _userManager.ResetAuthenticatorKeyAsync(_userManager.FindByIdAsync(userId).Result);
+                    StatusMessage = "Пользователь заблокирован!";
+                }
+                return RedirectToPage("./UserList");
             }
-            return RedirectToPage("./UserList");
+            catch
+            {
+                StatusMessage = "Ошибка. Пользователь не заблокирован!";
+                return RedirectToPage("./UserList");
+            }
         }
         public async Task<IActionResult> OnGetLockoutEndUser(string userId)
         {
             LSFUser user = await _userManager.FindByIdAsync(userId);
             if (user != null)
             {
-                user.LockoutEnd = null;
-                await _userManager.UpdateAsync(user);
+                _context.AspNetUsers.FirstOrDefault(u => u.Id == userId).LockoutEnd = null;
+                _context.SaveChanges();
                 StatusMessage = "Пользователь разблокирован!";
             }
             return RedirectToPage("./UserList");

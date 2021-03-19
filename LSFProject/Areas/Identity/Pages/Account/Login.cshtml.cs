@@ -43,7 +43,7 @@ namespace LSFProject.Areas.Identity.Pages.Account
         {
 
             [Required(ErrorMessage = "Поле Логин не заполнено!")]
-            public string Email { get; set; }
+            public string Login { get; set; }
 
             [Required(ErrorMessage = "Поле Пароль не заполнено!")]
             [StringLength(30, MinimumLength = 8, ErrorMessage = "Мин длинна пароля 8 символов, макс 100")]
@@ -78,7 +78,7 @@ namespace LSFProject.Areas.Identity.Pages.Account
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password + "!", Input.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(Input.Login, Input.Password + "!", Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
@@ -90,7 +90,7 @@ namespace LSFProject.Areas.Identity.Pages.Account
                 }
                 if (result.IsLockedOut)
                 {
-                    var userId = ((LSFUser)await _userManager.FindByEmailAsync(Input.Email)).Id;
+                    var userId = ((LSFUser)await _userManager.FindByNameAsync(Input.Login)).Id;
                     _logger.LogWarning("Аккаунт заблокирован!");
                     return RedirectToPage($"./Lockout", new { userId = userId});
                 }

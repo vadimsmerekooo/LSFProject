@@ -26,7 +26,7 @@ namespace LSFProject
             services.AddControllersWithViews();
             services.Configure<SecurityStampValidatorOptions>(options =>
             {
-                options.ValidationInterval = TimeSpan.Zero;   
+                options.ValidationInterval = TimeSpan.FromSeconds(5);
             });
             Config.ConnectionString = "Data Source=SQL5102.site4now.net;Initial Catalog=DB_A7005B_diplomeproject;User Id=DB_A7005B_diplomeproject_admin;Password=1500009578403sem;MultipleActiveResultSets=true";
             // services.AddHttpsRedirection(options =>
@@ -62,6 +62,7 @@ namespace LSFProject
 
             app.UseAuthentication();
             app.UseAuthorization();
+
 
             var options = new StaticFileOptions();
             var contentTypeProvider = (FileExtensionContentTypeProvider)options.ContentTypeProvider ?? new FileExtensionContentTypeProvider();
