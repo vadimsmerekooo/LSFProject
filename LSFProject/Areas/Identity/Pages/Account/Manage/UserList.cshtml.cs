@@ -44,7 +44,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
                 {
                     _context.AspNetUsers.FirstOrDefault(u => u.Id == userId).LockoutEnd = DateTime.Now.AddYears(200);
                     _context.SaveChanges();
-                    _userManager.ResetAuthenticatorKeyAsync(_userManager.FindByIdAsync(userId).Result);
+                    await _userManager.ResetAuthenticatorKeyAsync(_userManager.FindByIdAsync(userId).Result);
                     StatusMessage = "Пользователь заблокирован!";
                 }
                 return RedirectToPage("./UserList");

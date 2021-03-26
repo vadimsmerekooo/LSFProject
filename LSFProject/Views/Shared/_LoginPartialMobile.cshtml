@@ -5,14 +5,24 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <div style="display: flex;">
-        <a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-primary">Аккаунт</a>
-        <form id="logoutForm" style="padding: 0;" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button id="logout" type="submit" class="btn btn-primary" style="padding: 0; border: 1px solid transparent;">Выйти</button>
-        </form>
-    </div>
+    <li>
+        <div class="link font-per">
+            <a asp-area="Identity" asp-page="/Account/Manage/Index">Профиль</a>
+        </div>
+    </li>
+    <li>    
+        <div class="link font-red">
+            <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button id="logout" type="submit" class="btn btn-primary">Выйти</button>
+            </form>
+        </div>
+    </li>
 }
 else
 {
-    <a asp-area="Identity" asp-page="/Account/Login">Войти</a><a>/</a><a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+    <li>
+        <div class="link font-per">
+            <a asp-area="Identity" asp-page="/Account/Login">Войти /</a><a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+        </div>
+    </li>
 }

@@ -847,8 +847,8 @@ button {
 
     .sidebar__link:hover, .sidebar__link.hover, .sidebar__link:focus, .sidebar__link.focus, .sidebar__link:active, .sidebar__link.active {
         text-decoration: none;
-        color: #03A9F5;
-        border-left: 3px solid #03A9F5;
+        color: #8273C8;
+        border-left: 3px solid #8273C8;
     }
 
         .sidebar__link.active + ul {
@@ -2434,15 +2434,15 @@ tr:nth-child(even) th {
     }
 
     to {
-        background-position: 100% 0;
+        background-position: 150% 0;
     }
 }
 
 .menu-area-two {
-    background-image: url(img/bg/menu-two-bg.jpg);
+    background-image: url(img/bg/menu-two-bg1.jpg);
     background-position: 0px 0px;
-    background-repeat: repeat-x;
-    animation: animatedBackground 20s linear infinite;
+    background-repeat: repeat;
+    animation: animatedBackground 15s linear infinite;
 }
 
 .reg-area {
@@ -4705,7 +4705,7 @@ mainmenu-two .mega-catagory.mega-img {
 }
 
 .tution-top {
-    padding-top: 100px;
+    padding-top: 50px;
 }
 
 .tution-top-right {
@@ -5944,6 +5944,7 @@ ul.sort-by-age li {
 .mob-logo {
     width: 57%;
     padding-left: 42px;
+    display: flex;
 }
 
 .mobile-open:hover, .mobile-open:focus {
@@ -8273,8 +8274,6 @@ input.full-width {
         padding: 15px;
         color: #FFFFFF;
         font-size: 14px;
-        transition: all 0.3 ease;
-        -webkit-transition: all 0.3 ease;
         cursor: pointer;
     }
 

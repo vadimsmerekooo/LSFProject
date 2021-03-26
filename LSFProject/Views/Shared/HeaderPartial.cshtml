@@ -1,4 +1,12 @@
-﻿@*<header>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<LSFProject.Areas.Identity.Data.LSFUser> SignInManager
+@inject UserManager<LSFProject.Areas.Identity.Data.LSFUser> UserManager
+
+@{
+    LSFProjectContext _context = new LSFProjectContext();
+}
+
+@*<header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LifeSafetyFundamentals</a>
@@ -29,7 +37,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 col-lg-6 col-xl-7">
-                <span class="first-span"><h5>@Config.SiteHeader</h5></span>
+                <span class="first-span">@Config.SiteHeader</span>
             </div>
             <div class="col-md-12 col-lg-6 col-xl-5">
                 <div class="serch-wrapper float-right hide-sm-up">
@@ -65,95 +73,84 @@
 
                     <ul id="mobilemenu" class="accordion">
                         <li class="mob-logo">
-                            <a asp-action="Index" asp-controller="Home">
-                                <img src="~/img/logo.png" alt="">
-                            </a>
+                            <div style="margin: 0; position: relative;">
+                                <div class="account-logo-ellipse-4">
+                                </div>
+                                <div class="account-logo-ellipse-3">
+                                </div>
+                                <div class="account-logo-ellipse-2">
+                                </div>
+                                <div class="account-logo-ellipse-1">
+                                    @if (SignInManager.IsSignedIn(User) && _context.AspNetIcons.Any(x => x.UserId == UserManager.GetUserId(User)))
+                                    {
+                                        byte[] image = _context.AspNetIcons.FirstOrDefault(i => i.UserId == UserManager.GetUserId(User)).Icon;
+                                        <img class="account-logo-img" src="data:image/png;base64,@System.Convert.ToBase64String(image)" alt="">
+                                    }
+                                    else
+                                    {
+                                        <img class="account-logo-img" src="~/img/account/8ea1168fa53ct.jpg" />
+                                    }
+                                </div>
+                            </div>
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <div style="margin-left: 140px; height: 130px;" class="text-center">
+                                    <h4>@UserManager.FindByNameAsync(User.Identity.Name).Result.Email</h4>
+                                    <h5 style="margin: 10px 0">Ваш рейтинг: 124</h5>
+                                    <a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-primary" style="margin-top: 20px;">Перейти в профиль</a>
+                                </div>
+                            }
                         </li>
                         <li><a class="closeme" href="#"><i class="fa fa-times"></i></a></li>
                         <li class="fc-red out-link"><a asp-action="Index" asp-controller="Home">Главная</a></li>
+                        <li class="fc-green out-link"><a asp-action="Index" asp-controller="Home">Новости</a></li>
                         <li>
-                            <div class="link font-sky">Новости<i class="fa fa-chevron-down"></i></div>
-                            <ul class="submenu font-sky">
-                                <li><a href="index-2.html">Home two</a></li>
-                                <li><a href="about-us.html">About us</a></li>
-                                <li><a href="staff.html">Our staff</a></li>
-                                <li><a href="blog.html">blog</a></li>
-                                <li><a href="single.html">single post</a></li>
-                                <li><a href="facilities.html">facilities</a></li>
-                                <li><a href="nursary.html">nursery</a></li>
-                                <li><a href="tution.html">Tuition and fee</a></li>
-                                <li><a href="testimonial.html">Testimonials</a></li>
-                                <li><a href="shop.html">shop</a></li>
-                                <li><a href="product.html">single product</a></li>
-                                <li><a href="kindargerten.html">kindergaten</a></li>
-                                <li><a href="infant.html">infant</a></li>
-                                <li><a href="facilities.html">facilities</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div class="link font-orange">Programs<i class="fa fa-chevron-down"></i></div>
+                            <div class="link font-orange">Остравок безопасности<i class="fa fa-chevron-down"></i></div>
                             <ul class="submenu font-orange">
-                                <!--  <li><h4>Nursery</h4></li>-->
-                                <li><a href="#">Kindergarten</a></li>
-                                <li><a href="#">class one</a></li>
-                                <li><a href="#">class two</a></li>
-                                <li><a href="#">play group</a></li>
-                                <li><a href="#">game </a></li>
-                                <li><a href="#">school</a></li>
-                                <li><a href="#">boys section</a></li>
-                                <li><a href="#">extra class</a></li>
-                                <li><a href="#">toys room</a></li>
-                                <li><a href="#">class six</a></li>
-                                <li><a href="#">quick start</a></li>
-                                <li><a href="#">mega menu</a></li>
-                                <li><a href="#">result sheet</a></li>
-                                <li><a href="#">routine</a></li>
-                                <li><a href="#">offday</a></li>
-                                <li><a href="#">toys room</a></li>
-                                <li><a href="#">boys section</a></li>
+                                <li><a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/life-collective-safe" asp-route-razdelName="child">Личная и коллективная безопасность</a></li>
+                                <li><a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/safe-at-chs" asp-route-razdelName="child">Защита от ЧС</a></li>
+                                <li><a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/inside-and-safe" asp-route-razdelName="child">Окружающая среда и безопасность</a></li>
+                                <li><a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/health-life" asp-route-razdelName="child">Здоровый образ жизни</a></li>
+                                <li><a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/books" asp-route-razdelName="child">Литература</a></li>
+                                <li><a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/videos" asp-route-razdelName="child">Видео материалы</a></li>
+                                <li><a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/games" asp-route-razdelName="child">Развивающие игры</a></li>
+                                <li><a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/test" asp-route-razdelName="child">Тест</a></li>
+
                             </ul>
                         </li>
 
                         <li>
-                            <div class="link font-per">Facilities<i class="fa fa-chevron-down"></i></div>
+                            <div class="link font-per">Не пропаду!?!<i class="fa fa-chevron-down"></i></div>
                             <ul class="submenu font-per">
-                                <li><a href="#">Kindergarten</a></li>
-                                <li><a href="#">class one</a></li>
-                                <li><a href="#">class two</a></li>
-                                <li><a href="#">play group</a></li>
-                                <li><a href="#">game </a></li>
-                                <li><a href="#">school</a></li>
-                                <li><a href="#">boys section</a></li>
-                                <li><a href="#">extra class</a></li>
-                                <li><a href="#">toys room</a></li>
-                                <li><a href="#">class six</a></li>
-                                <li><a href="#">quick start</a></li>
-                                <li><a href="#">mega menu</a></li>
-                                <li><a href="#">result sheet</a></li>
-                                <li><a href="#">routine</a></li>
-                                <li><a href="#">offday</a></li>
-                                <li><a href="#">toys room</a></li>
-                                <li><a href="#">boys section</a></li>
+                                <li><a href="#">Личная и коллективная безопасность</a></li>
+                                <li><a href="#">Защита от ЧС</a></li>
+                                <li><a href="#">Окружающая среда и безопасность</a></li>
+                                <li><a href="#">Здоровый образ жизни</a></li>
+                                <li><a href="#">Литература</a></li>
+                                <li><a href="#">Видео материалы</a></li>
+                                <li><a href="#">Развивающие игры</a></li>
+                                <li><a href="#">Тест</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="link font-sky">Пригодится, чтобы выжить...<i class="fa fa-chevron-down"></i></div>
+                            <ul class="submenu font-per">
+                                <li><a href="#">Личная и коллективная безопасность</a></li>
+                                <li><a href="#">Защита от ЧС</a></li>
+                                <li><a href="#">Здоровый образ жизни</a></li>
+                                <li><a href="#">Окружающая среда и безопасность</a></li>
+                                <li><a href="#">Литература</a></li>
+                                <li><a href="#">Видео материалы</a></li>
+                                <li><a href="#">Игры</a></li>
+                                <li><a href="#">Тест</a></li>
                             </ul>
                         </li>
                         <li>
-                            <div class="link font-per"><a href="about-us.html">About us</a></div>
+                            <div class="link font-per"><a href="about-us.html">Форум</a></div>
 
                         </li>
-                        <li>
-                            <div class="link font-red">Contact<i class="fa fa-chevron-down"></i></div>
-                            <ul class="submenu font-red">
-                                <li><a href="#">Faq</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div class="top-contact-btn">
-                                <a href="#" class="kids-care-btn bg-sky">Контакты</a>
-                            </div>
-                        </li>
-                        <li class="text-primary">
-                            <partial name="_LoginPartialMobile" />
-                        </li>
+                        <partial name="_LoginPartialMobile" />
 
                     </ul>
                     <!--Mobile Menu end-->
@@ -162,6 +159,9 @@
             </div>
             <div class="col-12 col-md-12 col-lg-8">
                 <div class="contact-area-two">
+                    <div class="call-us con-top-sin" style="margin-top: 2%;">
+                        <h5 style="font-size: 23px;">ЗА БЕЗОПАСНОСТЬ ВМЕСТЕ!</h5>
+                    </div>
                     <div class="call-us con-top-sin">
                         <a href="https://mchs.gov.by/">
                             <img src="~/img/MHS.png" alt="">
@@ -207,7 +207,7 @@
                             <a href="#news">Новости</a>
                         </li>
                         <li class="fc-sky hav-sub">
-                            <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/obj-for-child" asp-route-razdelName="child">для детей<i class="fa fa-angle-down"></i></a>
+                            <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/obj-for-child" asp-route-razdelName="child">Островок безопасности<i class="fa fa-angle-down"></i></a>
                             <div class="mega-menu">
                                 <div class="mega-catagory">
                                     <div class="mega-button">
@@ -228,8 +228,7 @@
                                 <div class="mega-catagory">
                                     <div class="mega-button">
                                         <div class="mega-img">
-                                            <img src="~/img/mega-1.jpg" alt="">
-                                            <span>ОБЖ для детей от 0 до 10 лет</span>
+                                            <img src="~/img/mega-1.jpg" alt="" style="padding-bottom: 80px;">
                                         </div>
                                     </div>
                                 </div>
@@ -260,7 +259,7 @@
                                 </ul>
                             </li>*@
                         <li class="fc-sky hav-sub">
-                            <a href="#">для подростков<i class="fa fa-angle-down"></i></a>
+                            <a href="#">Не пропаду!?!<i class="fa fa-angle-down"></i></a>
                             <div class="mega-menu">
                                 <div class="mega-catagory">
                                     <div class="mega-button">
@@ -281,8 +280,7 @@
                                 <div class="mega-catagory">
                                     <div class="mega-button">
                                         <div class="mega-img">
-                                            <img src="~/img/mega-2.jpg" alt="">
-                                            <span>ОБЖ для подростков от 11 до 17</span>
+                                            <img src="~/img/mega-2.jpg" alt="" style=" padding-bottom: 40px;">
                                         </div>
                                     </div>
                                 </div>
@@ -306,7 +304,7 @@
                                 </ul>
                             </li>*@
                         <li class="fc-sky hav-sub">
-                            <a href="#">для взрослых<i class="fa fa-angle-down"></i></a>
+                            <a href="#">Пригодится, чтобы выжить...<i class="fa fa-angle-down"></i></a>
                             <div class="mega-menu">
                                 <div class="mega-catagory">
                                     <div class="mega-button">
@@ -328,12 +326,11 @@
                                     <div class="mega-button">
                                         <div class="mega-img">
                                             <img src="~/img/mega-3.jpg" alt="">
-                                            <span>ОБЖ для взрослых</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mega-bg">
-                                    <img src="~/img/icon/preloader.gif" width="70" style="margin-left: 40px;"/>
+                                    <img src="~/img/icon/preloader.gif" width="70" style="margin-left: 40px;" />
                                     <hr class="bg-red" style="height: 5px;" />
                                 </div>
                             </div>

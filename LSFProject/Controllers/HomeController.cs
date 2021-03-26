@@ -55,7 +55,7 @@ namespace LSFProject.Controllers
 
         public Dictionary<string, string> listLinks = new Dictionary<string, string>();
 
-        public async Task<IActionResult> RazdelOBJ(string linkRazdel, string razdelName)
+        public IActionResult RazdelOBJ(string linkRazdel, string razdelName)
         {
             if (String.IsNullOrWhiteSpace(linkRazdel) || String.IsNullOrWhiteSpace(razdelName))
                 return NotFound();
@@ -63,7 +63,7 @@ namespace LSFProject.Controllers
             Dictionary<string, string> objMenu = new Dictionary<string, string>()
             {
                 {
-                    "child/obj-for-child", "ОБЖ для детей"
+                    "child/obj-for-child", "Островок безопасности"
                 },
                 {
                     "child/life-collective-safe", "Личная и коллективная безопасность" 
@@ -91,7 +91,7 @@ namespace LSFProject.Controllers
                 },
                 //-----------------------------------------------------------
                 {
-                    "teenager/obj-for-teenager", "ОБЖ для подростков"
+                    "teenager/obj-for-teenager", "Не пропаду!?!"
                 },
                 {
                     "teenager/life-collective-safe", "Личная и коллективная безопасность"
@@ -119,7 +119,7 @@ namespace LSFProject.Controllers
                 },
                 //---------------------------------------------------------
                 {
-                    "adult/obj-for-adult", "ОБЖ для взрослых"
+                    "adult/obj-for-adult", "Пригодится, чтобы выжить..."
                 },
                 {
                     "adult/obj-for-adult-life-collective-safe", "Личная и коллективная безопасность"
