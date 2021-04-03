@@ -78,7 +78,13 @@ namespace LSFProject.Areas.Identity.Pages.Account
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.CheckPasswordAsync(Input.Login, Input.Password + "!", Input.RememberMe);
+                LSFUser user = _userManager.FindByNameAsync(Input.Login).Result;
+                if(user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "Не верный логин или пароль!");
+                    return Page();
+                }
+                var result = await _signInManager.CheckPasswordSignInAsync(user, Input.Password + "!", Input.RememberMe);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");

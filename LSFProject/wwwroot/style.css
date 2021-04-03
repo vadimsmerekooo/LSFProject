@@ -5931,6 +5931,16 @@ ul.sort-by-age li {
         top: 0;
     }
 
+.card-img-top-accordion {
+    width: 31%;
+}
+
+@media (max-width: 768px) {
+    .card-img-top-accordion {
+        width: 100%;
+    }
+}
+
 .mobile-open {
     position: relative;
     right: 0;
@@ -8515,3 +8525,28 @@ input.full-width {
 .custom-file-control {
     white-space: nowrap;
 }
+
+.border-image-child {
+    border-style: solid;
+    border-width: 50px 50px 50px 50px;
+    -moz-border-image: url(img/bg/image.png) 80 80 80 80 repeat repeat;
+    -webkit-border-image: url(img/bg/image.png) 80 80 80 80 repeat repeat;
+    -o-border-image: url(img/bg/image.png) 80 80 80 80 repeat repeat;
+    border-image: url(img/bg/image.png) 80 80 80 80 repeat repeat;
+}
+
+.post {
+    font-size: 22px;
+    text-align: justify;
+    color: black;
+}
+
+    .post .ul-list {
+        list-style-type: square;
+    }
+
+        .post .ul-list li {
+            margin-left: 30px;
+        }
+
+
