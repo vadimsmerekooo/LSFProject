@@ -2953,6 +2953,21 @@ mainmenu-two .mega-catagory.mega-img {
 .card-header {
     background: #03a9f4;
 }
+.card-header2 {
+    background: #F44336;
+}
+.card-header3 {
+    background: #B6CF4D;
+}
+.card-header4 {
+    background: #163882;
+}
+.card-header5 {
+    background: #FF9420;
+}
+.card-header6 {
+    background: #8576CB;
+}
 
     .card-header:first-child {
         border-radius: 5px;
@@ -4022,7 +4037,6 @@ mainmenu-two .mega-catagory.mega-img {
 }
 
 .card-body ul li {
-    color: #656f73;
     margin-bottom: 5px;
     position: relative;
 }
@@ -5933,6 +5947,7 @@ ul.sort-by-age li {
 
 .card-img-top-accordion {
     width: 31%;
+    margin-top: 30px;
 }
 
 @media (max-width: 768px) {
@@ -8536,6 +8551,7 @@ input.full-width {
 }
 
 .post {
+    width: 100%;
     font-size: 22px;
     text-align: justify;
     color: black;
@@ -8543,6 +8559,7 @@ input.full-width {
 
     .post .ul-list {
         list-style-type: square;
+        color: #000;
     }
 
         .post .ul-list li {
@@ -8550,3 +8567,11 @@ input.full-width {
         }
 
 
+.visible-alert {
+    visibility: visible !important;
+    height: auto;
+}
+
+.invisible-alert {
+    display: none;
+}

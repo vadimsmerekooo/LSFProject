@@ -43,6 +43,8 @@ namespace LSFProject
         public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
 
+        public virtual DbSet<MiddleFinger> MiddleFinger { get; set; }
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

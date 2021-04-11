@@ -58,7 +58,7 @@
                         <div class="sidebar-post">
 
                             <div class="sb-img">
-                                <img src="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Path" alt="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Title">
+                                <img src="@( Config.DomainName + _context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Path)" alt="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Title">
                             </div>
                             <div class="sb-post-det">
                                 <p><a asp-controller="Home" asp-action="NewsDetails" asp-route-url="@newsItem.Url">@newsItem.Header</a></p>
