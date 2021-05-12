@@ -36,6 +36,8 @@ namespace LSFProject.Areas.Identity.Pages.Account
             public string Login { get; set; }
             [Required]
             public string Password { get; set; }
+            [Required]
+            public string SecurityPassword { get; set; }
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -46,6 +48,11 @@ namespace LSFProject.Areas.Identity.Pages.Account
                 if (user == null)
                 {
                     StatusMessage = $"Ошибка Пользователь {Input.Login} не найден!";
+                    return Page();
+                }
+                if(Input.SecurityPassword != user.Id.Substring(0, 4).ToString())
+                {
+                    StatusMessage = "Ошибка Не верно заполнены поля!";
                     return Page();
                 }
 

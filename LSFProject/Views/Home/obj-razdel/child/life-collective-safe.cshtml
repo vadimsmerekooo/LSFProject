@@ -1,73 +1,68 @@
-﻿<div class="col-lg-8 col-xl-7 ">
-    <div class="row flex-xl-row-reverse row-20">
-        <div class="post post-default post-variant-3" style="margin-bottom: 30px;">
-            <h1 class="text-center">Правила дорожного движения</h1>
-            <hr />
-            <div class="card-header" role="tab" id="headingOne" style="background: transparent; padding: 0;">
+﻿<h1 class="text-center">Правила дорожного движения</h1>
+<hr/>
+<div class="card-header" role="tab" id="headingOne" style="background: transparent; padding: 0;">
+<div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+        <h5 class="mb-0">
+            <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="padding-right: 40px;">Участники дорожного движения</a>
+        </h5>
+    </div>
+    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+            <h5 class="text-center">
+                <strong>Участники дорожного движения</strong>
+            </h5>
+            <br/>
+            <img src="~/img/obj/child/question-icon.png" align="left" vspace="15" hspace="15"/>
+            Каждый день, выходя из дома, становишься участником дорожного движения
+            как пешеход или пассажир. Правила дорожного движения(ПДД) обязательны для всех:
+            <ul class="ul-list">
+                <li>водителей;</li>
+                <li>пешеходов;</li>
+                <li>пассажиров.</li>
+            </ul>
+            <br/>
+
+            <div class="card-header" role="tab" id="headingTwo" style="background: transparent; padding: 0;">
                 <div class="card">
-                    <div class="card-header" role="tab" id="headingOne">
+                    <div class="card-header card-header2" role="tab" id="headingTwo">
                         <h5 class="mb-0">
-                            <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="padding-right: 40px;">Участники дорожного движения</a>
+                            <a data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="padding-right: 40px;">
+                                1. Определи, кем является персонаж рисунков. Нажми одно из слов в каждом столбике.
+                            </a>
                         </h5>
                     </div>
-                    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-                        <div class="card-body">
-                            <h5 class="text-center"><strong>Участники дорожного движения</strong></h5>
-                            <br />
-                            <img src="~/img/obj/child/question-icon.png" align="left" vspace="15" hspace="15" />
-                            Каждый день, выходя из дома, ты идешь по улицам, переходишь их, пользуешься маршрутными транспортными
-                            средствами (автобусами, троллейбусами, трамваями, маршрутками, такси). Ты становишься участником дорожного движения
-                            как пешеход или пассажир. Правила дорожного движения(ПДД) обязательны для всех участников дорожного движения:
-                            <ul class="ul-list">
-                                <li>водителей;</li>
-                                <li>пешеходов;</li>
-                                <li>пассажиров.</li>
-                            </ul>
-                            Любое, даже незначительное нарушение этих правил может привести к дорожно-транспортному происшествию.
-                            Поэтому важно не только знать эти правила, но и всегда их соблюдать.
-                            <br />
-                            <br />
+                    <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body" style="display: flex; flex-wrap: wrap; padding: 30px; align-items: flex-end;">
+                            <strong>Расмотри таблицу. Кого называют участником дорожного движения?</strong>
 
-                            <div class="card-header" role="tab" id="headingTwo" style="background: transparent; padding: 0;">
-                                <div class="card">
-                                    <div class="card-header card-header2" role="tab" id="headingTwo">
-                                        <h5 class="mb-0">
-                                            <a data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="padding-right: 40px;">
-                                                1. Определи, кем является персонаж рисунков. Нажми одно из слов в каждом столбике.
-                                            </a>
-                                        </h5>
+
+                            <img class="text-center border-image-child" src="~/img/obj/child/obj/7.png"/>
+                            <div class="card-img-top-accordion" style="margin-right: 20px;">
+                                <img src="~/img/obj/child/obj/6-1.png" alt="Мальчик на коляске">
+                                <div class="card-body">
+                                    <div class="form_radio form_radio1">
+                                        <input id="form1-radio-1" type="radio" name="radio1" value="1">
+                                        <label for="form1-radio-1" onclick="invalidfalse();">Водитель</label>
                                     </div>
-                                    <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-                                        <div class="card-body" style="display: flex; flex-wrap: wrap; padding: 30px; align-items: flex-end;">
-                                            <strong>Расмотри таблицу. Кого называют участником дорожного движения?</strong>
 
+                                    <div class="form_radio form_radio1">
+                                        <input id="form1-radio-2" type="radio" name="radio1" value="2">
+                                        <label for="form1-radio-2" onclick="invalidtrue();">Пешеход</label>
+                                    </div>
 
-                                            <img class="text-center border-image-child" src="~/img/obj/child/obj/7.png" />
-                                            <div class="card-img-top-accordion" style="margin-right: 20px;">
-                                                <img src="~/img/obj/child/obj/6-1.png" alt="Мальчик на коляске">
-                                                <div class="card-body">
-                                                    <div class="form_radio form_radio1">
-                                                        <input id="form1-radio-1" type="radio" name="radio1" value="1">
-                                                        <label for="form1-radio-1" onclick="invalidfalse();">Водитель</label>
-                                                    </div>
-
-                                                    <div class="form_radio form_radio1">
-                                                        <input id="form1-radio-2" type="radio" name="radio1" value="2">
-                                                        <label for="form1-radio-2" onclick="invalidtrue();">Пешеход</label>
-                                                    </div>
-
-                                                    <div class="form_radio form_radio1">
-                                                        <input id="form1-radio-3" type="radio" name="radio1" value="3">
-                                                        <label for="form1-radio-3" onclick="invalidfalse();">Пассажир</label>
-                                                    </div>
-                                                </div>
-                                                <div id="invalidtrue" class="alert alert-success invisible-alert" role="alert">
-                                                    Ответ верный.
-                                                </div>
-                                                <div id="invalidfalse" class="alert alert-danger invisible-alert" role="alert">
-                                                    Ответ неверный.
-                                                </div>
-                                                <script>
+                                    <div class="form_radio form_radio1">
+                                        <input id="form1-radio-3" type="radio" name="radio1" value="3">
+                                        <label for="form1-radio-3" onclick="invalidfalse();">Пассажир</label>
+                                    </div>
+                                </div>
+                                <div id="invalidtrue" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+                                </div>
+                                <div id="invalidfalse" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+                                </div>
+                                <script>
                                                     function invalidtrue() {
                                                         document.getElementById("invalidtrue").classList.remove('invisible-alert');
                                                         document.getElementById("invalidfalse").classList.add('invisible-alert');
@@ -77,32 +72,32 @@
                                                         document.getElementById("invalidfalse").classList.remove('invisible-alert');
                                                     }
                                                 </script>
-                                            </div>
-                                            <div class="card-img-top-accordion" style="margin-right: 20px;">
-                                                <img src="~/img/obj/child/obj/6-2.png" alt="Водитель автобуса">
-                                                <div class="card-body">
-                                                    <div class="form_radio form_radio2">
-                                                        <input id="form2-radio-1" type="radio" name="radio2" value="1">
-                                                        <label for="form2-radio-1" onclick="bustrue();">Водитель</label>
-                                                    </div>
+                            </div>
+                            <div class="card-img-top-accordion" style="margin-right: 20px;">
+                                <img src="~/img/obj/child/obj/6-2.png" alt="Водитель автобуса">
+                                <div class="card-body">
+                                    <div class="form_radio form_radio2">
+                                        <input id="form2-radio-1" type="radio" name="radio2" value="1">
+                                        <label for="form2-radio-1" onclick="bustrue();">Водитель</label>
+                                    </div>
 
-                                                    <div class="form_radio form_radio2">
-                                                        <input id="form2-radio-2" type="radio" name="radio2" value="2">
-                                                        <label for="form2-radio-2" onclick="busfalse();">Пешеход</label>
-                                                    </div>
+                                    <div class="form_radio form_radio2">
+                                        <input id="form2-radio-2" type="radio" name="radio2" value="2">
+                                        <label for="form2-radio-2" onclick="busfalse();">Пешеход</label>
+                                    </div>
 
-                                                    <div class="form_radio form_radio2">
-                                                        <input id="form2-radio-3" type="radio" name="radio2" value="3">
-                                                        <label for="form2-radio-3" onclick="busfalse();">Пассажир</label>
-                                                    </div>
-                                                </div>
-                                                <div id="bustrue" class="alert alert-success invisible-alert" role="alert">
-                                                    Ответ верный.
-                                                </div>
-                                                <div id="busfalse" class="alert alert-danger invisible-alert" role="alert">
-                                                    Ответ неверный.
-                                                </div>
-                                                <script>
+                                    <div class="form_radio form_radio2">
+                                        <input id="form2-radio-3" type="radio" name="radio2" value="3">
+                                        <label for="form2-radio-3" onclick="busfalse();">Пассажир</label>
+                                    </div>
+                                </div>
+                                <div id="bustrue" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+                                </div>
+                                <div id="busfalse" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+                                </div>
+                                <script>
                                                     function bustrue() {
                                                         document.getElementById("bustrue").classList.remove('invisible-alert');
                                                         document.getElementById("busfalse").classList.add('invisible-alert');
@@ -112,32 +107,32 @@
                                                         document.getElementById("busfalse").classList.remove('invisible-alert');
                                                     }
                                                 </script>
-                                            </div>
-                                            <div class="card-img-top-accordion">
-                                                <img src="~/img/obj/child/obj/6-3.png" alt="Младенец в коляске">
-                                                <div class="card-body">
-                                                    <div class="form_radio form_radio3">
-                                                        <input id="form3-radio-1" type="radio" name="radio3" value="1">
-                                                        <label for="form3-radio-1" onclick="childfalse();">Водитель</label>
-                                                    </div>
+                            </div>
+                            <div class="card-img-top-accordion">
+                                <img src="~/img/obj/child/obj/6-3.png" alt="Младенец в коляске">
+                                <div class="card-body">
+                                    <div class="form_radio form_radio3">
+                                        <input id="form3-radio-1" type="radio" name="radio3" value="1">
+                                        <label for="form3-radio-1" onclick="childfalse();">Водитель</label>
+                                    </div>
 
-                                                    <div class="form_radio form_radio3">
-                                                        <input id="form3-radio-2" type="radio" name="radio3" value="2">
-                                                        <label for="form3-radio-2" onclick="childfalse();">Пешеход</label>
-                                                    </div>
+                                    <div class="form_radio form_radio3">
+                                        <input id="form3-radio-2" type="radio" name="radio3" value="2">
+                                        <label for="form3-radio-2" onclick="childfalse();">Пешеход</label>
+                                    </div>
 
-                                                    <div class="form_radio form_radio3">
-                                                        <input id="form3-radio-3" type="radio" name="radio3" value="3">
-                                                        <label for="form3-radio-3" onclick="childtrue();">Пассажир</label>
-                                                    </div>
-                                                </div>
-                                                <div id="childtrue" class="alert alert-success invisible-alert" role="alert">
-                                                    Ответ верный.
-                                                </div>
-                                                <div id="childfalse" class="alert alert-danger invisible-alert" role="alert">
-                                                    Ответ неверный.
-                                                </div>
-                                                <script>
+                                    <div class="form_radio form_radio3">
+                                        <input id="form3-radio-3" type="radio" name="radio3" value="3">
+                                        <label for="form3-radio-3" onclick="childtrue();">Пассажир</label>
+                                    </div>
+                                </div>
+                                <div id="childtrue" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+                                </div>
+                                <div id="childfalse" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+                                </div>
+                                <script>
                                                     function childtrue() {
                                                         document.getElementById("childtrue").classList.remove('invisible-alert');
                                                         document.getElementById("childfalse").classList.add('invisible-alert');
@@ -147,41 +142,40 @@
                                                         document.getElementById("childfalse").classList.remove('invisible-alert');
                                                     }
                                                 </script>
-                                            </div>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header card-header2" role="tab" id="headingThree">
+                        <h5 class="mb-0">
+                            <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="padding-right: 40px;">
+                                2. Расмотри рисунок и ответь правильно.
+                            </a>
+                        </h5>
+                    </div>
+                    <div class="collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            Расмотри рисунок. Кто из детей верно подготовился к катанию на роликовых коньках?
+                            <img src="~/img/obj/child/obj/8.png"/>
+                            <div class="card-body" style="display: flex; flex-wrap: wrap; text-align: center;">
+                                <div class="form_radio form_radio1">
+                                    <input id="form4-radio-1" type="radio" name="radio4" value="1">
+                                    <label for="form4-radio-1" onclick="rolikigirl();">Девочка</label>
                                 </div>
-                                <div class="card">
-                                    <div class="card-header card-header2" role="tab" id="headingThree">
-                                        <h5 class="mb-0">
-                                            <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="padding-right: 40px;">
-                                                2. Расмотри рисунок и ответь правильно.
-                                            </a>
-                                        </h5>
-                                    </div>
-                                    <div class="collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-                                        <div class="card-body">
-                                            Расмотри рисунок. Кто из детей верно подготовился к катанию на роликовых коньках?
-                                            <img src="~/img/obj/child/obj/8.png" />
-                                            <div class="card-body" style="display: flex; flex-wrap: wrap; text-align: center;">
-                                                <div class="form_radio form_radio1">
-                                                    <input id="form4-radio-1" type="radio" name="radio4" value="1">
-                                                    <label for="form4-radio-1" onclick="rolikigirl();">Девочка</label>
-                                                </div>
 
-                                                <div class="form_radio form_radio1" style="margin-left: 30px;">
-                                                    <input id="form4-radio-2" type="radio" name="radio4" value="2">
-                                                    <label for="form4-radio-2" onclick="rolikiboy();">Мальчик</label>
-                                                </div>
-                                            </div>
-                                            <div id="rolikigirl" class="alert alert-success invisible-alert" role="alert">
-                                                Ответ верный, подготовлена к катанию на роликовых коньках <span>девочка</span>.
-                                            </div>
-                                            <div id="rolikiboy" class="alert alert-danger invisible-alert" role="alert">
-                                                Ответ неверный, <span>мальчик</span> не правильно подготовлен к катанию на роликовых коньках, так как он не имеет
-                                                шлема, наколенников и налокотников.
-                                            </div>
-                                            <script>
+                                <div class="form_radio form_radio1" style="margin-left: 30px;">
+                                    <input id="form4-radio-2" type="radio" name="radio4" value="2">
+                                    <label for="form4-radio-2" onclick="rolikiboy();">Мальчик</label>
+                                </div>
+                            </div>
+                            <div id="rolikigirl" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+                            </div>
+                            <div id="rolikiboy" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+                            </div>
+                            <script>
                                                 function rolikigirl() {
                                                     document.getElementById("rolikigirl").classList.remove('invisible-alert');
                                                     document.getElementById("rolikiboy").classList.add('invisible-alert');
@@ -191,42 +185,40 @@
                                                     document.getElementById("rolikiboy").classList.remove('invisible-alert');
                                                 }
                                             </script>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-header" role="tab" id="headingFour">
-                        <h5 class="mb-0">
-                            <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="padding-right: 40px;">Элементы дороги</a>
-                        </h5>
-                    </div>
-                    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion">
-                        <div class="card-body">
-                            <br />
-                            <img src="~/img/obj/child/move-icon.png" align="left" vspace="15" hspace="15" />
-                            Дорога — инженерное сооружение либо полоса земли. Она предназначена и используется для движения транспортных средств и пешеходов.
-                            Дорога состоит из определенных элементов (проезжая часть, тротуары, трамвайные пути, оббчина, пешеходные и велосипедные дорожки, кювет).
-                            Основной из них — проезжая часть. Еще к элементам дороги относятся островки безопасности, посадочные площадки. Они находятся на проезжей
-                            части и нужны для посадки пассажиров в маршрутное транспортное средство или высадки из него.
-                            <br />
-                            <br />
-                            <img src="~/img/obj/child/question-icon.png" /> <strong>Выполните тестовые задания.</strong>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+<div class="card-header" role="tab" id="headingFour">
+    <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="padding-right: 40px;">Элементы дороги</a>
+    </h5>
+</div>
+<div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion">
+<div class="card-body">
+<br/>
+<img src="~/img/obj/child/move-icon.png" align="left" vspace="15" hspace="15"/>
+Дорога — инженерное сооружение либо полоса земли. Она предназначена и используется для движения транспортных средств и пешеходов.
+К элементам дороги относятся островки безопасности, посадочные площадки.
+<br/>
+<br/>
+<img src="~/img/obj/child/question-icon.png"/> <strong>Выполните тестовые задания.</strong>
 
-                            <br />
-                            <div class="card-header" role="tab" id="headingFive" style="background: transparent; padding: 0;">
-                                <div class="card">
-                                    <div class="card-header card-header3" role="tab" id="headingFive">
-                                        <h5 class="mb-0">
-                                            <a data-toggle="collapse" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive" style="padding-right: 40px;">1. Дополни фразы необходимыми словами. Соедени правильно левые и правые плашки.</a>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseFive" class="collapse show" role="tabpanel" aria-labelledby="headingFive" data-parent="#accordion">
-                                        <div class="card-body">
-                                            <style>
+<br/>
+<div class="card-header" role="tab" id="headingFive" style="background: transparent; padding: 0;">
+<div class="card">
+    <div class="card-header card-header3" role="tab" id="headingFive">
+        <h5 class="mb-0">
+            <a data-toggle="collapse" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive" style="padding-right: 40px;">1. Дополни фразы необходимыми словами. Соедени правильно левые и правые плашки.</a>
+        </h5>
+    </div>
+    <div id="collapseFive" class="collapse show" role="tabpanel" aria-labelledby="headingFive" data-parent="#accordion">
+        <div class="card-body">
+            <style>
                                                 .card-body-self {
                                                     display: flex;
                                                     margin-bottom: 30px;
@@ -249,7 +241,7 @@
                                                 }
                                             </style>
 
-                                            <script>
+            <script>
                                                 function allowDrop(ev) {
                                                     ev.preventDefault();
                                                 }
@@ -270,46 +262,46 @@
                                                     ev.target.appendChild(document.getElementById(data));
                                                 }
                                             </script>
-                                            <div class="card-body-self">
-                                                <div id="div1" class="card-body-self-right col-sm-4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                                <h5 class="card-body-self-left"><strong>Проезжая часть -</strong> элемент дороги для движения ...</h5>
-                                            </div>
-                                            <div class="card-body-self">
-                                                <div id="div2" class="card-body-self-right col-sm-4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                                <h5 class="card-body-self-left"><strong>Пешеходня дорожка -</strong> элемент дороги для движения пешеходов. Она обозначена дорожным знаком ...</h5>
+            <div class="card-body-self">
+                <div id="div1" class="card-body-self-right col-sm-4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <h5 class="card-body-self-left"><strong>Проезжая часть -</strong> элемент дороги для движения ...</h5>
+            </div>
+            <div class="card-body-self">
+                <div id="div2" class="card-body-self-right col-sm-4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <h5 class="card-body-self-left"><strong>Пешеходня дорожка -</strong> элемент дороги для движения пешеходов. Она обозначена дорожным знаком ...</h5>
 
-                                            </div>
-                                            <div class="card-body-self">
-                                                <div id="div3" class="card-body-self-right col-sm-4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                                <h5 class="card-body-self-left"><strong>Велосипедная дорожка -</strong> обособленная дорога либо выделенный линией элемент дороги для движения ...</h5>
+            </div>
+            <div class="card-body-self">
+                <div id="div3" class="card-body-self-right col-sm-4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <h5 class="card-body-self-left"><strong>Велосипедная дорожка -</strong> обособленная дорога либо выделенный линией элемент дороги для движения ...</h5>
 
-                                            </div>
-                                            <div class="card-body-self">
-                                                <div id="div4" class="card-body-self-right col-sm-4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                                <h5 class="card-body-self-left"><strong>Тротуар -</strong> элемент дороги для движения ...</h5>
-                                            </div>
+            </div>
+            <div class="card-body-self">
+                <div id="div4" class="card-body-self-right col-sm-4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <h5 class="card-body-self-left"><strong>Тротуар -</strong> элемент дороги для движения ...</h5>
+            </div>
 
-                                            <div id="divtrue" class="alert alert-success invisible-alert" role="alert">
-                                                Ячейки сопоставлены верно.
-                                            </div>
-                                            <div id="divfalse" class="alert alert-danger invisible-alert" role="alert">
-                                                Ячейки сопоставлены неверно.
-                                            </div>
-                                            <hr />
-                                            <div class="card">
-                                                <div class="card-header" style="background: transparent;">
-                                                    Перетащите слова из списка ниже, в ячейки напротив подходящего текста
-                                                </div>
-                                                <div class="card-body" id="div5" ondrop="dropdiv(event)" ondragover="allowDrop(event)">
-                                                    <h5 class="card-title" draggable="true" ondragstart="drag(event)" id="drag1">1. велосипедов</h5>
-                                                    <h5 class="card-title" draggable="true" ondragstart="drag(event)" id="drag2">2. пешеходов</h5>
-                                                    <h5 class="card-title" draggable="true" ondragstart="drag(event)" id="drag3">3. транспортных средств</h5>
-                                                    <h5 class="card-title" draggable="true" ondragstart="drag(event)" id="drag4">4. Пешеходная дорожка</h5>
-                                                </div>
-                                            </div>
-                                            <br />
-                                            <a class="btn btn-primary text-white" onclick="dragcheck();">Проверить ответ</a>
-                                            <script>
+            <div id="divtrue" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+            </div>
+            <div id="divfalse" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+            </div>
+            <hr/>
+            <div class="card">
+                <div class="card-header" style="background: transparent;">
+                    Перетащите слова из списка ниже, в ячейки напротив подходящего текста
+                </div>
+                <div class="card-body" id="div5" ondrop="dropdiv(event)" ondragover="allowDrop(event)">
+                    <h5 class="card-title" draggable="true" ondragstart="drag(event)" id="drag1">1. велосипедов</h5>
+                    <h5 class="card-title" draggable="true" ondragstart="drag(event)" id="drag2">2. пешеходов</h5>
+                    <h5 class="card-title" draggable="true" ondragstart="drag(event)" id="drag3">3. транспортных средств</h5>
+                    <h5 class="card-title" draggable="true" ondragstart="drag(event)" id="drag4">4. Пешеходная дорожка</h5>
+                </div>
+            </div>
+            <br/>
+            <a class="btn btn-primary text-white" onclick="dragcheck();">Проверить ответ</a>
+            <script>
                                                 function dragcheck() {
                                                     console.log("Chek");
                                                     if (document.querySelector('#div1').textContent == "3. транспортных средств") {
@@ -340,45 +332,45 @@
                                                     }
                                                 }
                                             </script>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header card-header3" role="tab" id="headingSix">
-                                        <h5 class="mb-0">
-                                            <a class="collapsed" data-toggle="collapse" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix" style="padding-right: 40px;">2. Расмотри рисунок и ответь правильно.</a>
-                                        </h5>
-                                    </div>
-                                    <div class="collapse" id="collapseSix" role="tabpanel" aria-labelledby="headingSix" data-parent="#accordion">
-                                        <div class="card-body">
-                                            Друзья Маша и Коля вышли на улицу. Они решили пройтись пешком. По какой части дороги правильно и безопасно
-                                            двигаться? Выбери правильный ответ.
-                                            <img src="~/img/obj/child/obj/9.png" />
-                                            <div class="card-body" style="display: flex; flex-wrap: wrap; text-align: center;">
-                                                <div class="form_radio form_radio6">
-                                                    <input id="form6-radio-1" type="radio" name="radio6" value="1">
-                                                    <label for="form6-radio-1" onclick="friendtrotuar();">По тротуару</label>
-                                                </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header card-header3" role="tab" id="headingSix">
+        <h5 class="mb-0">
+            <a class="collapsed" data-toggle="collapse" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix" style="padding-right: 40px;">2. Расмотри рисунок и ответь правильно.</a>
+        </h5>
+    </div>
+    <div class="collapse" id="collapseSix" role="tabpanel" aria-labelledby="headingSix" data-parent="#accordion">
+        <div class="card-body">
+            Друзья Маша и Коля вышли на улицу. Они решили пройтись пешком. По какой части дороги правильно и безопасно
+            двигаться? Выбери правильный ответ.
+            <img src="~/img/obj/child/obj/9.png"/>
+            <div class="card-body" style="display: flex; flex-wrap: wrap; text-align: center;">
+                <div class="form_radio form_radio6">
+                    <input id="form6-radio-1" type="radio" name="radio6" value="1">
+                    <label for="form6-radio-1" onclick="friendtrotuar();">По тротуару</label>
+                </div>
 
-                                                <div class="form_radio form_radio6" style="margin-left: 30px;">
-                                                    <input id="form6-radio-2" type="radio" name="radio6" value="2">
-                                                    <label for="form6-radio-2" onclick="friendall();">В любом месте</label>
-                                                </div>
-                                                <div class="form_radio form_radio6" style="margin-left: 30px;">
-                                                    <input id="form6-radio-3" type="radio" name="radio6" value="3">
-                                                    <label for="form6-radio-3" onclick="friendvelo();">По велосипедной дорожке</label>
-                                                </div>
-                                            </div>
-                                            <div id="friendtrotuar" class="alert alert-success invisible-alert" role="alert">
-                                                Ответ верный, по <span>тротуару</span>.
-                                            </div>
-                                            <div id="friendall" class="alert alert-danger invisible-alert" role="alert">
-                                                Ответ неверный.
-                                            </div>
-                                            <div id="friendvelo" class="alert alert-danger invisible-alert" role="alert">
-                                                Ответ неверный.
-                                            </div>
-                                            <script>
+                <div class="form_radio form_radio6" style="margin-left: 30px;">
+                    <input id="form6-radio-2" type="radio" name="radio6" value="2">
+                    <label for="form6-radio-2" onclick="friendall();">В любом месте</label>
+                </div>
+                <div class="form_radio form_radio6" style="margin-left: 30px;">
+                    <input id="form6-radio-3" type="radio" name="radio6" value="3">
+                    <label for="form6-radio-3" onclick="friendvelo();">По велосипедной дорожке</label>
+                </div>
+            </div>
+            <div id="friendtrotuar" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+            </div>
+            <div id="friendall" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+            </div>
+            <div id="friendvelo" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+            </div>
+            <script>
                                                 function friendtrotuar() {
                                                     document.getElementById("friendtrotuar").classList.remove('invisible-alert');
                                                     document.getElementById("friendall").classList.add('invisible-alert');
@@ -395,51 +387,51 @@
                                                     document.getElementById("friendvelo").classList.remove('invisible-alert');
                                                 }
                                             </script>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header card-header3" role="tab" id="headingSeven">
-                                        <h5 class="mb-0">
-                                            <a class="collapsed" data-toggle="collapse" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven" style="padding-right: 40px;">3. Расмотри рисунок и ответь парвильно.</a>
-                                        </h5>
-                                    </div>
-                                    <div class="collapse" id="collapseSeven" role="tabpanel" aria-labelledby="headingSeven" data-parent="#accordion">
-                                        <div class="card-body">
-                                            Рассмотри рисунок. По какой части дороги движуться дети? Выберите правильный ответ.
-                                            <img src="~/img/obj/child/obj/10.jpg" />
-                                            <div class="card-body" style="display: flex; flex-wrap: wrap; text-align: center;">
-                                                <div class="form_radio form_radio7">
-                                                    <input id="form7-radio-1" type="radio" name="radio7" value="1">
-                                                    <label for="form7-radio-1" onclick="childpeshehod();">По пешеходной дорожке</label>
-                                                </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header card-header3" role="tab" id="headingSeven">
+        <h5 class="mb-0">
+            <a class="collapsed" data-toggle="collapse" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven" style="padding-right: 40px;">3. Расмотри рисунок и ответь парвильно.</a>
+        </h5>
+    </div>
+    <div class="collapse" id="collapseSeven" role="tabpanel" aria-labelledby="headingSeven" data-parent="#accordion">
+        <div class="card-body">
+            Рассмотри рисунок. По какой части дороги движуться дети? Выберите правильный ответ.
+            <img src="~/img/obj/child/obj/10.jpg"/>
+            <div class="card-body" style="display: flex; flex-wrap: wrap; text-align: center;">
+                <div class="form_radio form_radio7">
+                    <input id="form7-radio-1" type="radio" name="radio7" value="1">
+                    <label for="form7-radio-1" onclick="childpeshehod();">По пешеходной дорожке</label>
+                </div>
 
-                                                <div class="form_radio form_radio7" style="margin-left: 30px;">
-                                                    <input id="form7-radio-2" type="radio" name="radio7" value="2">
-                                                    <label for="form7-radio-2" onclick="childvelo();">По велосипедной дорожке</label>
-                                                </div>
-                                                <div class="form_radio form_radio7" style="margin-left: 30px;">
-                                                    <input id="form7-radio-3" type="radio" name="radio7" value="3">
-                                                    <label for="form7-radio-3" onclick="childproezjaya();">По проезжей части</label>
-                                                </div>
-                                                <div class="form_radio form_radio7" style="margin-left: 30px;">
-                                                    <input id="form7-radio-4" type="radio" name="radio7" value="4">
-                                                    <label for="form7-radio-4" onclick="childprehod();">По пешеходному переходу</label>
-                                                </div>
-                                            </div>
-                                            <div id="childpeshehod" class="alert alert-danger invisible-alert" role="alert">
-                                                Ответ неверный.
-                                            </div>
-                                            <div id="childvelo" class="alert alert-danger invisible-alert" role="alert">
-                                                Ответ неверный.
-                                            </div>
-                                            <div id="childproezjaya" class="alert alert-danger invisible-alert" role="alert">
-                                                Ответ неверный.
-                                            </div>
-                                            <div id="childprehod" class="alert alert-success invisible-alert" role="alert">
-                                                Ответ верный.
-                                            </div>
-                                            <script>
+                <div class="form_radio form_radio7" style="margin-left: 30px;">
+                    <input id="form7-radio-2" type="radio" name="radio7" value="2">
+                    <label for="form7-radio-2" onclick="childvelo();">По велосипедной дорожке</label>
+                </div>
+                <div class="form_radio form_radio7" style="margin-left: 30px;">
+                    <input id="form7-radio-3" type="radio" name="radio7" value="3">
+                    <label for="form7-radio-3" onclick="childproezjaya();">По проезжей части</label>
+                </div>
+                <div class="form_radio form_radio7" style="margin-left: 30px;">
+                    <input id="form7-radio-4" type="radio" name="radio7" value="4">
+                    <label for="form7-radio-4" onclick="childprehod();">По пешеходному переходу</label>
+                </div>
+            </div>
+            <div id="childpeshehod" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+            </div>
+            <div id="childvelo" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+            </div>
+            <div id="childproezjaya" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+            </div>
+            <div id="childprehod" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+            </div>
+            <script>
                                                 function childpeshehod() {
                                                     document.getElementById("childpeshehod").classList.remove('invisible-alert');
                                                     document.getElementById("childvelo").classList.add('invisible-alert');
@@ -465,88 +457,88 @@
                                                     document.getElementById("childprehod").classList.remove('invisible-alert');
                                                 }
                                             </script>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header card-header3" role="tab" id="headingEight">
-                                        <h5 class="mb-0">
-                                            <a class="collapsed" data-toggle="collapse" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight" style="padding-right: 40px;">4. Прочитай/прослушай.</a>
-                                        </h5>
-                                    </div>
-                                    <div class="collapse" id="collapseEight" role="tabpanel" aria-labelledby="headingEight" data-parent="#accordion">
-                                        <div class="card-body">
-                                            Прочитай или прослушай стихотворение Я. Пишумова "Островок безопасности".
-                                            <img src="~/img/obj/child/obj/11.jpg" />
-                                            <br />
-                                            <br />
-                                            <img src="~/img/obj/child/voice-icon.png" />
-                                            <audio controls style="width: 85%; vertical-align: middle;">
-                                                <source src="~/img/obj/child/obj/1.ogg" type="audio/ogg">
-                                                <source src="~/img/obj/child/obj/1.mp3" type="audio/mpeg">
-                                                Ваш браузер не поддерживает функцию прослушивания.
-                                            </audio>
-                                            <br />
-                                            <div class="row">
-                                                <div class="col-sm text-justify">
-                                                    Я попал на островок,
-                                                    А вокруг шумит поток.
-                                                    Нет, не бурная река
-                                                    Мчится мимо островка.
-                                                    Не придут на остров в гости
-                                                    Корабли из разных стран —
-                                                    Необычный этот остров,
-                                                    Здесь не море-океан.
-                                                    Тут волною не окатит,
-                                                    Не закинешь тут сетей.
-                                                </div>
-                                                <div class="col-sm text-justify">
-                                                    Нету острова на карте —
-                                                    Он на улице моей!
-                                                    Я на улице ОДИН,
-                                                    А вокруг поток машин!
-                                                    Как же я попал на остров?
-                                                    Все случилось очень просто:
-                                                    Хотел дорогу перейти,
-                                                    Но застрял на полпути.
-                                                    Чтоб меня не сбили с ног,
-                                                    Встал сюда на островок!
-                                                </div>
-                                            </div>
-                                            <br />
-                                            Ответьте на вопросы.
-                                            <div class="form-group">
-                                                <label>1) На каком островке стоит девочка?</label>
-                                                <input type="text" class="form-control" id="ostrovokbezopasnostyoneinput" placeholder="На каком островке стоит девочка?">
-                                                <div id="ostrovokbezopasnostyonetrue" class="alert alert-success invisible-alert" role="alert">
-                                                    Ответ верный.
-                                                </div>
-                                                <div id="ostrovokbezopasnostyonefalse" class="alert alert-danger invisible-alert" role="alert">
-                                                    Ответ неверный. Правильный ответ: островок безопасности.
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>2) Где находится островок, о котором говорится в стихотворении?</label>
-                                                <input id="ostrovokbezopasnostytwoinput" type="text" class="form-control" placeholder="Где находится островок, о котором говорится в стихотворении?">
-                                                <div id="ostrovokbezopasnostytwotrue" class="alert alert-success invisible-alert" role="alert">
-                                                    Ответ верный.
-                                                </div>
-                                                <div id="ostrovokbezopasnostytwofalse" class="alert alert-danger invisible-alert" role="alert">
-                                                    Ответ неверный. Правильный ответ: на улице.
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>3) Объясни, зачем на дорогах нужен островок безопасности.</label>
-                                                <input id="ostrovokbezopasnostythreeinput" type="text" class="form-control" placeholder="Объясни, зачем на дорогах нужен островок безопасности.">
-                                                <div id="ostrovokbezopasnostythreetrue" class="alert alert-success invisible-alert" role="alert">
-                                                    Ответ верный.
-                                                </div>
-                                                <div id="ostrovokbezopasnostythreefalse" class="alert alert-danger invisible-alert" role="alert">
-                                                    Ответ неверный. Правильный ответ: для безопасности при переходе.
-                                                </div>
-                                            </div>
-                                            <a class="btn btn-success text-white" onclick="checkinput();">Проверить ответы</a>
-                                            <script>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header card-header3" role="tab" id="headingEight">
+        <h5 class="mb-0">
+            <a class="collapsed" data-toggle="collapse" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight" style="padding-right: 40px;">4. Прочитай/прослушай.</a>
+        </h5>
+    </div>
+    <div class="collapse" id="collapseEight" role="tabpanel" aria-labelledby="headingEight" data-parent="#accordion">
+        <div class="card-body">
+            Прочитай или прослушай стихотворение Я. Пишумова "Островок безопасности".
+            <img src="~/img/obj/child/obj/11.jpg"/>
+            <br/>
+            <br/>
+            <img src="~/img/obj/child/voice-icon.png"/>
+            <audio controls style="width: 85%; vertical-align: middle;">
+                <source src="~/img/obj/child/obj/1.ogg" type="audio/ogg">
+                <source src="~/img/obj/child/obj/1.mp3" type="audio/mpeg">
+                Ваш браузер не поддерживает функцию прослушивания.
+            </audio>
+            <br/>
+            <div class="row">
+                <div class="col-sm text-justify">
+                    Я попал на островок,
+                    А вокруг шумит поток.
+                    Нет, не бурная река
+                    Мчится мимо островка.
+                    Не придут на остров в гости
+                    Корабли из разных стран —
+                    Необычный этот остров,
+                    Здесь не море-океан.
+                    Тут волною не окатит,
+                    Не закинешь тут сетей.
+                </div>
+                <div class="col-sm text-justify">
+                    Нету острова на карте —
+                    Он на улице моей!
+                    Я на улице ОДИН,
+                    А вокруг поток машин!
+                    Как же я попал на остров?
+                    Все случилось очень просто:
+                    Хотел дорогу перейти,
+                    Но застрял на полпути.
+                    Чтоб меня не сбили с ног,
+                    Встал сюда на островок!
+                </div>
+            </div>
+            <br/>
+            Ответьте на вопросы.
+            <div class="form-group">
+                <label>1) На каком островке стоит девочка?</label>
+                <input type="text" class="form-control" id="ostrovokbezopasnostyoneinput" placeholder="На каком островке стоит девочка?">
+                <div id="ostrovokbezopasnostyonetrue" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+                </div>
+                <div id="ostrovokbezopasnostyonefalse" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>2) Где находится островок, о котором говорится в стихотворении?</label>
+                <input id="ostrovokbezopasnostytwoinput" type="text" class="form-control" placeholder="Где находится островок, о котором говорится в стихотворении?">
+                <div id="ostrovokbezopasnostytwotrue" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+                </div>
+                <div id="ostrovokbezopasnostytwofalse" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>3) Объясни, зачем на дорогах нужен островок безопасности.</label>
+                <input id="ostrovokbezopasnostythreeinput" type="text" class="form-control" placeholder="Объясни, зачем на дорогах нужен островок безопасности.">
+                <div id="ostrovokbezopasnostythreetrue" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+                </div>
+                <div id="ostrovokbezopasnostythreefalse" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+                </div>
+            </div>
+            <a class="btn btn-success text-white" onclick="checkinput();">Проверить ответы</a>
+            <script>
                                                 function checkinput() {
                                                     if (document.getElementById('ostrovokbezopasnostyoneinput').value == "островок безопасности") {
                                                         document.getElementById("ostrovokbezopasnostyonetrue").classList.remove('invisible-alert');
@@ -576,53 +568,49 @@
                                             </script>
 
 
-                                            <br />
-                                            <br />
-                                            <img src="~/img/obj/child/move-icon.png" />
-                                            <br />
-                                            Островок безопасности — элемент дороги. Он выделяется на пешеходных переходах с
-                                            помощью небольшого возвышения над проезжей частью или линиями.
-                                            Островок безопасности предназначен для остановки пешеходов при переходе проезжей части.
-                                            Например, начал пешеход переходить дорогу на зеленый сигнал светофора,
-                                            но не успел завершить движение - загорелся красный. На островке безопасности следует подождать,
-                                            когда сигнал снова станет зеленым, и продолжить движение.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header card-header3" role="tab" id="headingNine">
-                                        <h5 class="mb-0">
-                                            <a class="collapsed" data-toggle="collapse" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine" style="padding-right: 40px;">5. Расмотри рисунок и ответь правильно.</a>
-                                        </h5>
-                                    </div>
-                                    <div class="collapse" id="collapseNine" role="tabpanel" aria-labelledby="headingNine" data-parent="#accordion">
-                                        <div class="card-body">
-                                            На дороге за городом отсутсвует тротуар. Как безопасно двигаться в такой местности?
-                                            Расмотри рисунок. Кто из детей правильно идет по дороге за городом?
-                                            <br />
-                                            <img src="~/img/obj/child/obj/12.jpg" />
-                                            <div class="card-body" style="display: flex; flex-wrap: wrap; text-align: center;">
-                                                <div class="form_radio form_radio9">
-                                                    <input id="form9-radio-1" type="radio" name="radio9" value="1">
-                                                    <label for="form9-radio-1" onclick="boysshortfalse();">Мальчик в синей кофте</label>
-                                                </div>
+            <br/>
+            <br/>
+            <img src="~/img/obj/child/move-icon.png"/>
+            <br/>
+            Островок безопасности — элемент дороги.
+            Он предназначен для остановки пешеходов при переходе проезжей части.
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header card-header3" role="tab" id="headingNine">
+        <h5 class="mb-0">
+            <a class="collapsed" data-toggle="collapse" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine" style="padding-right: 40px;">5. Расмотри рисунок и ответь правильно.</a>
+        </h5>
+    </div>
+    <div class="collapse" id="collapseNine" role="tabpanel" aria-labelledby="headingNine" data-parent="#accordion">
+        <div class="card-body">
+            На дороге за городом отсутсвует тротуар. Как безопасно двигаться в такой местности?
+            Расмотри рисунок. Кто из детей правильно идет по дороге за городом?
+            <br/>
+            <img src="~/img/obj/child/obj/12.jpg"/>
+            <div class="card-body" style="display: flex; flex-wrap: wrap; text-align: center;">
+                <div class="form_radio form_radio9">
+                    <input id="form9-radio-1" type="radio" name="radio9" value="1">
+                    <label for="form9-radio-1" onclick="boysshortfalse();">Мальчик в синей кофте</label>
+                </div>
 
-                                                <div class="form_radio form_radio9" style="margin-left: 30px;">
-                                                    <input id="form9-radio-2" type="radio" name="radio9" value="2">
-                                                    <label for="form9-radio-2" onclick="boysshortfalse();">Мальчик в желтой кофте</label>
-                                                </div>
-                                                <div class="form_radio form_radio9" style="margin-left: 30px;">
-                                                    <input id="form9-radio-3" type="radio" name="radio9" value="3">
-                                                    <label for="form9-radio-3" onclick="boysshorttrue();">Оба мальчика</label>
-                                                </div>
-                                            </div>
-                                            <div id="boysshorttrue" class="alert alert-success invisible-alert" role="alert">
-                                                Ответ верный.
-                                            </div>
-                                            <div id="boysshortfalse" class="alert alert-danger invisible-alert" role="alert">
-                                                Ответ неверный.
-                                            </div>
-                                            <script>
+                <div class="form_radio form_radio9" style="margin-left: 30px;">
+                    <input id="form9-radio-2" type="radio" name="radio9" value="2">
+                    <label for="form9-radio-2" onclick="boysshortfalse();">Мальчик в желтой кофте</label>
+                </div>
+                <div class="form_radio form_radio9" style="margin-left: 30px;">
+                    <input id="form9-radio-3" type="radio" name="radio9" value="3">
+                    <label for="form9-radio-3" onclick="boysshorttrue();">Оба мальчика</label>
+                </div>
+            </div>
+            <div id="boysshorttrue" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+            </div>
+            <div id="boysshortfalse" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+            </div>
+            <script>
                                                 function boysshorttrue() {
                                                     document.getElementById("boysshorttrue").classList.remove('invisible-alert');
                                                     document.getElementById("boysshortfalse").classList.add('invisible-alert');
@@ -632,94 +620,94 @@
                                                     document.getElementById("boysshortfalse").classList.remove('invisible-alert');
                                                 }
                                             </script>
-                                            <br />
-                                            <img src="~/img/obj/child/question-icon.png" />
-                                            <br />
-                                            За городом пешеходы должны двигаться по левому краю проезжей части или по обочине навстречу транспортным средствам.
-                                            Так пешеходы издали видят приближающиейся автомобили.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <br/>
+            <img src="~/img/obj/child/question-icon.png"/>
+            <br/>
+            За городом пешеходы должны двигаться по левому краю проезжей части или по обочине навстречу транспортным средствам.
+            Так пешеходы издали видят приближающиейся автомобили.
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+    <div class="card-header" role="tab" id="headingTen">
+        <h5 class="mb-0">
+            <a class="collapsed" data-toggle="collapse" href="#collapseTen" aria-expanded="false" aria-controls="collapseTen" style="padding-right: 40px;">Транспортные средства</a>
+        </h5>
+    </div>
+    <div id="collapseTen" class="collapse" role="tabpanel" aria-labelledby="headingTen" data-parent="#accordion">
+        <div class="card-body">
+            Прочитай или прослушай стихотворение Я. Пишумова "Машины".
+            <br/>
+            <img src="~/img/obj/child/voice-icon.png"/>
+            <audio controls style="width: 85%; vertical-align: middle;">
+                <source src="~/img/obj/child/obj/2.ogg" type="audio/ogg">
+                <source src="~/img/obj/child/obj/2.mp3" type="audio/mpeg">
+                Ваш браузер не поддерживает функцию прослушивания.
+            </audio>
+            <br/>
+            <div class="row">
+                <div class="col-sm text-justify">
+                    На улице нашей
+                    Машины, машины.
+                    Машины малютки,
+                    Машины большие.
+                    Эй, машины, полный ход!
+                    Я примерный пешеход: '
+                    Торопиться не люблю,
+                    Вам дорогу уступлю.
                 </div>
-                <div class="card">
-                    <div class="card-header" role="tab" id="headingTen">
-                        <h5 class="mb-0">
-                            <a class="collapsed" data-toggle="collapse" href="#collapseTen" aria-expanded="false" aria-controls="collapseTen" style="padding-right: 40px;">Транспортные средства</a>
-                        </h5>
-                    </div>
-                    <div id="collapseTen" class="collapse" role="tabpanel" aria-labelledby="headingTen" data-parent="#accordion">
-                        <div class="card-body">
-                            Прочитай или прослушай стихотворение Я. Пишумова "Машины".
-                            <br />
-                            <img src="~/img/obj/child/voice-icon.png" />
-                            <audio controls style="width: 85%; vertical-align: middle;">
-                                <source src="~/img/obj/child/obj/2.ogg" type="audio/ogg">
-                                <source src="~/img/obj/child/obj/2.mp3" type="audio/mpeg">
-                                Ваш браузер не поддерживает функцию прослушивания.
-                            </audio>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm text-justify">
-                                    На улице нашей
-                                    Машины, машины.
-                                    Машины малютки,
-                                    Машины большие.
-                                    Эй, машины, полный ход!
-                                    Я примерный пешеход: '
-                                    Торопиться не люблю,
-                                    Вам дорогу уступлю.
-                                </div>
-                                <div class="col-sm text-justify">
-                                    Спешат легковые,
-                                    Фырчат грузовые -
-                                    Торопятся, мчатся,
-                                    Как будто живые.
-                                    У каждой машины
-                                    Дела и заботы.
-                                    Машины выходят
-                                    С утра на работу.
-                                </div>
-                            </div>
-                            <br />
-                            В обиходе транспортные средства (автомобили) часто называют машинами. Ответь на вопросы.
-                            <div class="form-group">
-                                <label>1) Почему автор сравнил транспортные средства с живыми существами?</label>
-                                <input type="text" class="form-control" placeholder="Почему автор сравнил транспортные средства с живыми существами?">
-                                <div id="careone" class="alert alert-info invisible-alert" role="alert">
-                                    Автор сравнил транспортные средства с живыми существами потому, что они спешат, работают.
-                                </div>
-                                <a class="btn btn-success text-white" onclick="ts();">Проверить ответ</a>
-                                <script>
+                <div class="col-sm text-justify">
+                    Спешат легковые,
+                    Фырчат грузовые -
+                    Торопятся, мчатся,
+                    Как будто живые.
+                    У каждой машины
+                    Дела и заботы.
+                    Машины выходят
+                    С утра на работу.
+                </div>
+            </div>
+            <br/>
+            В обиходе транспортные средства (автомобили) часто называют машинами. Ответь на вопросы.
+            <div class="form-group">
+                <label>1) Почему автор сравнил транспортные средства с живыми существами?</label>
+                <input type="text" class="form-control" placeholder="Почему автор сравнил транспортные средства с живыми существами?">
+                <div id="careone" class="alert alert-info invisible-alert" role="alert">
+                    Автор сравнил транспортные средства с живыми существами потому, что они спешат, работают.
+                </div>
+                <a class="btn btn-success text-white" onclick="ts();">Проверить ответ</a>
+                <script>
                                     function ts() {
                                         document.getElementById("careone").classList.remove('invisible-alert');
                                     }
                                 </script>
-                            </div>
-                            <div class="form-group">
-                                <label>2) На какую работу "выходят" машины? Выбери лишнее.</label>
-                                <div class="form_radio form_radio10">
-                                    <input id="form10-radio-1" type="radio" name="radio10" value="1">
-                                    <label for="form10-radio-1" onclick="carspas();">Перевозят пассажиров</label>
-                                </div>
-                                <div class="form_radio form_radio10">
-                                    <input id="form10-radio-2" type="radio" name="radio10" value="2">
-                                    <label for="form10-radio-2" onclick="carsgruz();">Перевозят грузы</label>
-                                </div>
-                                <div class="form_radio form_radio10">
-                                    <input id="form10-radio-3" type="radio" name="radio10" value="3">
-                                    <label for="form10-radio-3" onclick="carspogorodu();">Просто катаются по городу</label>
-                                </div>
-                            </div>
-                            <div id="caretwotrue" class="alert alert-success invisible-alert" role="alert">
-                                Ответ верный.
-                            </div>
-                            <div id="cartwofalse" class="alert alert-danger invisible-alert" role="alert">
-                                Ответ неверный.
-                            </div>
-                            <script>
+            </div>
+            <div class="form-group">
+                <label>2) На какую работу "выходят" машины? Выбери лишнее.</label>
+                <div class="form_radio form_radio10">
+                    <input id="form10-radio-1" type="radio" name="radio10" value="1">
+                    <label for="form10-radio-1" onclick="carspas();">Перевозят пассажиров</label>
+                </div>
+                <div class="form_radio form_radio10">
+                    <input id="form10-radio-2" type="radio" name="radio10" value="2">
+                    <label for="form10-radio-2" onclick="carsgruz();">Перевозят грузы</label>
+                </div>
+                <div class="form_radio form_radio10">
+                    <input id="form10-radio-3" type="radio" name="radio10" value="3">
+                    <label for="form10-radio-3" onclick="carspogorodu();">Просто катаются по городу</label>
+                </div>
+            </div>
+            <div id="caretwotrue" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+            </div>
+            <div id="cartwofalse" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+            </div>
+            <script>
                                 function carspas() {
                                     document.getElementById("caretwotrue").classList.add('invisible-alert');
                                     document.getElementById("cartwofalse").classList.remove('invisible-alert');
@@ -733,36 +721,36 @@
                                     document.getElementById("cartwofalse").classList.add('invisible-alert');
                                 }
                             </script>
-                            <br />
-                            <div class="card-header" role="tab" id="headingEleven" style="background: transparent; padding: 0;">
-                                <div class="card">
-                                    <div class="card-header card-header4" role="tab" id="headingEleven">
-                                        <h5 class="mb-0">
-                                            <a class="collapsed" data-toggle="collapse" href="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven" style="padding-right: 40px;">2. Расмотри рисунок и ответь парвильно.</a>
-                                        </h5>
-                                    </div>
-                                    <div class="collapse" id="collapseEleven" role="tabpanel" aria-labelledby="headingEleven" data-parent="#accordion">
-                                        <div class="card-body">
-                                            Прочитай диалог подруг. Выбери имя девочки, которая живет в Минске.
-                                            <img src="~/img/obj/child/obj/22.png" />
-                                            <div class="card-body" style="display: flex; flex-wrap: wrap; text-align: center;">
-                                                <div class="form_radio form_radio10">
-                                                    <input id="form11-radio-1" type="radio" name="radio11" value="1">
-                                                    <label for="form11-radio-1" onclick="girlminskmasha();">Маша</label>
-                                                </div>
+            <br/>
+            <div class="card-header" role="tab" id="headingEleven" style="background: transparent; padding: 0;">
+                <div class="card">
+                    <div class="card-header card-header4" role="tab" id="headingEleven">
+                        <h5 class="mb-0">
+                            <a class="collapsed" data-toggle="collapse" href="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven" style="padding-right: 40px;">2. Расмотри рисунок и ответь парвильно.</a>
+                        </h5>
+                    </div>
+                    <div class="collapse" id="collapseEleven" role="tabpanel" aria-labelledby="headingEleven" data-parent="#accordion">
+                        <div class="card-body">
+                            Прочитай диалог подруг. Выбери имя девочки, которая живет в Минске.
+                            <img src="~/img/obj/child/obj/22.png"/>
+                            <div class="card-body" style="display: flex; flex-wrap: wrap; text-align: center;">
+                                <div class="form_radio form_radio10">
+                                    <input id="form11-radio-1" type="radio" name="radio11" value="1">
+                                    <label for="form11-radio-1" onclick="girlminskmasha();">Маша</label>
+                                </div>
 
-                                                <div class="form_radio form_radio10" style="margin-left: 30px;">
-                                                    <input id="form11-radio-2" type="radio" name="radio11" value="2">
-                                                    <label for="form11-radio-2" onclick="girlminskmashakaty();">Катя</label>
-                                                </div>
-                                            </div>
-                                            <div id="girlminsktrue" class="alert alert-success invisible-alert" role="alert">
-                                                Ответ верный.
-                                            </div>
-                                            <div id="girlminskfalse" class="alert alert-danger invisible-alert" role="alert">
-                                                Ответ неверный.
-                                            </div>
-                                            <script>
+                                <div class="form_radio form_radio10" style="margin-left: 30px;">
+                                    <input id="form11-radio-2" type="radio" name="radio11" value="2">
+                                    <label for="form11-radio-2" onclick="girlminskmashakaty();">Катя</label>
+                                </div>
+                            </div>
+                            <div id="girlminsktrue" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+                            </div>
+                            <div id="girlminskfalse" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+                            </div>
+                            <script>
                                                 function girlminskmashakaty() {
                                                     document.getElementById("girlminsktrue").classList.remove('invisible-alert');
                                                     document.getElementById("girlminskfalse").classList.add('invisible-alert');
@@ -772,78 +760,72 @@
                                                     document.getElementById("girlminskfalse").classList.remove('invisible-alert');
                                                 }
                                             </script>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <br />
-                            <img src="~/img/obj/child/move-icon.png" />
-                            <br />
-                            Существует подземная электрическая железная дорога,
-                            предназначенная для перевозки пассажиров, — метрополитен (метро).
-                            В большом городе этот вид транспорта незаменим:
-                            он самый скоростной. В Беларуси метрополитен построен только в столице —
-                            Минске. Тысячи минчан и гостей города каждый день пользуются его услугами.
-                            В метро светло, просторно, комфортно, не бывает пробок и тепло даже зимой.
-                            К тому же метро — экологически чистый вид транспорта.
                         </div>
                     </div>
                 </div>
+            </div>
+            <br/>
+            <img src="~/img/obj/child/move-icon.png"/>
+            <br/>
+            В Беларуси метрополитен построен только в столице — Минске.
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header" role="tab" id="headingTwelve">
+        <h5 class="mb-0">
+            <a class="collapsed" data-toggle="collapse" href="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve" style="padding-right: 40px;">Виды светофоров. Сигналы светофора, их предназначение.</a>
+        </h5>
+    </div>
+    <div id="collapseTwelve" class="collapse" role="tabpanel" aria-labelledby="headingTwelve" data-parent="#accordion">
+        <div class="card-body">
+            <img src="~/img/obj/child/question-icon.png" align="left" vspace="15" hspace="15"/>
+            На перекрестках, пешеходных переходах и в других местах оживленного
+            движения во избежание несчастных случаев устанавливаются светофоры.
+            Это технические устройства. Они регулируют движение транспортных
+            средств и пешеходов подачей световых сигналов.
+
+            Светофор подает световые сигналы трех цветов: красного, желтого и зеленого.
+            Сигналы на светофоре располагаются вертикально (сверху вниз) и в строго определенном порядке.
+            <br/>
+            <br/>
+            <div class="card-header" role="tab" id="headingThreeth" style="background: transparent; padding: 0;">
                 <div class="card">
-                    <div class="card-header" role="tab" id="headingTwelve">
+                    <div class="card-header card-header5" role="tab" id="headingThreeth">
                         <h5 class="mb-0">
-                            <a class="collapsed" data-toggle="collapse" href="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve" style="padding-right: 40px;">Виды светофоров. Сигналы светофора, их предназначение.</a>
+                            <a data-toggle="collapse" href="#collapseThreeth" aria-expanded="true" aria-controls="collapseThreeth" style="padding-right: 40px;">1. Какой порядок расположения сигналов у светофора?</a>
                         </h5>
                     </div>
-                    <div id="collapseTwelve" class="collapse" role="tabpanel" aria-labelledby="headingTwelve" data-parent="#accordion">
+                    <div id="collapseThreeth" class="collapse show" role="tabpanel" aria-labelledby="headingThreeth" data-parent="#accordion">
                         <div class="card-body">
-                            <img src="~/img/obj/child/question-icon.png" align="left" vspace="15" hspace="15" />
-                            На перекрестках, пешеходных переходах и в других местах оживленного
-                            движения во избежание несчастных случаев устанавливаются светофоры.
-                            Это технические устройства. Они регулируют движение транспортных
-                            средств и пешеходов подачей световых сигналов.
+                            <img src="~/img/obj/child/obj/13.jpg" alt="Светофор">
+                            У светофора сверху - секция с сигналом
+                            красного цвета, посередине - с сигналом желтого цвета,
+                            внизу - с сигналом зеленого цвета.
+                            <div class="card-body">
+                                <div class="form_radio form_radio1">
+                                    <input id="form13-radio-1" type="radio" name="radio13" value="1">
+                                    <label for="form13-radio-1" onclick="svetoforone();"><span class="text-danger font-weight-bold">Красный</span>, <span class="text-success font-weight-bold">зеленый</span>, <span class="text-warning font-weight-bold">желтый</span></label>
+                                </div>
 
-                            Светофор подает световые сигналы трех цветов: красного, желтого и зеленого.
-                            Сигналы на светофоре располагаются вертикально (сверху вниз) и в строго определенном порядке.
-                            <br />
-                            <br />
-                            <div class="card-header" role="tab" id="headingThreeth" style="background: transparent; padding: 0;">
-                                <div class="card">
-                                    <div class="card-header card-header5" role="tab" id="headingThreeth">
-                                        <h5 class="mb-0">
-                                            <a data-toggle="collapse" href="#collapseThreeth" aria-expanded="true" aria-controls="collapseThreeth" style="padding-right: 40px;">1. Какой порядок расположения сигналов у светофора?</a>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseThreeth" class="collapse show" role="tabpanel" aria-labelledby="headingThreeth" data-parent="#accordion">
-                                        <div class="card-body">
-                                            <img src="~/img/obj/child/obj/13.jpg" alt="Светофор">
-                                            У светофора сверху - секция с сигналом
-                                            красного цвета, посередине - с сигналом желтого цвета,
-                                            внизу - с сигналом зеленого цвета.
-                                            <div class="card-body">
-                                                <div class="form_radio form_radio1">
-                                                    <input id="form13-radio-1" type="radio" name="radio13" value="1">
-                                                    <label for="form13-radio-1" onclick="svetoforone();"><span class="text-danger font-weight-bold">Красный</span>, <span class="text-success font-weight-bold">зеленый</span>, <span class="text-warning font-weight-bold">желтый</span></label>
-                                                </div>
+                                <div class="form_radio form_radio1">
+                                    <input id="form13-radio-2" type="radio" name="radio13" value="2">
+                                    <label for="form13-radio-2" onclick="svetofortwo();"><span class="text-success font-weight-bold">Зеленый</span>, <span class="text-warning font-weight-bold">желтый</span>, <span class="text-danger font-weight-bold">красный</span></label>
+                                </div>
 
-                                                <div class="form_radio form_radio1">
-                                                    <input id="form13-radio-2" type="radio" name="radio13" value="2">
-                                                    <label for="form13-radio-2" onclick="svetofortwo();"><span class="text-success font-weight-bold">Зеленый</span>, <span class="text-warning font-weight-bold">желтый</span>, <span class="text-danger font-weight-bold">красный</span></label>
-                                                </div>
+                                <div class="form_radio form_radio1">
+                                    <input id="form13-radio-3" type="radio" name="radio13" value="3">
+                                    <label for="form13-radio-3" onclick="svetoforthree();"><span class="text-danger font-weight-bold">Красный</span>, <span class="text-warning font-weight-bold">желтый</span>, <span class="text-success font-weight-bold">зеленый</span></label>
+                                </div>
+                            </div>
 
-                                                <div class="form_radio form_radio1">
-                                                    <input id="form13-radio-3" type="radio" name="radio13" value="3">
-                                                    <label for="form13-radio-3" onclick="svetoforthree();"><span class="text-danger font-weight-bold">Красный</span>, <span class="text-warning font-weight-bold">желтый</span>, <span class="text-success font-weight-bold">зеленый</span></label>
-                                                </div>
-                                            </div>
-
-                                            <div id="svetofortrue" class="alert alert-success invisible-alert" role="alert">
-                                                Ответ верный.
-                                            </div>
-                                            <div id="svetoforfalse" class="alert alert-danger invisible-alert" role="alert">
-                                                Ответ неверный.
-                                            </div>
-                                            <script>
+                            <div id="svetofortrue" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+                            </div>
+                            <div id="svetoforfalse" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+                            </div>
+                            <script>
                                                 function svetoforone() {
                                                     document.getElementById("svetofortrue").classList.add('invisible-alert');
                                                     document.getElementById("svetoforfalse").classList.remove('invisible-alert');
@@ -857,72 +839,72 @@
                                                     document.getElementById("svetoforfalse").classList.add('invisible-alert');
                                                 }
                                             </script>
-                                        </div>
-                                    </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header card-header5" role="tab" id="headingFourth">
+                        <h5 class="mb-0">
+                            <a class="collapsed" data-toggle="collapse" href="#collapseFourth" aria-expanded="false" aria-controls="collapseFourth" style="padding-right: 40px;">2. Прочитай/прослушай.</a>
+                        </h5>
+                    </div>
+                    <div id="collapseFourth" class="collapse" role="tabpanel" aria-labelledby="headingFourth" data-parent="#accordion">
+                        <div class="card-body">
+                            Прочитай / просшлушай стихотворение Я. Пишумова "Пешеходный светофор".
+                            <br/>
+                            <img src="~/img/obj/child/voice-icon.png"/>
+                            <audio controls style="width: 85%; vertical-align: middle;">
+                                <source src="~/img/obj/child/obj/3.ogg" type="audio/ogg">
+                                <source src="~/img/obj/child/obj/3.mp3" type="audio/mpeg">
+                                Ваш браузер не поддерживает функцию прослушивания.
+                            </audio>
+                            <br/>
+                            <div class="row">
+                                <div class="col-sm text-justify">
+                                    На посту стоят два брата, —
+                                    Вы их знаете, ребята.
+                                    То один здесь, То другой,
+                                    Каждый —
+                                    Бравый часовой.
+                                    Вот выходит братец красный
+                                    Он спешит предупредить:
+                                    — Стойте, граждане!
+                                    ОПАСНО
+                                    Вам сейчас переходить!
                                 </div>
-                                <div class="card">
-                                    <div class="card-header card-header5" role="tab" id="headingFourth">
-                                        <h5 class="mb-0">
-                                            <a class="collapsed" data-toggle="collapse" href="#collapseFourth" aria-expanded="false" aria-controls="collapseFourth" style="padding-right: 40px;">2. Прочитай/прослушай.</a>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseFourth" class="collapse" role="tabpanel" aria-labelledby="headingFourth" data-parent="#accordion">
-                                        <div class="card-body">
-                                            Прочитай / просшлушай стихотворение Я. Пишумова "Пешеходный светофор".
-                                            <br />
-                                            <img src="~/img/obj/child/voice-icon.png" />
-                                            <audio controls style="width: 85%; vertical-align: middle;">
-                                                <source src="~/img/obj/child/obj/3.ogg" type="audio/ogg">
-                                                <source src="~/img/obj/child/obj/3.mp3" type="audio/mpeg">
-                                                Ваш браузер не поддерживает функцию прослушивания.
-                                            </audio>
-                                            <br />
-                                            <div class="row">
-                                                <div class="col-sm text-justify">
-                                                    На посту стоят два брата, —
-                                                    Вы их знаете, ребята.
-                                                    То один здесь, То другой,
-                                                    Каждый —
-                                                    Бравый часовой.
-                                                    Вот выходит братец красный
-                                                    Он спешит предупредить:
-                                                    — Стойте, граждане!
-                                                    ОПАСНО
-                                                    Вам сейчас переходить!
-                                                </div>
-                                                <div class="col-sm text-justify">
-                                                    А его зеленый брат
-                                                    Пешеходам очень рад,
-                                                    Улыбаясь, говорит:
-                                                    — Проходите,
-                                                    ПУТЬ ОТКРЫТ!
-                                                    Днем и ночью
-                                                    Оба брата
-                                                    Службу верную несут.
-                                                    Вы их слушайтесь, ребята,
-                                                    Вас они не подведут.
-                                                </div>
-                                            </div>
-                                            <br />
-                                            О каких братьях, которые днем и ночью несут службу,
-                                            говрится в стихотворении? Выбери правильный ответ.
-                                            <div class="card-body">
-                                                <div class="form_radio form_radio1">
-                                                    <input id="form14-radio-1" type="radio" name="radio14" value="1">
-                                                    <label for="form14-radio-1" onclick="svetofortwoone();">О светофоре для транспортных средств</label>
-                                                </div>
+                                <div class="col-sm text-justify">
+                                    А его зеленый брат
+                                    Пешеходам очень рад,
+                                    Улыбаясь, говорит:
+                                    — Проходите,
+                                    ПУТЬ ОТКРЫТ!
+                                    Днем и ночью
+                                    Оба брата
+                                    Службу верную несут.
+                                    Вы их слушайтесь, ребята,
+                                    Вас они не подведут.
+                                </div>
+                            </div>
+                            <br/>
+                            О каких братьях, которые днем и ночью несут службу,
+                            говрится в стихотворении? Выбери правильный ответ.
+                            <div class="card-body">
+                                <div class="form_radio form_radio1">
+                                    <input id="form14-radio-1" type="radio" name="radio14" value="1">
+                                    <label for="form14-radio-1" onclick="svetofortwoone();">О светофоре для транспортных средств</label>
+                                </div>
 
-                                                <div class="form_radio form_radio1">
-                                                    <input id="form14-radio-2" type="radio" name="radio14" value="2">
-                                                    <label for="form14-radio-2" onclick="svetofortwotwo();">О светофоре для пешеходов.</label>
-                                                </div>
-                                                <div id="svetofortwotrue" class="alert alert-success invisible-alert" role="alert">
-                                                    Ответ верный.
-                                                </div>
-                                                <div id="svetofortwofalse" class="alert alert-danger invisible-alert" role="alert">
-                                                    Ответ неверный.
-                                                </div>
-                                                <script>
+                                <div class="form_radio form_radio1">
+                                    <input id="form14-radio-2" type="radio" name="radio14" value="2">
+                                    <label for="form14-radio-2" onclick="svetofortwotwo();">О светофоре для пешеходов.</label>
+                                </div>
+                                <div id="svetofortwotrue" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+                                </div>
+                                <div id="svetofortwofalse" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+                                </div>
+                                <script>
                                                     function svetofortwoone() {
                                                         document.getElementById("svetofortwotrue").classList.add('invisible-alert');
                                                         document.getElementById("svetofortwofalse").classList.remove('invisible-alert');
@@ -932,64 +914,66 @@
                                                         document.getElementById("svetofortwofalse").classList.add('invisible-alert');
                                                     }
                                                 </script>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header" role="tab" id="headingFiveth">
+        <h5 class="mb-0">
+            <a class="collapsed" data-toggle="collapse" href="#collapseFiveth" aria-expanded="false" aria-controls="collapseFiveth" style="padding-right: 40px;">Знакомство с дорожными знаками и дорожной разметкой.</a>
+        </h5>
+    </div>
+    <div id="collapseFiveth" class="collapse" role="tabpanel" aria-labelledby="headingFiveth" data-parent="#accordion">
+        <div class="card-body">
+            <img src="~/img/obj/child/question-icon.png" align="left" vspace="15" hspace="15"/>
+            Для регулирования дорожного движения, обеспечения безопасности на дорогах применяются дорожные знаки.
+            Каждый дорожный знак имеет свои форму, цвет, символы.
+            <br/>
+            <br/>
+            <div class="card-header" role="tab" id="headingThreeth" style="background: transparent; padding: 0;">
                 <div class="card">
-                    <div class="card-header" role="tab" id="headingFiveth">
+                    <div class="card-header  card-header6" role="tab" id="headingSixth">
                         <h5 class="mb-0">
-                            <a class="collapsed" data-toggle="collapse" href="#collapseFiveth" aria-expanded="false" aria-controls="collapseFiveth" style="padding-right: 40px;">Знакомство с дорожными знаками и дорожной разметкой.</a>
+                            <a data-toggle="collapse" href="#collapseSixth" aria-expanded="true" aria-controls="collapseSixth" style="padding-right: 40px;">1. Определи дорожный знак по описанию. Выбери этот знак.</a>
                         </h5>
                     </div>
-                    <div id="collapseFiveth" class="collapse" role="tabpanel" aria-labelledby="headingFiveth" data-parent="#accordion">
+                    <div id="collapseSixth" class="collapse show" role="tabpanel" aria-labelledby="headingSixth" data-parent="#accordion">
                         <div class="card-body">
-                            <img src="~/img/obj/child/question-icon.png" align="left" vspace="15" hspace="15" />
-                            Для регулирования дорожного движения, обеспечения безопасности на дорогах применяются различные средства.
+                            Устанавливают этот знак перед пешеходным переходом и после перехода.
+                            <div class="card-body" style="display: flex; flex-wrap: wrap; text-align: center;">
+                                <div class="form_radio form_radio1">
+                                    <input id="form16-radio-1" type="radio" name="radio16" value="1">
+                                    <label for="form16-radio-1" onclick="znakfalse();">
+                                        <img src="~/img/obj/child/obj/14-1.jpg"/>
+                                    </label>
+                                </div>
 
-                            К ним относятся дорожные знаки и разметка, светофоры. Каждый дорожный знак имеет свои форму, цвет, символы
+                                <div class="form_radio form_radio1">
+                                    <input id="form16-radio-2" type="radio" name="radio16" value="2">
+                                    <label for="form16-radio-2" onclick="znaktrue();">
+                                        <img src="~/img/obj/child/obj/14-2.jpg"/>
+                                    </label>
+                                </div>
 
-                            Это зависит от назначения знака на дороге.
-                            <br />
-                            <br />
-                            <div class="card-header" role="tab" id="headingThreeth" style="background: transparent; padding: 0;">
-                                <div class="card">
-                                    <div class="card-header  card-header6" role="tab" id="headingSixth">
-                                        <h5 class="mb-0">
-                                            <a data-toggle="collapse" href="#collapseSixth" aria-expanded="true" aria-controls="collapseSixth" style="padding-right: 40px;">1. Определи дорожный знак по описанию. Выбери этот знак.</a>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseSixth" class="collapse show" role="tabpanel" aria-labelledby="headingSixth" data-parent="#accordion">
-                                        <div class="card-body">
-                                            Дорожный знак имеет форму прямоугольника, который окрашен в синий цвет. В белом треуголнике черным цветом изображен шагающий по черным линиям человек.
-                                            Устанавливают этот знак перед пешеходным переходом и после перехода.
-                                            <div class="card-body" style="display: flex; flex-wrap: wrap; text-align: center;">
-                                                <div class="form_radio form_radio1">
-                                                    <input id="form16-radio-1" type="radio" name="radio16" value="1">
-                                                    <label for="form16-radio-1" onclick="znakfalse();"><img src="~/img/obj/child/obj/14-1.jpg" /></label>
-                                                </div>
-
-                                                <div class="form_radio form_radio1">
-                                                    <input id="form16-radio-2" type="radio" name="radio16" value="2">
-                                                    <label for="form16-radio-2" onclick="znaktrue();"><img src="~/img/obj/child/obj/14-2.jpg" /></label>
-                                                </div>
-
-                                                <div class="form_radio form_radio1">
-                                                    <input id="form16-radio-3" type="radio" name="radio16" value="3">
-                                                    <label for="form16-radio-3" onclick="znakfalse();"><img src="~/img/obj/child/obj/14-3.jpg" /></label>
-                                                </div>
-                                            </div>
-                                            <div id="znaktrue" class="alert alert-success invisible-alert" role="alert">
-                                                Ответ верный.
-                                            </div>
-                                            <div id="znakfalse" class="alert alert-danger invisible-alert" role="alert">
-                                                Ответ неверный.
-                                            </div>
-                                            <script>
+                                <div class="form_radio form_radio1">
+                                    <input id="form16-radio-3" type="radio" name="radio16" value="3">
+                                    <label for="form16-radio-3" onclick="znakfalse();">
+                                        <img src="~/img/obj/child/obj/14-3.jpg"/>
+                                    </label>
+                                </div>
+                            </div>
+                            <div id="znaktrue" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+                            </div>
+                            <div id="znakfalse" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+                            </div>
+                            <script>
                                                 function znaktrue() {
                                                     document.getElementById("znaktrue").classList.remove('invisible-alert');
                                                     document.getElementById("znakfalse").classList.add('invisible-alert');
@@ -999,66 +983,66 @@
                                                     document.getElementById("znakfalse").classList.remove('invisible-alert');
                                                 }
                                             </script>
-                                        </div>
-                                    </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header card-header6" role="tab" id="headingSeventh">
+                        <h5 class="mb-0">
+                            <a class="collapsed" data-toggle="collapse" href="#collapseSeventh" aria-expanded="false" aria-controls="collapseSeventh" style="padding-right: 40px;">2. Расмотри схему описания (на основе рисунков) дорожного знака.</a>
+                        </h5>
+                    </div>
+                    <div id="collapseSeventh" class="collapse" role="tabpanel" aria-labelledby="headingSeventh" data-parent="#accordion">
+                        <div class="card-body">
+                            <img src="~/img/obj/child/obj/15.jpg" class="text-center border-image-child"/>
+                            <br/>
+                            Опиши устно, пользуясь схемой, следующие дорожные знаки:
+                            <br/>
+                            <div style="display: flex; flex-wrap: wrap;">
+                                <img src="~/img/obj/child/obj/15-1.jpg"/>
+                                <img src="~/img/obj/child/obj/15-2.png" style="margin-left: 40px;"/>
+                                <img src="~/img/obj/child/obj/15-3.jpg" style="margin-left: 40px;"/>
+                            </div>
+                            <br/>
+                            <img src="~/img/obj/child/question-icon.png"/>
+                            <br/>
+                            Для пересечения пешеходами проезжей части предназначены подземные,
+                            надземные и наземные пешеходные переходы. Их местоположение можно
+                            определить с помощью дорожных знаков.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header card-header6" role="tab" id="headingEighth">
+                        <h5 class="mb-0">
+                            <a class="collapsed" data-toggle="collapse" href="#collapseEighth" aria-expanded="false" aria-controls="collapseEighth" style="padding-right: 40px;">3. Какой безопасный переход...</a>
+                        </h5>
+                    </div>
+                    <div class="collapse" id="collapseEighth" role="tabpanel" aria-labelledby="headingEighth" data-parent="#accordion">
+                        <div class="card-body">
+                            Какой безопасный переход проезжей части выбрал мальчик? Какой дорожный знак подсказал ей это? Выбери правильно название знака.
+                            <img src="~/img/obj/child/obj/16.jpg"/>
+                            <div class="card-body">
+                                <div class="form_radio form_radio1">
+                                    <input id="form19-radio-1" type="radio" name="radio19" value="1">
+                                    <label for="form19-radio-1" onclick="znakpeshehodfalse();">"Пешеходный переход"</label>
                                 </div>
-                                <div class="card">
-                                    <div class="card-header card-header6" role="tab" id="headingSeventh">
-                                        <h5 class="mb-0">
-                                            <a class="collapsed" data-toggle="collapse" href="#collapseSeventh" aria-expanded="false" aria-controls="collapseSeventh" style="padding-right: 40px;">2. Расмотри схему описания (на основе рисунков) дорожного знака.</a>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseSeventh" class="collapse" role="tabpanel" aria-labelledby="headingSeventh" data-parent="#accordion">
-                                        <div class="card-body">
-                                            <img src="~/img/obj/child/obj/15.jpg" class="text-center border-image-child" />
-                                            <br />
-                                            Опиши устно, пользуясь схемой, следующие дорожные знаки:
-                                            <br />
-                                            <div style="display: flex; flex-wrap: wrap;">
-                                                <img src="~/img/obj/child/obj/15-1.jpg" />
-                                                <img src="~/img/obj/child/obj/15-2.png" style="margin-left: 40px;" />
-                                                <img src="~/img/obj/child/obj/15-3.jpg" style="margin-left: 40px;" />
-                                            </div>
-                                            <br />
-                                            <img src="~/img/obj/child/question-icon.png" />
-                                            <br />
-                                            Для пересечения пешеходами проезжей части предназначены подземные,
-                                            надземные и наземные пешеходные переходы. Их местоположение можно
-                                            определить с помощью дорожных знаков.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header card-header6" role="tab" id="headingEighth">
-                                        <h5 class="mb-0">
-                                            <a class="collapsed" data-toggle="collapse" href="#collapseEighth" aria-expanded="false" aria-controls="collapseEighth" style="padding-right: 40px;">3. Какой безопасный переход...</a>
-                                        </h5>
-                                    </div>
-                                    <div class="collapse" id="collapseEighth" role="tabpanel" aria-labelledby="headingEighth" data-parent="#accordion">
-                                        <div class="card-body">
-                                            Какой безопасный переход проезжей части выбрала ученица? Какой дорожный знак подсказал ей это? Выбери правильно название знака.
-                                            <img src="~/img/obj/child/obj/16.jpg" />
-                                            <div class="card-body">
-                                                <div class="form_radio form_radio1">
-                                                    <input id="form19-radio-1" type="radio" name="radio19" value="1">
-                                                    <label for="form19-radio-1" onclick="znakpeshehodfalse();">"Пешеходный переход"</label>
-                                                </div>
 
-                                                <div class="form_radio form_radio1" style="margin-left: 30px;">
-                                                    <input id="form19-radio-2" type="radio" name="radio19" value="2">
-                                                    <label for="form19-radio-2" onclick="znakpeshehodtrue();">"Подземный пешеходный переход"</label>
-                                                </div>
-                                                <div class="form_radio form_radio1" style="margin-left: 30px;">
-                                                    <input id="form19-radio-3" type="radio" name="radio19" value="3">
-                                                    <label for="form19-radio-3" onclick="znakpeshehodfalse();">"Надземный пешеходный переход"</label>
-                                                </div>
-                                                <div id="znakpeshehodtrue" class="alert alert-success invisible-alert" role="alert">
-                                                    Ответ верный.
-                                                </div>
-                                                <div id="znakpeshehodfalse" class="alert alert-danger invisible-alert" role="alert">
-                                                    Ответ неверный.
-                                                </div>
-                                                <script>
+                                <div class="form_radio form_radio1" style="margin-left: 30px;">
+                                    <input id="form19-radio-2" type="radio" name="radio19" value="2">
+                                    <label for="form19-radio-2" onclick="znakpeshehodtrue();">"Подземный пешеходный переход"</label>
+                                </div>
+                                <div class="form_radio form_radio1" style="margin-left: 30px;">
+                                    <input id="form19-radio-3" type="radio" name="radio19" value="3">
+                                    <label for="form19-radio-3" onclick="znakpeshehodfalse();">"Надземный пешеходный переход"</label>
+                                </div>
+                                <div id="znakpeshehodtrue" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+                                </div>
+                                <div id="znakpeshehodfalse" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+                                </div>
+                                <script>
                                                     function znakpeshehodtrue() {
                                                         document.getElementById("znakpeshehodtrue").classList.remove('invisible-alert');
                                                         document.getElementById("znakpeshehodfalse").classList.add('invisible-alert');
@@ -1068,25 +1052,26 @@
                                                         document.getElementById("znakpeshehodfalse").classList.remove('invisible-alert');
                                                     }
                                                 </script>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <hr />
-            <a class="btn" type="button" asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/obj-for-child" asp-route-razdelName="child" style="background: #8273C8; float: left; color: #ffffff; padding: 20px; margin: 20px;">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="display:inline-block;vertical-align:text-bottom"><path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"></path></svg>
-                Островок безопасности
-            </a>
-            <a class="btn" type="button" asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/safe-at-chs" asp-route-razdelName="child" style="background: #8273C8; float: right; color: #ffffff; padding: 20px; margin: 20px;">
-                Защита от чс
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="display:inline-block;vertical-align:text-bottom"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0 010-1.5h7.44L8.22 4.03a.75.75 0 010-1.06z"></path></svg>
-            </a>
         </div>
     </div>
 </div>
+</div>
+
+<hr/>
+<a class="btn" type="button" asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/obj-for-child" asp-route-razdelName="child" style="background: #8273C8; float: left; color: #ffffff; padding: 20px; margin: 20px;">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="display:inline-block;vertical-align:text-bottom">
+        <path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"></path>
+    </svg>
+    Островок безопасности
+</a>
+<a class="btn" type="button" asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/safe-at-chs" asp-route-razdelName="child" style="background: #8273C8; float: right; color: #ffffff; padding: 20px; margin: 20px;">
+    Защита от чс
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="display:inline-block;vertical-align:text-bottom">
+        <path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0 010-1.5h7.44L8.22 4.03a.75.75 0 010-1.06z"></path>
+    </svg>
+</a>

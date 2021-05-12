@@ -4,7 +4,7 @@
 }
 <!-- Slides start -->
 <div class="slider-wrapper">
-    <partial name="SliderPartial.cshtml" />
+    <partial name="SliderPartial.cshtml"/>
 </div>
 
 <!-- Slides end -->
@@ -23,7 +23,7 @@
                     <div class="col-md-6 col-lg-3 col-xl-3">
                         <div class="sin-feature-two wow fadeInUp" data-wow-delay=".6s">
                             <div class="feat-two-img">
-                                <img class="first-img" src="img/icon/mhs-car.png" height="35" width="60" />
+                                <img class="first-img" src="img/icon/mhs-car.png" height="35" width="60"/>
                                 <img src="img/icon/feature-icon-50.png" alt="" style="position: absolute; margin-left: -35px;">
                             </div>
                             <h3 style="text-align: center; font-weight: bold;">Министерство по ЧС</h3>
@@ -34,7 +34,7 @@
                     <div class="col-md-6 col-lg-3 col-xl-3">
                         <div class="sin-feature-two wow fadeInUp" data-wow-delay=".6s">
                             <div class="feat-two-img">
-                                <img class="first-img" src="img/icon/mvd-car.png" height="35" width="60" />
+                                <img class="first-img" src="img/icon/mvd-car.png" height="35" width="60"/>
                                 <img src="img/icon/feature-icon-6.png" alt="" style="position: absolute; margin-left: -35px;">
                             </div>
                             <h3 style="text-align: center; font-weight: bold;">Милиция</h3>
@@ -44,7 +44,7 @@
                     <div class="col-md-6 col-lg-3 col-xl-3">
                         <div class="sin-feature-two wow fadeInUp" data-wow-delay=".7s">
                             <div class="feat-two-img">
-                                <img class="first-img" src="img/icon/medic-car.png" height="35" width="60" />
+                                <img class="first-img" src="img/icon/medic-car.png" height="35" width="60"/>
                                 <img src="img/icon/feature-icon-5.png" alt="" style="position: absolute; margin-left: -35px;">
                             </div>
                             <h3 style="text-align: center; font-weight: bold;">Скорая помощь</h3>
@@ -54,7 +54,7 @@
                     <div class="col-md-6 col-lg-3 col-xl-3">
                         <div class="sin-feature-two wow fadeInUp" data-wow-delay=".99s">
                             <div class="feat-two-img">
-                                <img class="first-img" src="img/icon/avar-car.png" height="35" width="60" />
+                                <img class="first-img" src="img/icon/avar-car.png" height="35" width="60"/>
                                 <img src="img/icon/feature-icon-7.png" alt="" style="position: absolute; margin-left: -35px;">
                             </div>
                             <h3 style="text-align: center; font-weight: bold;">Аварийная служба газа</h3>
@@ -227,7 +227,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="area-heading font-per style-two">Учебные пособия по оснвовам безопасности и жизнедеятельности</h1>
-                <p class="heading-para">Команда нашего сайта, рекомендует к обязательному прочтению нескольких учебных пособий. Выберите подходящую книгу и  вы окунетесь в мир основ безопасности и жизнедеятельности! Книги помогут развить умственное мышление и укрепят знания в области ОБЖ!</p>
+                <p class="heading-para">Команда нашего сайта, рекомендует к обязательному прочтению нескольких учебных пособий. Выберите подходящую книгу и вы окунетесь в мир основ безопасности и жизнедеятельности! Книги помогут развить умственное мышление и укрепят знания в области ОБЖ!</p>
             </div>
         </div>
         <div class="class-are-inner-width">
@@ -449,44 +449,7 @@
 </div>
 <!--Service area end-->
 <!--Childcare service area start-->
-<div class="childcare-service">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="offset-md-0 col-md-12 col-lg-7 offset-lg-1 offset-xl-2 col-xl-4">
-                <div class="inner-service">
-                    <span>Вы можете принять участие в добавлении учебных пособий</span>
-                    <h1 class="area-heading  style-two">Добавить учебное пособие</h1>
-                    <p>Заполните контактную форму, для того, чтобы наша команда могла с вами связаться, и добавить Вас в список модераторов учебных пособий!</p>
-
-                </div>
-            </div>
-
-            <form class="px-4 py-3">
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="firstName">Имя</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="Имя" value="" required>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="lastName">Фамилия</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Фамилия" value="" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="lastName">Фамилия</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Фамилия" value="" required>
-                    </div>
-                </div>
-
-                <button class="kids-care-btn bg-sky" type="submit">More about us</button>
-            </form>
-        </div>
-    </div>
-</div>
+<partial name="RequestForRolePartial"/>
 <!--Childcare service area end-->
 <!--Why choose us and upcoming area start-->
 <div class="event-and-choose">
@@ -499,7 +462,9 @@
                     <img src="img/up-ev-1.jpg" alt="">
                     <div class="sin-up-right">
                         <h5 class="font-orange">Lorem ipsum</h5>
-                        <span><i class="fa fa-clock-o"></i>@DateTime.Now.ToShortDateString()</span>
+                        <span>
+                            <i class="fa fa-clock-o"></i>@DateTime.Now.ToShortDateString()
+                        </span>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas eveniet, nemo dicta. Ullam nam</p>
                     </div>
                 </div>
@@ -507,7 +472,9 @@
                     <img src="img/up-ev-2.jpg" alt="">
                     <div class="sin-up-right">
                         <h5 class="font-orange">Lorem ipsum</h5>
-                        <span><i class="fa fa-clock-o"></i>@DateTime.Now.ToShortDateString()</span>
+                        <span>
+                            <i class="fa fa-clock-o"></i>@DateTime.Now.ToShortDateString()
+                        </span>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas eveniet, nemo dicta. Ullam nam</p>
                     </div>
                 </div>
@@ -515,7 +482,9 @@
                     <img src="img/up-ev-3.jpg" alt="">
                     <div class="sin-up-right">
                         <h5 class="font-orange">Lorem ipsum</h5>
-                        <span><i class="fa fa-clock-o"></i>@DateTime.Now.ToShortDateString()</span>
+                        <span>
+                            <i class="fa fa-clock-o"></i>@DateTime.Now.ToShortDateString()
+                        </span>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas eveniet, nemo dicta. Ullam nam</p>
                     </div>
                 </div>
@@ -642,7 +611,7 @@
         <div class="row justify-content-center no-gutters">
             <div class="col-xl-8">
                 <div class="row">
-                    @foreach (AspNetNews newsItem in _context.AspNetNews.OrderByDescending(date => date.Date).Where(news => !news.Blocked).Take(3))
+                    @foreach (AspNetNews newsItem in _context.AspNetNews.OrderByDescending(date => date.Date).Where(news => news.Status == StatusNews.Publish).Take(3))
                     {
                         <div class="col-md-4 col-xl-4">
                             <div class="single-news wow wow flipInY" data-wow-delay=".7s">
@@ -654,11 +623,14 @@
                                         <span>
                                             <i class="fa fa-comment"></i>
                                             @_context.AspNetNewsComments.Where(id => id.NewsId == newsItem.Id).ToList().Count() Коментарии
-                                        </span><span>
+                                        </span>
+                                        <span>
                                             <i class="fa fa-share-alt-square"></i>
                                             @newsItem.Share Репосты
                                         </span>
-                                        <a asp-controller="Home" asp-action="NewsDetails" asp-route-url="@newsItem.Url"><i class="fa fa-angle-right"></i></a>
+                                        <a asp-controller="Home" asp-action="NewsDetails" asp-route-url="@newsItem.Url">
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

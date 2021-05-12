@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Reflection;
+using LSFProject.ViewModelss;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -21,6 +22,7 @@ namespace LSFProject
         {
         }
 
+        public virtual DbSet<AspNetTestResult> AspNetTestResults { get; set; }
         public virtual DbSet<AspNetFavTarget> AspNetFavTargets { get; set; }
         public virtual DbSet<AspNetFile> AspNetFiles { get; set; }
         public virtual DbSet<AspNetForum> AspNetForums { get; set; }
@@ -44,6 +46,7 @@ namespace LSFProject
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
 
         public virtual DbSet<MiddleFinger> MiddleFinger { get; set; }
+        public virtual DbSet<AspNetEmailSubscribe> AspNetEmailSubscribe { get; set; }
 
 
 
@@ -57,6 +60,16 @@ namespace LSFProject
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AspNetTestResult>(entity =>
+            {
+                entity.ToTable("AspNetTestResult");
+
+                entity.Property(e => e.LastPlaythrough).HasColumnType("datetime");
+
+                entity.Property(e => e.UserId)
+                    .IsRequired()
+                    .HasMaxLength(450);
+            });
             modelBuilder.Entity<AspNetFavTarget>(entity =>
             {
                 entity.Property(e => e.UserId).HasMaxLength(450);

@@ -1,0 +1,212 @@
+﻿@page
+@using LSFProject.Areas.Identity.Data
+@using LSFProject
+@using Microsoft.AspNetCore.Http.Extensions
+@model LSFProject.Areas.Identity.Pages.Account.Manage.UserInfoModel
+@inject UserManager<LSFUser> _UserManager;
+@{
+    ViewData["Title"] = "Пользователь " + @Model.user.Email;
+    LSFProjectContext _context = new LSFProjectContext();
+}
+<partial name="_StatusMessage" model="Model.StatusMessage"/>
+<h3 class="account-h3">Пользователь @Model.user.Email</h3>
+<div class="row">
+    <div class="col-lg-2" style="margin-top: 10px;">
+        <div style="margin: 0 auto; position: relative; width: 130px;">
+            <div class="account-logo-ellipse-4">
+            </div>
+            <div class="account-logo-ellipse-3">
+            </div>
+            <div class="account-logo-ellipse-2">
+            </div>
+            <div class="account-logo-ellipse-1">
+                @if (Model._context.AspNetIcons.Any(i => i.Id == Model.user.Icon))
+                {
+                    <img class="account-logo-img" src="data:image/png;base64,@System.Convert.ToBase64String(Model.Image)"/>
+                }
+                else
+                {
+                    <img class="account-logo-img" src="~/img/account/8ea1168fa53ct.jpg"/>
+                }
+            </div>
+        </div>
+        <div style="margin-top: 180px;">
+            <h3 class="account-h3" style="margin-left: 0;">@_UserManager.FindByIdAsync(Model.user.Id).Result.Email</h3>
+        </div>
+    </div>
+    <hr class="account-border-line d-none d-sm-block"/>
+    <div class="col" style="margin-top: 10px;">
+        <div class="row">
+            <div class="col">
+                @{
+                    var levelxp = _context.AspNetUsers.FirstOrDefault(x => x.Id == Model.user.Id).LevelXp;
+                    var level = LevelModel.Levels.Find(l => l.StartXp <= levelxp && l.EndXp >= levelxp);
+                    var buf = Math.Round(Convert.ToDouble(level.EndXp - level.StartXp) / Convert.ToDouble(levelxp - level.StartXp), 3);
+                    var levelxpprocent = 100 / buf;
+                    if (levelxpprocent < 1)
+                    {
+                        levelxpprocent = 1;
+                    }
+                    var rating = _context.AspNetUsers.FirstOrDefault(x => x.Id == Model.user.Id).Rating;
+                }
+                <style>
+                       .Loading {
+                                   position: relative;
+                                   display: inline-block;
+                                   width: 100%;
+                                   height: 10px;
+                                   background: #f1f1f1;
+                                   box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
+                                   border-radius: 4px;
+                                   overflow: hidden;
+                                   }
+                       
+                                   .Loading:after {
+                                   content: '';
+                                   position: absolute;
+                                   left: 0;
+                                   height: 100%;
+                                   border-radius: 4px;
+                                   box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+                                   width: @levelxpprocent.ToString().Replace(',', '.')%;
+                                   background-color: #3F9C45;
+                                   }
+                                   .levelspan
+                                   {
+                                       margin-right: 20px;
+                                       margin-left: 20px;
+                                   }
+                       </style>
+                <div style="display: flex; justify-content: space-between; font-size: 20px;">
+                    <div style="display: flex;">
+                        <img src="~/img/star.png"/>
+                        <span class="levelspan">@level.StartXp</span>
+                    </div>
+                    <div class="d-none d-sm-block" style="align-self: center;">
+                        <span>Очков до следующего уровня: @(level.EndXp - levelxp)</span>
+                    </div>
+                    <div style="display: flex;">
+                        <span class="levelspan">@level.EndXp</span>
+                        <img src="~/img/star.png"/>
+                    </div>
+                </div>
+                <div class="Loading"></div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col">
+                <h4>Аккаунт создан:</h4>
+                @{
+                    var date = DateTime.Now - Model.user.DateCreate;
+                    <h5>
+                        @if (date.Value.Days / 365 < 20)
+                        {
+                            @(date.Value.Days / 365 + " лет,")
+                        }
+                        else
+                        {
+                            @(date.Value.Days / 365 + " год,")
+                        }
+                        @(date.Value.Days + " дней назад")
+                    </h5>
+                }
+            </div>
+            <div class="col">
+                <h4>Последнее время входа в личный кабинет: @Model.user.LastEntry.Value</h4>
+            </div>
+            @if (User.IsInRole("Admin") || User.IsInRole("Manager") ||
+                 User.IsInRole("MobileAdmin"))
+            {
+                var rolesUser = Model._userManager.GetRolesAsync(Model._userManager.GetUserAsync(User).Result);
+                <div class="col">
+                    <h4>Привелегии:</h4>
+                    @foreach (var role in rolesUser.Result)
+                    {
+                        <h5>@role,</h5>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<hr/>
+<hr/>
+<h3>Статистика пользователя @Model.user.Email</h3>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col-3">Тест</th>
+        <th scope="col">Последний результат</th>
+        <th scope="col">Лучший результат</th>
+        <th scope="col">Дата прохождения</th>
+    </tr>
+    </thead>
+    <tbody class="text-center text-dark">
+    @foreach (var itemTestResult in _context.AspNetTestResults.Where(u => u.UserId == Model.user.Id))
+    {
+        <tr>
+            <td>
+                @switch (itemTestResult.TestId)
+                {
+                    case 1:
+                        <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/test" asp-route-razdelName="child">Островок безопасности</a>
+                        break;
+                    case 2:
+                        <a>Не пропаду!?!</a>
+                        break;
+                    case 3:
+                        <a>Пригодится, чтобы выжить...</a>
+                        break;
+                }
+            </td>
+            <td>@itemTestResult.LastResultTest</td>
+            <td>@itemTestResult.BestResultTest</td>
+            <td>@(itemTestResult.LastPlaythrough.ToShortDateString() + ", " + itemTestResult.LastPlaythrough.Hour + ":" + itemTestResult.LastPlaythrough.Minute)</td>
+            <td>@itemTestResult.CountPasses</td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>@itemTestResult.IsBlocked</td>
+                if (itemTestResult.IsBlocked)
+                {
+                    <td>
+                        <a asp-page-handler="UnblockedTestForUser" asp-route-userId="@itemTestResult.UserId" asp-route-testId="@itemTestResult.TestId">Разблокировать</a>
+                    </td>
+                }
+            }
+        </tr>
+    }
+    </tbody>
+</table>
+<hr/>
+@if (User.IsInRole("Admin"))
+{
+    <hr/>
+    <a class="btn btn-sm btn-primary" asp-page="./EditRolesUser" asp-route-userid="@Model.user.Id">Права доступа</a>
+    if (_context.AspNetEmailSubscribe.Any(e => e.UserId == Model.user.Id && e.IsConfirmed))
+    {
+        <a class="btn btn-sm btn-primary text-white" onclick="messageFormShow();">Написать сообщение</a>
+    }
+
+    if (Model.user.LockoutEnd != null)
+    {
+        <a class="btn btn-sm btn-success" asp-page-handler="LockoutEndUser" asp-route-userId="@Model.user.Id">Разблокировать</a>
+    }
+    else
+    {
+        <a class="btn btn-sm btn-danger" asp-page-handler="LockoutEnabledUser" asp-route-userId="@Model.user.Id">Заблокировать</a>
+    }
+    <a class="btn btn-sm btn-danger" asp-page-handler="DeleteUser" asp-route-userid="@Model.user.Id">Удалить</a>
+    <form asp-page-handler="SendMessageUser" asp-route-userId="@Model.user.Id" id="messageTextForm" name="messageTextForm" class="invisible-alert" method="post">
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Текст сообщения</label>
+            <textarea id="messageText" name="messageText" class="form-control" id="exampleFormControlTextarea1" rows="3" required="required"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+    <script>
+        function messageFormShow() {
+            document.getElementById("messageTextForm").classList.remove('invisible-alert');
+        }        
+    </script>
+}

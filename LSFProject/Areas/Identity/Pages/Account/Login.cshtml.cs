@@ -84,10 +84,14 @@ namespace LSFProject.Areas.Identity.Pages.Account
                     ModelState.AddModelError(string.Empty, "Не верный логин или пароль!");
                     return Page();
                 }
-                var result = await _signInManager.CheckPasswordSignInAsync(user, Input.Password + "!", Input.RememberMe);
+                var result = await _signInManager.PasswordSignInAsync(user, Input.Password + "!", Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    
+                    LSFProjectContext _context = new LSFProjectContext();
+                    _context.AspNetUsers.FirstOrDefault(u => u.UserName == Input.Login).LastEntry = DateTime.Now;
+                    _context.SaveChanges();
                     return RedirectToPage(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

@@ -19,14 +19,23 @@
             <div class="col-sm-6 col-lg-3">
                 <div class="single-widget">
                     <h3 class="font-per">Последние посты</h3>
-                    @foreach(AspNetNews newsItem in _context.AspNetNews)
+                    @if (_context.AspNetNews.Count(n => n.Status == StatusNews.Publish) != 0)
                     {
-                        <div class="sin-post">
-                            <img src="@(Config.DomainName + _context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Path)" alt="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Title" width="150">
-                            <div class="post-brif">
-                                <a asp-controller="Home" asp-action="NewsDetails" asp-route-url="@newsItem.Url">@newsItem.PreviewText</a>
-                                <p>@newsItem.Date.ToShortDateString()</p>
+                        @foreach (AspNetNews newsItem in _context.AspNetNews.Where(n => n.Status == StatusNews.Publish).OrderByDescending(d => d.Date).Take(3).ToList())
+                        {
+                            <div class="sin-post">
+                                <img src="@(Config.DomainName + _context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Path)" alt="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Title" width="150">
+                                <div class="post-brif">
+                                    <a asp-controller="Home" asp-action="NewsDetails" asp-route-url="@newsItem.Url">@newsItem.PreviewText</a>
+                                    <p>@newsItem.Date.ToShortDateString()</p>
+                                </div>
                             </div>
+                        }
+                    }
+                    else
+                    {
+                        <div style="width: 100%">
+                            <h4 class="text-center">Список пуст.</h4>
                         </div>
                     }
                 </div>
@@ -68,6 +77,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <p>&copy; @DateTime.Now.Year @Config.SiteHeader. Разработка - Дипломный проект("Вадим&Дима")</p>
+                <p>ЗА БЕЗОПАСНОСТЬ ВМЕСТЕ!</p>
             </div>
             <div class="col-sm-12 col-md-6">
                 <ul class="social-icon float-right">

@@ -25,6 +25,7 @@ namespace LSFProject.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly LSFProjectContext _context = new LSFProjectContext();
 
         public RegisterModel(
             UserManager<LSFUser> userManager,
@@ -93,6 +94,9 @@ namespace LSFProject.Areas.Identity.Pages.Account
                         await _userManager.RemoveFromRolesAsync(user1, removedRoles);
                     }
                     await _signInManager.SignInAsync(user, isPersistent: false);
+                    _context.AspNetUsers.FirstOrDefault(u => u.UserName == Input.Login).DateCreate = DateTime.Now;
+                    _context.AspNetUsers.FirstOrDefault(u => u.UserName == Input.Login).LevelXp = 1;
+                    _context.SaveChanges();
                     return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)

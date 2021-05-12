@@ -36,18 +36,18 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             public int Id { get; set; }
-            [Required(ErrorMessage = "Не указан Заголовок!")]
+            [Required(ErrorMessage = "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!")]
             public string Header { get; set; }
-            [Required(ErrorMessage = "Не указан превью текст!")]
+            [Required(ErrorMessage = "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!")]
             public string PreviewText { get; set; }
             public int PreviewPhoto { get; set; }
-            [Required(ErrorMessage = "Не указан Url-адрес новости!")]
+            [Required(ErrorMessage = "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ Url-пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!")]
             public string Url { get; set; }
             public string Description { get; set; }
             public DateTime Date { get; set; }
-            [Required(ErrorMessage = "Не указан Автор!")]
+            [Required(ErrorMessage = "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!")]
             public string Author { get; set; }
-            public bool Blocked { get; set; }
+            public StatusNews Status { get; set; }
             public int Watching { get; set; }
         }
 
@@ -67,7 +67,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
                     {
                         Author = news.Author,
                         Date = news.Date,
-                        Blocked = news.Blocked,
+                        Status = news.Status,
                         Id = news.Id,
                         Description = news.Description,
                         Header = news.Header,
@@ -97,10 +97,10 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
                 news.Description = Input.Description;
                 _context.AspNetNews.Update(news);
                 _context.SaveChanges();
-                StatusMessage = "Новость успешно обновлена!";
+                StatusMessage = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!";
                 return RedirectToPage("./Posts");
             }
-            StatusMessage = "Ошибка Новость не удалось обновить!";
+            StatusMessage = "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!";
             return RedirectToPage("./Posts");
         }
     }

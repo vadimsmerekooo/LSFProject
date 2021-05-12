@@ -1,11 +1,16 @@
 ﻿@page
+@using LSFProject.Areas.Identity.Data
+@using LSFProject
+@using Microsoft.AspNetCore.Http.Extensions
 @model LSFProject.Areas.Identity.Pages.Account.Manage.IndexModel
+@inject UserManager<LSFUser> _UserManager;
 @{
     ViewData["Title"] = "Аккаунт";
+    LSFProjectContext _context = new LSFProjectContext();
 }
 <h3 class="account-h3">Информация аккаунта</h3>
-<div style="display: flex;">
-    <div style="margin-top: 10px;">
+<div class="row">
+    <div class="col-lg-2" style="margin-top: 10px;">
         <div style="margin: 0 auto; position: relative; width: 130px;">
             <div class="account-logo-ellipse-4">
             </div>
@@ -16,44 +21,132 @@
             <div class="account-logo-ellipse-1">
                 @if (Model._context.AspNetIcons.Any(i => i.Id == Model.user.Icon))
                 {
-                    <img class="account-logo-img" src="data:image/png;base64,@System.Convert.ToBase64String(Model.Image)" />
+                    <img class="account-logo-img" src="data:image/png;base64,@System.Convert.ToBase64String(Model.Image)"/>
                 }
                 else
                 {
-                    <img class="account-logo-img" src="~/img/account/8ea1168fa53ct.jpg" />
+                    <img class="account-logo-img" src="~/img/account/8ea1168fa53ct.jpg"/>
                 }
             </div>
         </div>
         <div style="margin-top: 180px;">
-            <h3 class="account-h3" style="margin-left: 0;">@User.Identity.Name</h3>
+            <h3 class="account-h3" style="margin-left: 0;">@_UserManager.GetUserAsync(User).Result.Email</h3>
         </div>
-        <a class="btn btn-outline-warning" style="display: block; margin-top: 20px;">Stat</a>
         <a class="btn btn-outline-warning" style="display: block; margin-top: 20px;" asp-page="./EditIconUser">Изменить аватарку</a>
     </div>
-    <hr class="account-border-line"/>
-    <div style="margin-top: 10px;">
-        <div style="display: flex;">
-            <img src="~/img/account/yellow-star-big.png"style="margin-top: 10px;" width="53" height="53"/>
-            <h3 class="account-h3 text-light" style="margin: 15px 0 0 -35px;">0</h3>
-            <div style="margin-left: 50px;">
-                <h3 class="account-h3">Твои игровые очки</h3>
-                <h3 class="account-h3 text-success" style="float: left;">0</h3>
+    <hr class="account-border-line d-none d-sm-block"/>
+    <div class="col" style="margin-top: 10px;">
+        <div class="row">
+            <div class="col">
+                <partial name="UserLevelPartialxl"/>
             </div>
         </div>
-        <h3 class="account-h3" style="margin-top: 30px;">Лучшая твоя игра</h3>
-        <div class="best-game" style="margin-top: 30px;">
-            <img src="~/img/account/yellow-star-big.png"/>
-            <h3 class="account-h3" style="font-size: 16px; margin-left: 10px;">Сортировка предметов</h3>
-            <div>
-                <ul class="account-list-star">
-                    <li><img src="~/img/account/enable-star-small.png" /></li>
-                    <li><img src="~/img/account/enable-star-small.png" /></li>
-                    <li><img src="~/img/account/enable-star-small.png" /></li>
-                    <li><img src="~/img/account/enable-star-small.png" /></li>
-                    <li><img src="~/img/account/dezable-star-small.png" /></li>
-                </ul>
-                <a class="btn btn-outline-warning" style="display: block; margin-top: 15px;">Играть</a>
+        <hr/>
+        <div class="row">
+            <div class="col">
+                <h4>Аккаунт создан:</h4>
+                @{
+                    var date = DateTime.Now - Model.user.DateCreate;
+                    <h5>
+                        @if (date.Value.Days / 365 < 20)
+                        {
+                            @(date.Value.Days / 365 + " лет,")
+                        }
+                        else
+                        {
+                            @(date.Value.Days / 365 + " год,")
+                        }
+                        @(date.Value.Days + " дней назад")
+                    </h5>
+                }
             </div>
+            <div class="col">
+                <h4>Последнее время входа в личный кабинет: @Model.user.LastEntry.Value</h4>
+            </div>
+            @if (User.IsInRole("Admin") || User.IsInRole("Manager") ||
+                 User.IsInRole("MobileAdmin"))
+            {
+                var rolesUser = Model._userManager.GetRolesAsync(Model._userManager.GetUserAsync(User).Result);
+                <div class="col">
+                    <h4>Привелегии:</h4>
+                    @foreach (var role in rolesUser.Result)
+                    {
+                        <h5>@role,</h5>
+                    }
+                </div>
+            }
+            <hr/>
         </div>
     </div>
 </div>
+<hr/>
+<h3>Ваша статистика</h3>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col-3">Тест</th>
+        <th scope="col">Последний результат</th>
+        <th scope="col">Лучший результат</th>
+        <th scope="col">Дата прохождения</th>
+    </tr>
+    </thead>
+    <tbody class="text-center text-dark">
+    @foreach (var itemTestResult in _context.AspNetTestResults.Where(u => u.UserId == Model.user.Id))
+    {
+        <tr>
+            <td>
+                @switch (itemTestResult.TestId)
+                {
+                    case 1:
+                        <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/test" asp-route-razdelName="child">Островок безопасности</a>
+                        break;
+                    case 2:
+                        <a>Не пропаду!?!</a>
+                        break;
+                    case 3:
+                        <a>Пригодится, чтобы выжить...</a>
+                        break;
+                }
+            </td>
+            <td>@itemTestResult.LastResultTest</td>
+            <td>@itemTestResult.BestResultTest</td>
+            <td>@(itemTestResult.LastPlaythrough.ToShortDateString() + ", " + itemTestResult.LastPlaythrough.Hour + ":" + itemTestResult.LastPlaythrough.Minute)</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<hr/>
+<form>
+    <div class="form-group">
+        <h4 style="margin-bottom: 20px;">Email адрес для подписки</h4>
+        <input id="email" name="email" type="email" class="form-control" required="required" value="@(_context.AspNetEmailSubscribe.Any(u => u.UserId == _UserManager.GetUserId(User)) ? _context.AspNetEmailSubscribe.FirstOrDefault(e => e.UserId == _UserManager.GetUserId(User)).Email : "name@example.com")">
+    </div>
+    @if (_context.AspNetEmailSubscribe.Any(u => u.UserId == _UserManager.GetUserId(User)))
+    {
+        if (!_context.AspNetEmailSubscribe.FirstOrDefault(u => u.UserId == _UserManager.GetUserId(User)).IsConfirmed)
+        {
+            <div class="alert alert-primary alert-dismissible" role="alert" style="display: flex;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <p style="margin-left: 30px;">На ваш Email-адрес, отправлено письмо для верификации email. Если Вы не получили письмо, проверьте "Спам".</p>
+            </div>
+
+            <div class="alert alert-danger alert-dismissible" role="alert" style="display: flex;">
+                <p style="margin-left: 30px;">Email не подтвержден!</p>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success alert-dismissible" role="alert" style="display: flex;">
+                <p style="margin-left: 30px;">Email успешно подтвержден!</p>
+            </div>
+        }
+        <button type="submit" class="btn btn-primary" asp-controller="Home" asp-action="EmailSubscribe" asp-route-returnUrl="@Request.GetDisplayUrl()">Изменить Email</button>
+        <button type="submit" class="btn btn-danger" asp-page-handler="UnsubscribeEmail">Отменить подписку</button>
+    }
+    else
+    {
+        <button type="submit" class="btn btn-success" asp-controller="Home" asp-action="EmailSubscribe" asp-route-returnUrl="@Request.Scheme">Подписаться</button>
+    }
+</form>

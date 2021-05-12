@@ -1,0 +1,68 @@
+﻿@model LSFProject.Models.RequestForRoleModel
+@using Microsoft.AspNetCore.Identity
+@using LSFProject.Areas.Identity.Data
+@inject UserManager<LSFUser> UserManager
+@{
+    LSFProjectContext _context = new LSFProjectContext();
+}
+<div class="childcare-service">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="inner-service">
+                    <span>Вы можете принять участие в добавлении учебных пособий и новостной информации</span>
+                    <h1 class="area-heading  style-two">Заявка на доступ модератора</h1>
+                    <p>Заполните контактную форму, для того, чтобы наша команда могла с вами связаться, и добавить Вас в список модераторов!</p>
+                    <h2>ВАЖНО!!! Для отпрвки формы, в <a asp-area="Identity" asp-page="/Account/Manage/Index">Личном кабинете</a> подтвердите Email адрес.</h2>
+                </div>
+            </div>
+            
+            @if (_context.AspNetEmailSubscribe.Any(u => u.UserId == UserManager.GetUserId(User) && u.IsConfirmed))
+            {
+                <form asp-action="RequestForRole" class="col" method="post">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Name">Имя</label>
+                            <input type="text" class="form-control" asp-for="Name" placeholder="Имя" value="" required>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="LastName">Фамилия</label>
+                            <input asp-for="LastName" type="text" class="form-control" id="lastName" placeholder="Фамилия" value="" required>
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Age">Полных лет</label>
+                            <input type="number" class="form-control" asp-for="Age" placeholder="Возраст" value="0" required>
+                            <span asp-validation-for="Age" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Country">Страна</label>
+                            <input type="text" class="form-control" asp-for="Country" placeholder="Страна" value="" required>
+                            <span asp-validation-for="Country" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label asp-for="Text">Цель вашей заявки</label>
+                        <textarea asp-for="Text" class="form-control" id="exampleFormControlTextarea1" rows="3" required="required"></textarea>
+                        <span asp-validation-for="Text" class="text-danger"></span>
+                    </div>
+
+                    <button class="kids-care-btn bg-sky" type="submit" style="margin-top: 40px;">Отправить</button>
+                </form>
+            }
+            else
+            {
+                <div class="col">
+                    <h2 class="text-danger bg-white">К сожалению, форма заявки на модерацию не достпуна для Вас, так как ваш Email адрес не подтвержден в <a asp-area="Identity" asp-page="/Account/Manage/Index">Личном кабинете</a>!</h2>
+                </div>
+            }
+            
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

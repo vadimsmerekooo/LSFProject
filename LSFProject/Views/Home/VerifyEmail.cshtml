@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Подтверждение почты";
+}
+
+<div class="container-fluid container-fluid-site text-center" style="margin-top: 100px; margin-bottom: 100px; display: inline-flex; align-items: center; justify-content: center;">
+    <div>
+        <h1 class="text-success">@ViewData["Title"]</h1>
+        <h2 class="text-center text-dark">Вы успешно подтвердили почту.</h2>
+        <p class="text-dark" style="font-size: 20px;">На подтвержденную почту, будет приходить свежая или полезная информация на сайте. Мы рады, что вы с нами.</p>
+        <div style="margin-top: 50px;">
+            <a class="btn btn-success" asp-controller="Home" asp-action="Index">Перейти к главной</a>
+            <a class="btn btn-primary" asp-controller="Home" asp-action="News">Перейти к просмотру новостей</a>
+            <a class="btn btn-primary" asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/life-collective-safe" asp-route-razdelName="child">
+                Перейти к просмотру учебного материала
+            </a>
+        </div>
+    </div>
+    <img src="~/img/bg/succesfull.png" style="margin-left: 30px; width: 300px;"/>
+</div>

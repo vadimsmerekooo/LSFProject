@@ -5,6 +5,7 @@
 <ul class="nav nav-pills flex-column list-group">
     <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Профиль</a></li>
     <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="profile" asp-page="./ChangePassword">Изменение пароля</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.InfoSecurePassNavClass(ViewContext)" id="securepost" asp-page="./InfoSecurePass">Секретный код</a></li>
 </ul>
 @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
 {
@@ -26,6 +27,9 @@
                 </li>
                 <li>
                     <a class="nav-link @ManageNavPages.RemovePostsNavClass(ViewContext)" id="remove-posts" asp-page="./RemovePosts">Заблокированные посты</a>
+                </li>
+                <li>
+                    <a class="nav-link @ManageNavPages.ModerationPostsNavClass(ViewContext)" id="moderation-posts" asp-page="./ModerationPosts">Посты на модерации</a>
                 </li>
             </ul>
             <hr style="margin: 0;" />

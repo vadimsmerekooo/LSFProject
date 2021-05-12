@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using LSFProject.Areas.Identity.Data
+@inject UserManager<LSFUser> UserManager
+@{
+    LSFProjectContext _context = new LSFProjectContext();
+    var levelxp = _context.AspNetUsers.FirstOrDefault(x => x.Id == UserManager.GetUserId(User)).LevelXp;
+    var level = LevelModel.Levels.Find(l => l.StartXp <= levelxp && l.EndXp >= levelxp);
+    var buf = Math.Round(Convert.ToDouble(level.EndXp - level.StartXp) / Convert.ToDouble(levelxp - level.StartXp), 3);
+    var levelxpprocent = 100 / buf;
+    if (levelxpprocent < 1)
+    {
+        levelxpprocent = 1;
+    }
+    var rating = _context.AspNetUsers.FirstOrDefault(x => x.Id == UserManager.GetUserId(User)).Rating;
+}
+<div style="display: flex; justify-content: space-around;">
+    <h5 style="margin: 10px 0">Рейтинг: @rating</h5>
+    <h5 style="margin: 10px 0">Уровень: @level.LevelNumber</h5>
+</div>
+<style>
+.Loading {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            height: 10px;
+            background: #f1f1f1;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
+            border-radius: 4px;
+            overflow: hidden;
+            }
+
+            .Loading:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            height: 100%;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+            width: @levelxpprocent.ToString().Replace(',', '.')%;
+            background-color: #3F9C45;
+            }
+</style>
+<div style="display: flex; justify-content: space-between;">
+        <div style="display: flex;">
+          <img src="~/img/star.png"/>
+          <span class="levelspan">@level.StartXp</span>
+        </div>
+        <div style="display: flex;">
+          <span class="levelspan">@level.EndXp</span>
+          <img src="~/img/star.png"/>
+        </div>
+      </div>
+      <div class="Loading"></div>

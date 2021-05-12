@@ -1,63 +1,87 @@
 ﻿@page
 @using LSFProject
+@inject UserManager<LSFProject.Areas.Identity.Data.LSFUser> UserManager
 @model LSFProject.Areas.Identity.Pages.Account.Manage.PostsModel
 @{
     ViewData["Title"] = "Новости";
     LSFProject.LSFProjectContext _context = new LSFProject.LSFProjectContext();
 }
 <h3>@ViewData["Title"]</h3>
-<partial name="_StatusMessage" model="Model.StatusMessage" />
+<partial name="_StatusMessage" model="Model.StatusMessage"/>
 
 <table class="table">
     <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Автор</th>
-            <th scope="col">Заголовок</th>
-            <th scope="col">Коментарии</th>
-            <th scope="col">Репосты</th>
-            <th scope="col">Дата</th>
-            <th scope="col">Просмотры</th>
-            <th scope="col">Изображение</th>
-            <th scope="col">Статус</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-        </tr>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Автор</th>
+        <th scope="col">Заголовок</th>
+        <th scope="col">Коментарии</th>
+        <th scope="col">Репосты</th>
+        <th scope="col">Дата</th>
+        <th scope="col">Просмотры</th>
+        <th scope="col">Изображение</th>
+        <th scope="col">Статус</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var newsItem in _context.AspNetNews.Where(news => !news.Blocked).ToList())
-        {
-            <tr class="text-center">
-                <th scope="row"><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Id</a></th>
-                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Author</a></th>
-                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Header</a></th>
-                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@_context.AspNetNewsComments.Count(newss => newss.NewsId == newsItem.Id) </a></th>
-                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Share</a></th>
-                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Date</a></th>
-                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})">@newsItem.Watching</a></th>
-                <th><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})"><img src="@(Config.DomainName + _context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Path)" width="50" height="40" /></a></th>
-                @if (newsItem.Blocked)
+    @foreach (var newsItem in _context.AspNetNews.Where(news => news.Status == StatusNews.Publish).ToList())
+    {
+        <tr class="text-center">
+            <th scope="row">
+                <a href="@Url.Action("NewsDetails", "Home", new {url = newsItem.Url})">@newsItem.Id</a>
+            </th>
+            <th>
+                <a asp-page="UserInfo" asp-route-userId="@newsItem.Author">@UserManager.FindByIdAsync(newsItem.Author).Result.Email</a>
+            </th>
+            <th>
+                <a href="@Url.Action("NewsDetails", "Home", new {url = newsItem.Url})">@newsItem.Header</a>
+            </th>
+            <th>
+                <a href="@Url.Action("NewsDetails", "Home", new {url = newsItem.Url})">@_context.AspNetNewsComments.Count(newss => newss.NewsId == newsItem.Id) </a>
+            </th>
+            <th>
+                <a href="@Url.Action("NewsDetails", "Home", new {url = newsItem.Url})">@newsItem.Share</a>
+            </th>
+            <th>
+                <a href="@Url.Action("NewsDetails", "Home", new {url = newsItem.Url})">@newsItem.Date</a>
+            </th>
+            <th>
+                <a href="@Url.Action("NewsDetails", "Home", new {url = newsItem.Url})">@newsItem.Watching</a>
+            </th>
+            <th>
+                <a href="@Url.Action("NewsDetails", "Home", new {url = newsItem.Url})">
+                    <img src="@(Config.DomainName + _context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Path)" width="50" height="40"/>
+                </a>
+            </th>
+
+            <th>@newsItem.Status</th>
+            <th scope="col">
+                <a asp-page="./EditNews" asp-route-id="@newsItem.Id" class="text-warning">Изменить</a>
+                @if (User.IsInRole("Admin"))
                 {
-                    <th><img src="~/img/admin-panel/No-button.png" /></th>
+                    if (newsItem.Status == StatusNews.Moderation || newsItem.Status == StatusNews.Blocked)
+                    {
+                        <a asp-page-handler="PublishNews" asp-route-newsId="@newsItem.Id" class="text-success">Опубликовать</a>
+                    }
+                    else
+                    {
+                        <a asp-page-handler="BlockedNews" asp-route-newsId="@newsItem.Id" class="text-danger">Заблокировать</a>
+                    }
                 }
-                else
+                @if (User.IsInRole("Manager"))
                 {
-                    <th><img src="~/img/admin-panel/Yes-button.png" /></th>
+                    <a href="@Url.Action("NewsDetails", "Home", new {url = newsItem.Url})" class="text-primary">Просмотреть</a>
+
+                    <a asp-page-handler="GoToModerationNews" asp-route-newsId="@newsItem.Id" class="text-danger">На модерацию</a>
                 }
-                <th scope="col"><a asp-page="./EditNews" asp-route-id="@newsItem.Id" class="text-warning">Изменить</a></th>
-                @if (newsItem.Blocked)
-                {
-                    <th scope="col"><a asp-page-handler="PublishNews" asp-route-newsId="@newsItem.Id" class="text-success">Опубликовать</a></th>
-                }
-                else
-                {
-                    <th scope="col"><a asp-page-handler="BlockedNews" asp-route-newsId="@newsItem.Id" class="text-danger">Заблокировать</a></th>
-                    <th scope="col"><a href="@Url.Action("NewsDetails", "Home", new { url = newsItem.Url})" class="text-primary">Просмотреть</a></th>
-                }
-                <th scope="col"><a asp-page-handler="DeleteNews" asp-route-newsId="@newsItem.Id" class="text-danger">Удалить</a></th>
-            </tr>
-        }
+                <a asp-page-handler="DeleteNews" asp-route-newsId="@newsItem.Id" class="text-danger">Удалить</a>
+
+            </th>
+        </tr>
+    }
     </tbody>
 </table>

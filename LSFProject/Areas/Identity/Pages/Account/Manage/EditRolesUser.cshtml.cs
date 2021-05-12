@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace LSFProject.Areas.Identity.Pages.Account.Manage
 {
-    [Authorize(Roles = "Admin, Manager")]
+    [Authorize(Roles = "Admin")]
     public class EditRolesUserModel : PageModel
     {
         RoleManager<IdentityRole> _roleManager;
@@ -35,6 +35,15 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
                     UserRoles = userRoles,
                     AllRoles = allRoles
                 };
+                LSFProjectContext _context = new LSFProjectContext();
+                if (_context.AspNetEmailSubscribe.Any(u => u.UserId == user.Id && u.IsConfirmed))
+                {
+                    string email = _context.AspNetEmailSubscribe.FirstOrDefault(u => u.UserId == userId).Email;
+                    string messageText = $"Уважаемый {_context.AspNetUsers.FirstOrDefault(u => u.Id == userId).Email}, для вашего аккаунта измененно ролевое управление доступом.";
+                    string message = System.IO.File.ReadAllText("wwwroot/SendMessageUserEmailPage.html")
+                        .Replace("MessageText", messageText);
+                    EmailSend.SendEmailAsync(email, "Изменение привелегий", message);
+                }
                 return Page();
             }
 
@@ -46,11 +55,6 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
             LSFUser user = await _userManager.FindByIdAsync(userId);
             if (user != null)
             {
-                if (User.IsInRole("Admin"))
-                {
-                    if (!roles.Contains("Admin"))
-                        roles.Add("Admin");
-                }
                 // ������� ������ ����� ������������
                 var userRoles = await _userManager.GetRolesAsync(user);
                 // �������� ��� ����

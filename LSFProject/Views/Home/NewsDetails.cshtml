@@ -1,112 +1,342 @@
-﻿@inject Microsoft.AspNetCore.Identity.UserManager<LSFProject.Areas.Identity.Data.LSFUser> _userManager
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<LSFProject.Areas.Identity.Data.LSFUser> UserManager
+@inject SignInManager<LSFProject.Areas.Identity.Data.LSFUser> SignInManager
 @model AspNetNews
 @{
-    ViewData["Title"] = "Новость - " + Model.Header;
+    ViewData["Title"] = Model.Header;
     LSFProjectContext _context = new LSFProjectContext();
     AspNetNewsComment commentForm = new AspNetNewsComment();
 }
 @if (Model != null)
 {
-    <div class="text-bread-crumb d-flex align-items-center style-six blue">
+    <!--Breadcrumb area start-->
+    <section class="text-bread-crumb bc-style-two">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>@Model.Header</h2>
-                    <div class="bread-crumb-line"><span>@Model.PreviewText</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <section class="blog-posts grid-system">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col">
-                    <div class="all-blog-posts">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="blog-post">
-                                    <div class="blog-thumb">
-                                        <img src="@(Config.DomainName + _context.AspNetFiles.FirstOrDefault(p => p.Id == Model.PreviewPhoto).Path)" alt="" style="max-width: 300px;">
-                                    </div>
-                                    <div class="down-content">
-                                        <a href="@Url.Action("PostDetails", "Post", new { url = Model.Url })"><h4>@Model.Header</h4></a>
-                                        <ul class="post-info">
-                                            <li><a href="@Url.Action("PostDetails", "Post", new { url = Model.Url })">@Model.Author</a></li>
-                                            <li><a href="@Url.Action("PostDetails", "Post", new { url = Model.Url })">@Model.Date</a></li>
-                                            <li><a href="@Url.Action("PostDetails", "Post", new { url = Model.Url })">@_context.AspNetNewsComments.Where(comment => comment.NewsId == Model.Id).ToList().Count Comments</a></li>
-                                        </ul>
-                                        @Html.Raw(Model.Description)
-                                        <div class="post-options">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <ul class="post-share">
-                                                        <li><i class="fa fa-share-alt"></i></li>
-                                                        <li><a href="#">Facebook</a>,</li>
-                                                        <li><a href="#"> Twitter</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="sidebar-heading">
-                                    <h2 class="text-dark">@_context.AspNetNewsComments.Count(comment => comment.NewsId == Model.Id) комментариев</h2>
-                                </div>
-                                <ul>
-                                    @foreach (var comment in _context.AspNetNewsComments.Where(commentModel => commentModel.NewsId == Model.Id).ToList())
-                                    {
-                                        if (comment.Answer == 0)
-                                        {
-                                            <li>
-                                                <div class="right-content">
-                                                    <h4 class="text-dark">@(((LSFProject.Areas.Identity.Data.LSFUser)_userManager.FindByIdAsync(comment.UserId).Result).UserName)<span>@comment.Date</span></h4>
-                                                    <p>@comment.Text</p>
-                                                </div>
-                                            </li>
-                                        }
-                                        else
-                                        {
-                                            <li class="replied">
-                                                <div class="right-content" style="display: block;">
-                                                    <h4>@(_userManager.FindByIdAsync(comment.UserId).Result).UserName)<span>@comment.Date</span></h4>
-                                                    <p>@comment.Text</p>
-                                                </div>
-                                            </li>
-                                        }
-                                    }
-                                </ul>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="sidebar-item submit-comment">
-                                    <div class="sidebar-heading">
-                                        <h2 class="text-dark">Ваш комментарий</h2>
-                                    </div>
-                                    <div class="content">
-                                        <form id="comment" asp-action="CreateComment" asp-controller="Home">
-                                            <div style="height: 0;">
-                                                <input class="invisible" asp-for="@commentForm.UserId" name="idUser" type="text" id="idUser" required="" value="@_userManager.GetUserId(User)">
-                                                <input class="invisible" asp-for="@commentForm.NewsId" name="idNews" type="text" id="idNews" required="" value="@Model.Id">
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <textarea asp-for="@commentForm.Text" name="message" rows="6" id="message" placeholder="Введите комментарий" required=""></textarea>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <fieldset>
-                                                        <button type="submit" id="form-submit" class="main-button">Оставить комментарий</button>
-                                                    </fieldset>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <h2>Новости и события</h2>
+                    <div class="bread-crumb-line">
+                        <span>
+                            <a asp-controller="Home" asp-action="Index">Главная / </a>
+                        </span>
+                        <span>
+                            <a asp-controller="Home" asp-action="News">Новости / </a>
+                        </span>@Model.Header
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <!--Breadcrumb area end-->
+    <section class="post-page">
+    <div class="container-fluid">
+    
+    @if (User.IsInRole("Admin"))
+    {
+        <h3 style="margin-bottom: 15px;">Данная панель видна только для администрации сайта.</h3>
+        <h3 style="margin-bottom: 15px;" class="text-dark">Статус поста: @Model.Status</h3>
+        switch (Model.Status)
+        {
+            case StatusNews.Blocked:
+                <a class="btn btn-success" asp-controller="Home" asp-action="PublishNews" asp-route-url="@Model.Url">Опубликовать пост</a>
+                <a class="btn btn-danger" style="margin-left: 30px;" asp-controller="Home" asp-action="DeleteNews" asp-route-newsId="@Model.Id">Удалить пост</a>
+                break;
+            case StatusNews.Moderation:
+                <a class="btn btn-success" asp-controller="Home" asp-action="PublishNews" asp-route-url="@Model.Url">Опубликовать пост</a>
+                <a class="btn btn-danger" style="margin-left: 30px;" asp-controller="Home" asp-action="DeleteNews" asp-route-newsId="@Model.Id">Удалить пост</a>
+                break;
+            case StatusNews.Publish:
+                <a class="btn btn-danger" asp-controller="Home" asp-action="BlockedNews" asp-route-url="@Model.Url">Заблокировать пост</a>
+                <a class="btn btn-danger" style="margin-left: 30px;" asp-controller="Home" asp-action="DeleteNews" asp-route-newsId="@Model.Id">Удалить пост</a>
+                break;
+        }
+        <hr/>
+    }
+    <div class="row justify-content-center no-gutters">
+    <div class="col-xl">
+    <div class="row">
+
+    <div class="col-xl-9 col-md-12 col-lg-8">
+        <div class="single-post-wrapper">
+            <div class="post-img">
+                <img src="@(Config.DomainName + _context.AspNetFiles.FirstOrDefault(p => p.Id == Model.PreviewPhoto).Path)" alt="@_context.AspNetFiles.FirstOrDefault(p => p.Id == Model.PreviewPhoto).Title">
+            </div>
+            <div class="post-meta">
+                <div class="meta-date d-flex align-items-center ">
+                    <a href="" style="width: 100%;">
+                        @Model.Date.Day<br>@Model.Date.Month<br>@(Model.Date.Year % 100)
+                    </a>
+                </div>
+                <div class="meta-comments d-flex align-items-center">
+                    <a href="#comments">
+                        <i class="fa fa-comments"></i>@_context.AspNetNewsComments.Count(id => id.NewsId == Model.Id)
+                    </a>
+                </div>
+                <div class="meta-tag d-flex align-items-center">
+                    <a href="">
+                        <i class="fa fa-tag"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="post-details" style="text-align: justify;">
+                @Html.Raw(Model.Description)
+                <div class="post-writer">
+                    <div class="writer-img">
+                        @if (_context.AspNetIcons.Any(x => x.UserId == Model.Author))
+                        {
+                            byte[] image = _context.AspNetIcons.FirstOrDefault(i => i.UserId == Model.Author).Icon;
+                            <img style="border-radius: 50%; width: 112px; height: 112px; border: 2px solid gray" src="data:image/png;base64,@System.Convert.ToBase64String(image)" alt="Аватарка автора">
+                        }
+                        else
+                        {
+                            <img style="border-radius: 50%; width: 112px; height: 112px; border: 2px solid gray" src="@(Config.DomainName + "img/account/account-default-icon.jpg")" alt="Аватарка автора"/>
+                        }
+                    </div>
+                    <div class="writer-details">
+                        <h6>@UserManager.FindByIdAsync(Model.Author).Result.Email</h6>
+                        <p>Тот, кто уверен в собственной безопасности — абсолютно беззащитен.</p>
+                        <div class="writer-social">
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <i class="fa fa-facebook-square"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <i class="fa fa-twitter-square"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <i class="fa fa-linkedin-square"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <i class="fa fa-pinterest-square" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="comments-area">
+            <h6>@_context.AspNetNewsComments.Count(id => id.NewsId == Model.Id) Комментариев</h6>
+            <div class="commentlists-div">
+                <ol class="commentlists">
+                    @if (_context.AspNetNewsComments.Any(c => c.News == Model && c.Answer == null))
+                    {
+                        @foreach (AspNetNewsComment comment in _context.AspNetNewsComments.Where(c => c.News == Model && c.Answer == null))
+                        {
+                            <li class="sin-comment  depth-1">
+                                <div class="the-comment">
+                                    <div class="avatar">
+                                        @if (_context.AspNetIcons.Any(x => x.UserId == comment.UserId))
+                                        {
+                                            byte[] image = _context.AspNetIcons.FirstOrDefault(i => i.UserId == UserManager.FindByIdAsync(comment.UserId).Result.Id).Icon;
+                                            <img style="border-radius: 50%; width: 112px; height: 112px; border: 2px solid gray" src="data:image/png;base64,@System.Convert.ToBase64String(image)" alt="Аватарка автора">
+                                        }
+                                        else
+                                        {
+                                            <img style="border-radius: 50%; width: 112px; height: 112px; border: 2px solid gray" src="@(Config.DomainName + "img/account/account-default-icon.jpg")" alt="Аватарка автора"/>
+                                        }
+                                    </div>
+                                    <div class="comment-box">
+                                        <div class="comment-author meta">
+                                            <p class="com-name">@_context.AspNetUsers.FirstOrDefault(i => i.Id == comment.UserId).Email</p>
+                                            <span>@comment.Date.ToShortDateString(), @comment.Date.ToShortTimeString()</span>
+                                            <a href="#" class="comment-reply-link"> <i class="fa fa-reply" aria-hidden="true"></i>Ответить</a>
+                                            @if (User.IsInRole("Admin") || User.IsInRole("Manager") || comment.UserId == UserManager.GetUserId(User))
+                                            {
+                                                <a href="#" class="comment-reply-link"> <i class="fa fa-trash" aria-hidden="true"></i>Удалить</a>
+                                            }
+                                        </div>
+                                        <div class="comment-text">
+                                            <p>@comment.Text</p>
+                                        </div>
+                                    </div>
+                                    @if (_context.AspNetNewsComments.Any(c => c.Answer == comment.Id))
+                                    {
+                                        <ul class="children-comment">
+                                            @foreach (AspNetNewsComment commentChildren in _context.AspNetNewsComments.Where(c => c.News == Model && c.Answer == null))
+                                            {
+                                                <li class="sin-comment  depth-1">
+                                                    <div class="the-comment">
+                                                        <div class="avatar">
+                                                            @if (_context.AspNetIcons.Any(x => x.UserId == commentChildren.UserId))
+                                                            {
+                                                                byte[] image = _context.AspNetIcons.FirstOrDefault(i => i.UserId == UserManager.FindByIdAsync(commentChildren.UserId).Result.Id).Icon;
+                                                                <img style="border-radius: 50%; width: 112px; height: 112px; border: 2px solid gray" src="data:image/png;base64,@System.Convert.ToBase64String(image)" alt="Аватарка автора">
+                                                            }
+                                                            else
+                                                            {
+                                                                <img style="border-radius: 50%; width: 112px; height: 112px; border: 2px solid gray" src="@(Config.DomainName + "img/account/account-default-icon.jpg")" alt="Аватарка автора"/>
+                                                            }
+                                                        </div>
+                                                        <div class="comment-box">
+                                                            <div class="comment-author meta">
+                                                                <p class="com-name">@_context.AspNetUsers.FirstOrDefault(i => i.Id == commentChildren.UserId).Email</p>
+                                                                <span>@commentChildren.Date.ToShortDateString(), @commentChildren.Date.ToShortTimeString()</span>
+                                                            </div>
+                                                            <div class="comment-text">
+                                                                <p>@commentChildren.Text</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            }
+                                        </ul>
+                                        <!-- .children -->
+                                    }
+                                </div>
+                            </li>
+                            <!-- #comment-## -->
+                        }
+                    }
+                    else
+                    {
+                        <div style="width: 100%;">
+                            <p></p>
+                            <p></p>
+                            <h3 class="text-center">Комментарии отсутсвуют!</h3>
+                        </div>
+                    }
+                </ol>
+            </div>
+        </div>
+        <div class="comments-form" id="comments">
+            <h6>Оставьте комментарий</h6>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <form asp-controller="Home" asp-action="CreateComment" asp-route-urlNews="@Model.Url" asp-route-idUser="@UserManager.GetUserId(User)">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <textarea id="subject" name="subject" placeholder="Введите текст..." style="height:200px" required="required"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="submit" value="Отправить">
+                        </div>
+
+                    </div>
+                </form>
+            }
+            else
+            {
+                <hr/>
+                <h4 class="text-danger">Оставлять комментарии могут только авторизированные пользователи.</h4>
+                <h4>
+                    <a class="text-primary" asp-area="Identity" asp-page="/Account/Login">Войти в аккаунт /</a>
+                    <a class="text-primary" asp-area="Identity" asp-page="/Account/Register"> Регистрация</a>
+                </h4>
+            }
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-12 col-lg-4">
+        <div class="blog-sidebar">
+            <div class="sin-sidebar">
+                <div class="top-writer">
+                    @if (_context.AspNetIcons.Any(x => x.UserId == Model.Author))
+                    {
+                        byte[] image = _context.AspNetIcons.FirstOrDefault(i => i.UserId == UserManager.FindByIdAsync(Model.Author).Result.Id).Icon;
+                        <img style="border-radius: 50%; width: 112px; height: 112px; border: 2px solid gray" src="data:image/png;base64,@System.Convert.ToBase64String(image)" alt="Аватарка автора">
+                    }
+                    else
+                    {
+                        <img style="border-radius: 50%; width: 112px; height: 112px; border: 2px solid gray" src="@(Config.DomainName + "img/account/account-default-icon.jpg")" alt="Аватарка автора"/>
+                    }
+                    <h6>@UserManager.FindByIdAsync(Model.Author).Result.Email</h6>
+                    <p>Тот, кто уверен в собственной безопасности — абсолютно беззащитен.</p>
+                    <div class="writer-social">
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-facebook-square"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-twitter-square"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-linkedin-square"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-pinterest-square" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sin-sidebar">
+                <div class="sidebar-heading">
+                    <h5>Подписаться на рассылку</h5>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Email адрес">
+                    <input class="search-btn" type="button" value="Подписаться сейчас">
+                </div>
+            </div>
+            <div class="sin-sidebar">
+                <div class="sidebar-heading">
+                    <h5>Последние новости</h5>
+                </div>
+                @if (_context.AspNetNews.Count(n => n.Status == StatusNews.Publish) != 0)
+                {
+                    @foreach (AspNetNews newsItem in _context.AspNetNews.Where(n => n.Status == StatusNews.Publish).OrderByDescending(d => d.Date).Take(4).ToList())
+                    {
+                        <div class="sidebar-post">
+                            <div class="sb-img">
+                                <img src="@(Config.DomainName + _context.AspNetFiles.FirstOrDefault(f => f.Id == newsItem.PreviewPhoto).Path)" alt="@_context.AspNetFiles.FirstOrDefault(f => f.Id == newsItem.PreviewPhoto).Title">
+                            </div>
+                            <div class="sb-post-det">
+                                <p>
+                                    <a asp-controller="Home" asp-action="NewsDetails" asp-route-url="@newsItem.Url">@newsItem.Header</a>
+                                </p>
+                                <span>@newsItem.Date.ToShortDateString()</span>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div style="width: 100%;">
+                        <h4 class="text-center">Список пуст.</h4>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <!--Blog area end -->
+
+
+    <!---fullwidth content start-->
+    <section class="middle-button-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Станьте частью нашей команды</p>
+                    <h1 class="font-red area-heading">Заполните заявку на модерацию, и добавляйте новости на сайт вместе с нами!</h1>
+                    <a href="#" class="kids-care-btn bgc-orange">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!---fullwidth content end-->
 }

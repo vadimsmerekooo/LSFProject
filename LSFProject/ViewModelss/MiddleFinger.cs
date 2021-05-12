@@ -10,5 +10,7 @@ namespace LSFProject
         public int Id { get; set; }
         public string Fio { get; set; }
         public DateTime? DateTime { get; set; }
+        public int Direction { get; set; }
+        public string AccessStatus { get; set; }
     }
 }

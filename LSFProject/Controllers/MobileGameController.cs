@@ -166,6 +166,7 @@ namespace LSFProject.Controllers
                 if (users != null && await _userManager.CheckPasswordAsync(users, Request.Form["password"] + "!"))
                 {
                     EncryptJsonRequestFile("true");
+                    _context.AspNetUsers.FirstOrDefault(u => u.UserName == Request.Form["login"]).LastEntry = DateTime.Now;
                     return Content("Seccessful request post!");
                 }
                 else

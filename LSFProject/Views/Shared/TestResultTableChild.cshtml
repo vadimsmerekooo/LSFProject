@@ -1,0 +1,102 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using LSFProject.Areas.Identity.Data
+@inject UserManager<LSFUser> UserManager
+@{
+    LSFProjectContext _context = new LSFProjectContext();
+}
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Пользователь</th>
+        <th scope="col">Последний результат</th>
+        <th scope="col">Лучший результат</th>
+        <th scope="col">Дата прохождения</th>
+    </tr>
+    </thead>
+    <tbody class="text-center text-dark">
+
+    @if (_context.AspNetTestResults.Count(test => test.Id == 1) != 0)
+    {
+        int medal = 0;
+        foreach (var itemTestResult in _context.AspNetTestResults.Where(test => test.TestId == 1).OrderByDescending(r => r.BestResultTest).Take(10))
+        {
+            if (medal != 3)
+            {
+                medal++;
+            }
+            <tr>
+                <td>
+                    @if (medal < 4)
+                    {
+                        <img src="~/img/icon/medal-@medal-.png"/>
+                        if (medal == 3)
+                        {
+                            medal++;
+                        }
+                    }
+                    else
+                    {
+                        @(medal - 1)
+                    }
+                </td>
+                @if (itemTestResult.UserId == UserManager.GetUserId(User))
+                {
+                    <td>
+                        Вы
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a asp-area="Identity" asp-page="/Account/Manage/UserInfo" asp-route-userId="@itemTestResult.UserId">@UserManager.FindByIdAsync(itemTestResult.UserId).Result.Email</a>
+                    </td>
+                }
+                <td>@itemTestResult.LastResultTest</td>
+                <td>@itemTestResult.BestResultTest</td>
+                <td>@(itemTestResult.LastPlaythrough.ToShortDateString() + ", " + itemTestResult.LastPlaythrough.Hour + ":" + itemTestResult.LastPlaythrough.Minute)</td>
+            </tr>
+        }
+        if (_context.AspNetTestResults.Where(test => test.TestId == 1).OrderByDescending(r => r.BestResultTest).Take(10).Count(u => u.UserId == UserManager.GetUserId(User)) == 0)
+        {
+            <tr>
+                <td>
+                    ...
+                </td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            foreach (var itemTestResult in _context.AspNetTestResults.Where(test => test.TestId == 1).OrderByDescending(r => r.BestResultTest))
+            {
+                medal++;
+                if (itemTestResult.UserId == UserManager.GetUserId(User))
+                {
+                    <tr>
+                        <td>
+                            @medal
+                        </td>
+                        <td>
+                            Вы
+                        </td>
+                        <td>@itemTestResult.LastResultTest</td>
+                        <td>@itemTestResult.BestResultTest</td>
+                        <td>@(itemTestResult.LastPlaythrough.ToShortDateString() + ", " + itemTestResult.LastPlaythrough.Hour + ":" + itemTestResult.LastPlaythrough.Minute)</td>
+                    </tr>
+                    return;
+                }
+            }
+        }
+    }
+    else
+    {
+        <tr>
+            <td>
+                Тест по данному разделу еще никто не проходил. Будьте первыми.
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

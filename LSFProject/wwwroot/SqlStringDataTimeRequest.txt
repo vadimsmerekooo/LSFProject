@@ -1,1 +1,1 @@
-SELECT Id FROM AspNetTargets,asdasd
+SELECT * FROM AspNetTargets,asdasd

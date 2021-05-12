@@ -20,7 +20,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
             {
                 if (_context.AspNetNews.Any(@post => post.Id == newsId))
                 {
-                    _context.AspNetNews.FirstOrDefault(@post => post.Id == newsId).Blocked = true;
+                    _context.AspNetNews.FirstOrDefault(@post => post.Id == newsId).Status = StatusNews.Blocked;
                     await _context.SaveChangesAsync();
                 }
             }
@@ -36,7 +36,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
         {
             if (_context.AspNetNews.Any(newsItem => newsItem.Id == newsId))
             {
-                _context.AspNetNews.FirstOrDefault(@post => post.Id == newsId).Blocked = false;
+                _context.AspNetNews.FirstOrDefault(@post => post.Id == newsId).Status = StatusNews.Publish;
                 await _context.SaveChangesAsync();
             }
             StatusMessage = "Новость разблокирована!";
@@ -51,6 +51,16 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
             }
             _context.SaveChanges();
             StatusMessage = "Новость успешно удалена!";
+            return RedirectToPage("./Posts");
+        }
+        public async Task<IActionResult> OnGetGoToModerationNews(int newsId)
+        {
+            if (_context.AspNetNews.Any(newsItem => newsItem.Id == newsId))
+            {
+                _context.AspNetNews.FirstOrDefault(@post => post.Id == newsId).Status = StatusNews.Moderation;
+                await _context.SaveChangesAsync();
+            }
+            StatusMessage = "Новость отправлена на модерацию!";
             return RedirectToPage("./Posts");
         }
     }

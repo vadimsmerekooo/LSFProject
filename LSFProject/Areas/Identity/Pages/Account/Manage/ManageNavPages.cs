@@ -12,6 +12,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
 
         public static string Email => "Email";
         public static string ChangePassword => "ChangePassword";
+        public static string InfoSecurePass => "InfoSecurePass";
         public static string Role => "Role";
         public static string UserList => "UserList";
         public static string EditRolesUser => "EditRolesUser";
@@ -21,23 +22,26 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
         public static string UploadPhoto => "UploadPhoto";
         public static string AddedPost => "AddedPost";
         public static string RemovePosts => "RemovePosts";
+        public static string ModerationPosts => "ModerationPosts";
         public static string Sliders => "Sliders";
 
         public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
         public static string ChangePasswordNavClass(ViewContext viewContext) => PageNavClass(viewContext, ChangePassword);
+        public static string InfoSecurePassNavClass(ViewContext viewContext) => PageNavClass(viewContext, InfoSecurePass);
         public static string RoleNavClass(ViewContext viewContext) => PageNavClass(viewContext, Role);
         public static string UserListNavClass(ViewContext viewContext) => PageNavClass(viewContext, UserList);
         public static string EditRolesUserNavClass(ViewContext viewContext) => PageNavClass(viewContext, EditRolesUser);
         public static string CreateRoleNavClass(ViewContext viewContext) => PageNavClass(viewContext, CreateRole);
         public static string PostsNavClass(ViewContext viewContext) => PageNavClass(viewContext, Posts);
         public static string AddedPostNavClass(ViewContext viewContext) => PageNavClass(viewContext, AddedPost);
+        public static string RemovePostsNavClass(ViewContext viewContext) => PageNavClass(viewContext, RemovePosts); 
+        public static string ModerationPostsNavClass(ViewContext viewContext) => PageNavClass(viewContext, ModerationPosts); 
         public static string FilesNavClass(ViewContext viewContext) => PageNavClass(viewContext, Files);
         public static string UploadPhotoNavClass(ViewContext viewContext) => PageNavClass(viewContext, UploadPhoto);
-        public static string RemovePostsNavClass(ViewContext viewContext) => PageNavClass(viewContext, RemovePosts); 
         public static string SlidersNavClass(ViewContext viewContext) => PageNavClass(viewContext, Sliders);
 
 
-
+        
 
         public static string AspNetTargets => "AspNetTargets";
         public static string AddAspNetTarget => "AddAspNetTarget";

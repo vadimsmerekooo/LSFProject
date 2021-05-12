@@ -14,7 +14,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
         public List<AspNetNewsComment> comments;
         public RemovePosts()
         {
-            news = _context.AspNetNews.Where(news => news.Blocked).ToList();
+            news = _context.AspNetNews.Where(news => news.Status == StatusNews.Blocked).ToList();
             files = _context.AspNetFiles.ToList();
             comments = _context.AspNetNewsComments.ToList();
         }
@@ -27,10 +27,10 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
         {
             if (_context.AspNetNews.Any(newsItem => newsItem.Id == newsId))
             {
-                _context.AspNetNews.FirstOrDefault(@post => post.Id == newsId).Blocked = false;
+                _context.AspNetNews.FirstOrDefault(@post => post.Id == newsId).Status = StatusNews.Publish;
                 await _context.SaveChangesAsync();
             }
-            StatusMessage = "Новость разблокирована!";
+            StatusMessage = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!";
             return RedirectToPage("./Posts");
         }
         public IActionResult OnGetDeleteNews(int newsId)
@@ -41,7 +41,7 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
                 _context.AspNetNewsComments.Remove(comments);
             }
             _context.SaveChanges();
-            StatusMessage = "Новость успешно удалена!";
+            StatusMessage = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!";
             return RedirectToPage("./Posts");
         }
     }

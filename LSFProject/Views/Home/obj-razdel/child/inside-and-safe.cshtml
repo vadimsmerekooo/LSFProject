@@ -1,23 +1,37 @@
-﻿<div class="col-lg-8 col-xl-7 ">
-    <div class="row flex-xl-row-reverse row-20">
-
-        <div class="post post-default post-variant-3" style="margin-bottom: 30px;">
-            <h1 class="text-center">Окружающая среда и безопасность</h1>
-            <h2 class="text-center">Безопасная среда в Учреждении образования</h2>
-            <hr />
-
-            <img class="text-center border-image-child" src="~/img/obj/child/obj/28.jpg"/>
-            <br />
-            <strong>Перемена —</strong> перерыв между уроками. Перемену любят все учащиеся.
-            Можно отдохнуть и подготовиться к следующему занятию.
-            Однако часто во время переменок ребята забывают про хорошее поведение:
-            бегают, толкаются, кричат. Чтобы никто не травмировался (не упал, не ударился),
-            следует соблюдать правила безопасного поведения. Особенно внимательными и осторожными надо быть:
-            на крыльце; на лестницах; в узких коридорах, где старшеклассники могут столкнуться
-            с учащимися младших классов; возле дверей классных комнат, открывающихся внутрь коридоров.
-            <br />
-            <br />
-            <strong>1. Прочитай / прослушай стихотворение Б. Заходера "Перемена"</strong><br />
+﻿<h2 class="text-center">Безопасная среда в Учреждении образования</h2>
+<hr/>
+<div class="row">
+    <p>
+        <img class="border-image-child float-left" src="~/img/obj/child/obj/28.jpg"/>
+        <br/>
+        <br/>
+        <br/>
+        <strong>Перемена —</strong> перерыв между уроками. Перемену любят все учащиеся.
+        Чтобы никто не травмировался (не упал, не ударился),
+        следует соблюдать правила безопасного поведения. Особенно внимательными и осторожными надо быть:
+        на крыльце, на лестницах, в узких коридорах.
+    </p>
+</div>
+<div class="row collapse-wrapper">
+<div id="accordion" role="tablist">
+<div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+        <h5 class="mb-0">
+            <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                1. Прочитай / прослушай стихотворение Б. Заходера "Перемена"
+            </a>
+        </h5>
+    </div>
+    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+            <br/>
+            <img src="~/img/obj/child/voice-icon.png"/>
+            <audio controls style="width: 85%; vertical-align: middle;">
+                <source src="~/img/obj/child/obj/.ogg" type="audio/ogg">
+                <source src="~/img/obj/child/obj/.mp3" type="audio/mpeg">
+                Ваш браузер не поддерживает функцию прослушивания.
+            </audio>
+            <br/>
             <div class="row">
                 <div class="col-sm">
                     «Перемена, перемена!> —
@@ -59,26 +73,234 @@
                     На уроке отдохнем!
                 </div>
             </div>
-            Ответь на вопросы.<br />
-            1) О какой перемене рассказал Б. Заходер в стихотворении?<br />
-            2) Как герой стихотворения отдыхал на перерыве между уроками?<br />
-            3) Действительно ли Вова отдохнул?<br />
-            4) Какие правила безопасности поведения нарушил Вова?<br />
-            <br /><br />
-            <img src="~/img/obj/child/warning-icon.png" />
+            Ответь на вопросы.<br/>
+            1) О какой перемене рассказал Б. Заходер в стихотворении?<br/>
+            2) Как герой стихотворения отдыхал на перерыве между уроками?<br/>
+            3) Действительно ли Вова отдохнул?<br/>
+            4) Какие правила безопасности поведения нарушил Вова?<br/>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+        <h5 class="mb-0">
+            <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                2. Рассмотри рисунки. Как учащиеся проводят время на переменках?
+            </a>
+        </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+            <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-evenly;">
+                <div class="form_radio form_radio1">
+                    <input id="form16-radio-1" type="radio" name="radio16" value="1">
+                    <label for="form16-radio-1" onclick="znakfalse();">
+                        <img src="~/img/obj/child/obj/31-1.png"/>
+                    </label>
+                </div>
+
+                <div class="form_radio form_radio1">
+                    <input id="form16-radio-2" type="radio" name="radio16" value="2">
+                    <label for="form16-radio-2" onclick="znakfalse();">
+                        <img src="~/img/obj/child/obj/31-2.png"/>
+                    </label>
+                </div>
+
+                <div class="form_radio form_radio1">
+                    <input id="form16-radio-3" type="radio" name="radio16" value="3">
+                    <label for="form16-radio-3" onclick="znaktrue();">
+                        <img src="~/img/obj/child/obj/31-3.png"/>
+                    </label>
+                </div>
+                <div class="form_radio form_radio1">
+                    <input id="form16-radio-4" type="radio" name="radio16" value="4">
+                    <label for="form16-radio-4" onclick="znaktrue();">
+                        <img src="~/img/obj/child/obj/31-4.png"/>
+                    </label>
+                </div>
+                <div id="znaktrue" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+                </div>
+                <div id="znakfalse" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+                </div>
+                <script>
+                                        function znaktrue() {
+                                            document.getElementById("znaktrue").classList.remove('invisible-alert');
+                                            document.getElementById("znakfalse").classList.add('invisible-alert');
+                                        }
+                                        function znakfalse() {
+                                            document.getElementById("znaktrue").classList.add('invisible-alert');
+                                            document.getElementById("znakfalse").classList.remove('invisible-alert');
+                                        }
+                                    </script>
+            </div>
+            <br/>
+            <hr/>
+            <img src="~/img/obj/child/warning-icon.png"/>
             Отдыхать на перемене следует с пользой для здоровья.
             Можно почитать любимую книгу, обсудить с друзьями интересное событие,
             поиграть, например, в «ручеек», шашки, шахматы, спеть песню, перекусить.
             Отдых будет в удовольствие.
-            <hr />
-            <a class="btn" type="button" asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/safe-at-chs" asp-route-razdelName="child" style="background: #8273C8; float: left; color: #ffffff; padding: 20px; margin: 20px;">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="display:inline-block;vertical-align:text-bottom"><path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"></path></svg>
-                Защита от ЧС
-            </a>
-            <a class="btn" type="button" asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/health-life" asp-route-razdelName="child" style="background: #8273C8; float: right; color: #ffffff; padding: 20px; margin: 20px;">
-                Здоровый образ жизни
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="display:inline-block;vertical-align:text-bottom"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0 010-1.5h7.44L8.22 4.03a.75.75 0 010-1.06z"></path></svg>
-            </a>
         </div>
     </div>
 </div>
+<div class="card">
+    <div class="card-header" role="tab" id="headingThree">
+        <h5 class="mb-0">
+            <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                3. Рассмотри рисунок.
+            </a>
+        </h5>
+    </div>
+    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+        <div class="card-body">
+            Прочитай высказывания о ситуации с подножкой. С каким из них ты согласен? Выбери правильное.
+            <img src="~/img/obj/child/obj/32.png">
+            <br/>
+            <div class="form_radio form_radio1">
+                <input id="form19-radio-1" type="radio" name="radio19" value="1">
+                <label for="form19-radio-1" onclick="znakpeshehodfalse();">Подумаешь, подножка! Смешно и весело!</label>
+            </div>
+
+            <div class="form_radio form_radio1" style="margin-left: 30px;">
+                <input id="form19-radio-2" type="radio" name="radio19" value="2">
+                <label for="form19-radio-2" onclick="znakpeshehodtrue();">Подножка - плохая шутка! Можно получить травму.</label>
+            </div>
+            <div class="form_radio form_radio1" style="margin-left: 30px;">
+                <input id="form19-radio-3" type="radio" name="radio19" value="3">
+                <label for="form19-radio-3" onclick="znakpeshehodfalse();">Сегодня мне сделали подножку, а завтра я сделаю то же самое.</label>
+            </div>
+            <div id="znakpeshehodtrue" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+            </div>
+            <div id="znakpeshehodfalse" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+            </div>
+            <script>
+                                    function znakpeshehodtrue() {
+                                        document.getElementById("znakpeshehodtrue").classList.remove('invisible-alert');
+                                        document.getElementById("znakpeshehodfalse").classList.add('invisible-alert');
+                                    }
+                                    function znakpeshehodfalse() {
+                                        document.getElementById("znakpeshehodtrue").classList.add('invisible-alert');
+                                        document.getElementById("znakpeshehodfalse").classList.remove('invisible-alert');
+                                    }
+                                </script>
+            <br/>
+            <hr/>
+            <img src="~/img/obj/child/warning-icon.png"/>
+            Отдыхать на перемене следует с пользой для здоровья.
+            Можно почитать любимую книгу, обсудить с друзьями интересное событие,
+            поиграть, например, в «ручеек», шашки, шахматы, спеть песню, перекусить.
+            Отдых будет в удовольствие.
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header" role="tab" id="headingFive">
+        <h5 class="mb-0">
+            <a class="collapsed" data-toggle="collapse" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" style="padding-right: 40px;">
+                4. Выбери правильные слова.
+            </a>
+        </h5>
+    </div>
+    <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive" data-parent="#accordion">
+        <div class="card-body">
+            <style>
+                                    .card-body-self {
+                                        display: flex;
+                                        flex-wrap: wrap;
+                                        margin-bottom: 30px;
+                                    }
+
+                                        .card-body-self h5 {
+                                            padding: 7px;
+                                        }
+
+                                    .card-body-drag h5 {
+                                        padding: 7px;
+                                    }
+                                </style>
+
+            <script>
+                                    function allowDrop(ev) {
+                                        ev.preventDefault();
+                                    }
+
+                                    function drag(ev) {
+                                        ev.dataTransfer.setData("text", ev.target.id);
+                                    }
+
+                                    function drop(ev) {
+                                        ev.preventDefault();
+                                        var data = ev.dataTransfer.getData("text");
+                                        ev.target.appendChild(document.getElementById(data));
+                                    }
+                                    function dropdiv(ev) {
+                                        ev.preventDefault();
+                                        var data = ev.dataTransfer.getData("text");
+                                        ev.target.appendChild(document.getElementById(data));
+                                    }
+                                </script>
+            <div class="card-body-self">
+                <h5 draggable="true" ondragstart="drag(event)" id="drag1">тетрадь, </h5>
+                <h5 draggable="true" ondragstart="drag(event)" id="drag2">пенал, </h5>
+                <h5 draggable="true" ondragstart="drag(event)" id="drag3">ножницы, </h5>
+                <h5 draggable="true" ondragstart="drag(event)" id="drag4">ножницы в футляре, </h5>
+                <h5 draggable="true" ondragstart="drag(event)" id="drag5">ручка с колпачком, </h5>
+                <h5 draggable="true" ondragstart="drag(event)" id="drag4">простой карандаш, </h5>
+                <h5 draggable="true" ondragstart="drag(event)" id="drag6">учебник, </h5>
+                <h5 draggable="true" ondragstart="drag(event)" id="drag7">скрепки, </h5>
+            </div>
+
+            <div id="divtrue" class="alert alert-success invisible-alert" role="alert">
+                                    <img src="~/img/obj/succesfull.png"/>
+            </div>
+            <div id="divfalse" class="alert alert-danger invisible-alert" role="alert">
+                                    <img src="~/img/obj/unsuccesfull.png"/>
+            </div>
+            <hr/>
+            <div class="card">
+                <div class="card-header" style="background: transparent;">
+                    Перетащите слова из списка выше, в область, выделеная зеленым цветом.
+                </div>
+                <div class="card-body card-body-drag" style="display: flex; flex-wrap: wrap; min-height: 40px;" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+                </div>
+            </div>
+            <br/>
+            <a class="btn btn-primary text-white" onclick="dragcheck();">Проверить ответ</a>
+            <script>
+                                    function dragcheck() {
+                                        console.log(document.querySelector('#div1').textContent);
+                                        if (document.querySelector('#div1').textContent.includes("ножницы,") ||
+                                            document.querySelector('#div1').textContent.includes("скрепки,") ||
+                                            document.querySelector('#div1').textContent.includes("простой карандаш,") ||
+                                            document.querySelector('#div1').textContent == "                                    ") {
+                                            document.getElementById("divtrue").classList.add('invisible-alert');
+                                            document.getElementById("divfalse").classList.remove('invisible-alert');
+                                        }
+                                        else {
+                                            document.getElementById("divtrue").classList.remove('invisible-alert');
+                                            document.getElementById("divfalse").classList.add('invisible-alert');
+                                        }
+                                    }
+                                </script>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<hr/>
+<a class="btn" type="button" asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/safe-at-chs" asp-route-razdelName="child" style="background: #8273C8; float: left; color: #ffffff; padding: 20px; margin: 20px;">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="display:inline-block;vertical-align:text-bottom">
+        <path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"></path>
+    </svg>
+    Защита от ЧС
+</a>
+<a class="btn" type="button" asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/health-life" asp-route-razdelName="child" style="background: #8273C8; float: right; color: #ffffff; padding: 20px; margin: 20px;">
+    Здоровый образ жизни
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="display:inline-block;vertical-align:text-bottom">
+        <path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0 010-1.5h7.44L8.22 4.03a.75.75 0 010-1.06z"></path>
+    </svg>
+</a>

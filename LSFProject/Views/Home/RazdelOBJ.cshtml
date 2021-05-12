@@ -1,11 +1,9 @@
 ﻿@{
-    List<KeyValuePair<string, string>> list = (List<KeyValuePair<string, string>>)ViewData["List"];
+    List<KeyValuePair<string, string>> list = (List<KeyValuePair<string, string>>) ViewData["List"];
     ViewData["Title"] = list.FirstOrDefault(x => x.Key == ViewData["Link"].ToString()).Value;
     LSFProjectContext _context = new LSFProjectContext();
-    List<AspNetNews> news = _context.AspNetNews.OrderByDescending(d => d.Date).Take(4).ToList();
+    List<AspNetNews> news = _context.AspNetNews.Where(n => n.Status == StatusNews.Publish).OrderByDescending(d => d.Date).Take(4).ToList();
 }
-
-
 
 
 <div class="text-bread-crumb d-flex align-items-center style-five">
@@ -19,57 +17,68 @@
 </div>
 
 <!--Breadcrumb area end-->
+
+
 <!--Tution area top start-->
-<section class="tution-top" style="background: #f8f8f8;">
+<section class="post-page" style="background: #f8f8f8;">
     <div class="container-fluid">
-        <div class="row justify-content-center wow fadeInUp" data-wow-delay=".3s">
-            <partial name="@ViewData["Responce"]" />
-
-            <div class="col-xs-3 sidebar" style="margin-left: 50px;">
-                <div class="sidebar__container">
-                    <div class="submenu__title"></div>
-
-
-                    <ul id="section-nav" class="sidebar__list">
-
-                        @foreach (var listItem in list)
-                        {
-                            <li class="sidebar__elem">
-                                <a class="sidebar__link @(ViewData["Link"].ToString() == listItem.Key ? "active" : "")" rel="nofollow" asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="@listItem.Key" asp-route-razdelName="@ViewData["RazdelName"]">@listItem.Value</a>
-                            </li>
-                        }
-                    </ul>
-                </div>
-                <div class="sin-sidebar">
-                    <div class="sidebar-heading">
-                        <h5>Получать о последних новостях</h5>
+        <div class="row justify-content-center no-gutters">
+            <div class="col-xl">
+                <div class="row">
+                    <div class="col-md-8 col-xl-9 post" style="padding-right: 50px;">
+                        <partial name="@ViewData["Responce"]"/>
                     </div>
-                    <div class="search-box">
-                        <input type="text" placeholder="Email">
-                        <input class="search-btn" type="button" value="Подписаться">
-                    </div>
-                </div>
-                <div class="sin-sidebar">
-                    <div class="sidebar-heading">
-                        <h5>Последние новости</h5>
-                    </div>
-                    @foreach (AspNetNews newsItem in news)
-                    {
-                        <div class="sidebar-post">
 
-                            <div class="sb-img">
-                                <img src="@( Config.DomainName + _context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Path)" alt="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Title">
-                            </div>
-                            <div class="sb-post-det">
-                                <p><a asp-controller="Home" asp-action="NewsDetails" asp-route-url="@newsItem.Url">@newsItem.Header</a></p>
-                                <span>@newsItem.Date.ToShortDateString()</span>
-                            </div>
+                    <div class="col-md-4 col-xl-3">
+                        <div class="sidebar__container">
+                            <div class="submenu__title"></div>
+
+
+                            <ul id="section-nav" class="sidebar__list">
+
+                                @foreach (var listItem in list)
+                                {
+                                    <li class="sidebar__elem">
+                                        <a class="sidebar__link @(ViewData["Link"].ToString() == listItem.Key ? "active" : "")" rel="nofollow" asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="@listItem.Key" asp-route-razdelName="@ViewData["RazdelName"]">@listItem.Value</a>
+                                    </li>
+                                }
+                            </ul>
                         </div>
-                    }
+                        <div class="sin-sidebar">
+                            <div class="sidebar-heading">
+                                <h5>Получать о последних новостях</h5>
+                            </div>
+                            <form>
+                                <div class="search-box">
+                                    <input type="email" name="email" id="email" placeholder="Email адрес" required="required">
+                                    <input class="search-btn" type="button" asp-controller="Home" asp-action="EmailSubscribe" value="Подписаться сейчас">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="sin-sidebar">
+                            <div class="sidebar-heading">
+                                <h5>Последние новости</h5>
+                            </div>
+                            @foreach (AspNetNews newsItem in news)
+                            {
+                                <div class="sidebar-post">
+
+                                    <div class="sb-img">
+                                        <img src="@(Config.DomainName + _context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Path)" alt="@_context.AspNetFiles.FirstOrDefault(p => p.Id == newsItem.PreviewPhoto).Title">
+                                    </div>
+                                    <div class="sb-post-det">
+                                        <p>
+                                            <a asp-controller="Home" asp-action="NewsDetails" asp-route-url="@newsItem.Url">@newsItem.Header</a>
+                                        </p>
+                                        <span>@newsItem.Date.ToShortDateString()</span>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!--Tution area top end-->
-

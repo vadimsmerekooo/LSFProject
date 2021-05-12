@@ -1,13 +1,97 @@
-﻿<div class="col-lg-8 col-xl-7 ">
-    <div class="tuton-top-inner">
-        <h2 class="heading-style-two">Lorem ipsum</h2>
-        <h6><i class="fa fa-hand-o-right"></i><strong>Lorem</strong> Ipsum is simply dummy text of the printing and typesetting industry.</h6>
-        <h6><i class="fa fa-hand-o-right"></i><strong>Lorem</strong> Ipsum is simply dummy text of the printing and typesetting industry.</h6>
-        <h6><i class="fa fa-hand-o-right"></i><strong>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</strong></h6>
+﻿<h1 class="text-center">Активные формы здорового образа жизни</h1>
+<hr/>
+<br/>
+<img src="~/img/obj/child/move-icon.png"/>
+Режим дня учащегося — это грамотное распределение времени на занятия и отдых в течение суток.
+Учащиеся начальной школы должны спать не менее 9-10 часов в сутки.
+Систематическое недосыпание приводит к переутомлению.
+<br/>
+<br/>
 
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<div class="collapse-wrapper">
+    <div id="accordion" role="tablist">
+        <div class="card">
+            <div class="card-header" role="tab" id="headingOne">
+                <h5 class="mb-0">
+                    <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">1. Расмотри рисунок. Перетащи в выделенные блоки, смайлики.</a>
+                </h5>
+            </div>
+            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col" style="background-image: url(/img/obj/child/obj/game/1.png); background-repeat: no-repeat;  height: 500px;">
+                            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 70px; height: 70px; border: 2px solid #1c7430; margin-left: 45px; margin-top: 60px;"></div>
+                            <div style="width: 70px; height: 70px; border: 2px solid #1c7430; margin-left: 20px; margin-top: 100px;" id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                            <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 70px; height: 70px; border: 2px solid #1c7430; margin-left: 210px; margin-top: -30px;"></div>
+                            <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 70px; height: 70px; border: 2px solid #1c7430; margin-left: 260px; margin-top: 40px;"></div>
+                        </div>
+                        <div class="col">
+                            <img id="grag1" draggable="true" ondragstart="drag(event)" src="/img/obj/succesfull.png"/>
+                            <img id="grag2" draggable="true" ondragstart="drag(event)" src="/img/obj/unsuccesfull.png"/>
+                        </div>
 
-        <p><strong>Lorem</strong> Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <script>
+                            function allowDrop(ev) {
+                                ev.preventDefault();
+                            }
+                            
+                            function drag(ev) {
+                                ev.dataTransfer.setData("text/html", ev.target.id);
+                            }
+                            
+                            function drop(ev) {
+                                ev.preventDefault();
+                                var data=ev.dataTransfer.getData("text/html");
+                                var nodeCopy = document.getElementById(data).cloneNode(true);
+                                nodeCopy.id = "newId";
+                                ev.target.appendChild(nodeCopy);
+                            }
+            </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" role="tab" id="headingTwo">
+                <h5 class="mb-0">
+                    <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        2. Прочитай диалог мальчиков.
+                    </a>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" role="tab" id="headingThree">
+                <h5 class="mb-0">
+                    <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        3. Прочитай ситуационную задачу.
+                    </a>
+                </h5>
+            </div>
+            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" role="tab" id="headingFour">
+                <h5 class="mb-0">
+                    <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        4. Рассмотри рисунок.
+                    </a>
+                </h5>
+            </div>
+            <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion">
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
     </div>
-    <hr>
 </div>

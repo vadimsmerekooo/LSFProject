@@ -1,8 +1,10 @@
 ﻿@page
 @model UserListModel
 @using Microsoft.AspNetCore.Identity
+@using LSFProject.Areas.Identity.Data
 @inject SignInManager<LSFProject.Areas.Identity.Data.LSFUser> SignInManager
 @inject UserManager<LSFProject.Areas.Identity.Data.LSFUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
 
 @{
     ViewData["Title"] = "Список пользователей";
@@ -14,13 +16,37 @@
     <table class="table text-dark">
         @foreach (var user in Model.users)
         {
-        <tr>
-            <td>@user.UserName</td>
-            <td>@user.Email</td>
-            <td>
-                <a class="btn btn-sm btn-primary" asp-page="./EditRolesUser" asp-route-userid="@user.Id">Права доступа</a>
-            </td>
-            <td>
+            <tr>
+                @if (user.UserName == User.Identity.Name)
+                {
+                    <td><a asp-page="./Index">@user.UserName</a></td>
+                    <td><a asp-page="./Index">@user.Email</a></td>
+                }
+                else
+                {
+                    <td><a asp-page="UserInfo" asp-route-userId="@user.Id">@user.UserName</a></td>
+                    <td><a asp-page="UserInfo" asp-route-userId="@user.Id">@user.Email</a></td>
+                }
+                <td>
+                    Создан: @user.DateCreate
+                </td>
+                <td>
+                    Последний вход: @user.LastEntry
+                </td>
+                <td>
+                    РУД: 
+                    @foreach(var role in await Model._userManager.GetRolesAsync(await Model._userManager.FindByIdAsync(user.Id)))
+                    {
+                        <h4>@role</h4>
+                    }
+                </td>
+                <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-sm btn-primary" asp-page="./EditRolesUser" asp-route-userid="@user.Id">Права доступа</a>   
+                    }
+                </td>
+                <td>
                 @if (User.IsInRole("Admin") && UserManager.GetUserId(User) != user.Id)
                 {
                     if (user.LockoutEnd != null)
@@ -32,14 +58,14 @@
                         <a class="btn btn-sm btn-danger" asp-page-handler="LockoutEnabledUser" asp-route-userId="@user.Id">Заблокировать</a>
                     }
                 }
-            <td>
-            <td>
+                <td>
+                <td>
                 @if (User.IsInRole("Admin") && UserManager.GetUserId(User) != user.Id)
                 {
                     <a class="btn btn-sm btn-danger" asp-page-handler="DeleteUser" asp-route-userid="@user.Id">Удалить</a>
                 }
-            <td>
-        </tr>
+                <td>
+            </tr>
         }
     </table>
 </div>

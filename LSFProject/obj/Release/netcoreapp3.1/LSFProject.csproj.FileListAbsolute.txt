@@ -417,8 +417,6 @@ D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Home\NewsN
 D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Home\SliderPartial.cshtml.g.cs
 D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\MobileGame\AccessDenied.cshtml.g.cs
 D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\MobileGame\Index.cshtml.g.cs
-D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Post\Index.cshtml.g.cs
-D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Post\PostDetails.cshtml.g.cs
 D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Role\Create.cshtml.g.cs
 D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Role\Edit.cshtml.g.cs
 D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Role\Index.cshtml.g.cs
@@ -452,3 +450,18 @@ D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Home\obj-r
 D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Home\obj-razdel\child\test.cshtml.g.cs
 D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Home\obj-razdel\child\videos.cshtml.g.cs
 D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Home\RazdelOBJ.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Home\News.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\InfoSecurePass.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\bin\Release\netcoreapp3.1\MailKit.dll
+D:\GitHub\LSFProject\LSFProject\bin\Release\netcoreapp3.1\MimeKit.dll
+D:\GitHub\LSFProject\LSFProject\bin\Release\netcoreapp3.1\BouncyCastle.Crypto.dll
+D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Home\VerifyEmail.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Home\UnverifyEmail.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\ModerationPosts.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\UserInfo.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Home\RequestForRolePartial.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Shared\UserLevelPartial.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Shared\UserLevelPartialxl.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\TestResultTable.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Shared\TestResultTableChild.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Release\netcoreapp3.1\Razor\Views\Home\SearchActionResult.cshtml.g.cs

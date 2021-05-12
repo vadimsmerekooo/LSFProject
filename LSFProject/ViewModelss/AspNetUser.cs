@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using LSFProject.ViewModelss;
 
 #nullable disable
 
@@ -37,6 +38,12 @@ namespace LSFProject
         public int AccessFailedCount { get; set; }
         public int? Icon { get; set; }
 
+        public DateTime? DateCreate { get; set; }
+        public DateTime? LastEntry { get; set; }
+        
+        public double? Rating { get; set; }
+        public double? LevelXp { get; set; }
+
         public virtual AspNetIcon IconNavigation { get; set; }
         public virtual ICollection<AspNetFavTarget> AspNetFavTargets { get; set; }
         public virtual ICollection<AspNetForumAnswer> AspNetForumAnswers { get; set; }
@@ -47,5 +54,6 @@ namespace LSFProject
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual ICollection<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual ICollection<AspNetUserToken> AspNetUserTokens { get; set; }
+        public virtual ICollection<AspNetEmailSubscribe> AspNetEmailSubscribe { get; set; }
     }
 }

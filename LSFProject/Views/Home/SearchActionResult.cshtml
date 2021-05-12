@@ -1,0 +1,139 @@
+﻿@{
+    LSFProjectContext _context = new LSFProjectContext();
+    ViewData["Title"] = "Новости";
+}
+<!--Breadcrumb area start-->
+
+<div class="text-bread-crumb d-flex align-items-center style-six blue">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">@ViewData["Title"]</h2>
+                <div class="bread-crumb-line">
+                    <span>
+                        <a asp-controller="Home" asp-action="Index">Главная /</a>
+                    </span>@ViewData["Title"]
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Breadcrumb area end-->
+<!--Blog area start -->
+
+<section class="blog-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-xl-9">
+                <div class="row">
+                    @if (_context.AspNetNews.Count(b => b.Status == StatusNews.Publish) == 0)
+                    {
+                        <div class="text-center" style="width: 100%;">
+                            <h3 class="text-center">Список пуст!</h3>
+                        </div>
+                    }
+                    @foreach (AspNetNews newsItem in _context.AspNetNews.Where(n => n.Status == StatusNews.Publish).OrderByDescending(d => d.Date).ToList())
+                    {
+                        <div class="col-md-4 col-md-6 col-xl-4">
+                            <div class="single-news wow fadeInUp" data-wow-delay=".3s">
+                                <img src="@(Config.DomainName + _context.AspNetFiles.FirstOrDefault(f => f.Id == newsItem.PreviewPhoto).Path)" alt="@_context.AspNetFiles.FirstOrDefault(f => f.Id == newsItem.PreviewPhoto).Title">
+                                <div class="news-det">
+                                    <h4>@newsItem.Header</h4>
+                                    <p>@newsItem.PreviewText</p>
+                                    <div class="news-meta">
+                                        <span>
+                                            <i class="fa fa-comment"></i>
+                                            @_context.AspNetNewsComments.Where(id => id.NewsId == newsItem.Id).ToList().Count() Коментарии
+                                        </span>
+                                        <span>
+                                            <i class="fa fa-share-alt-square"></i>
+                                            @newsItem.Share Репосты
+                                        </span>
+                                        <a asp-controller="Home" asp-action="NewsDetails" asp-route-url="@newsItem.Url">
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+                @if (_context.AspNetNews.Count(b => b.Status == StatusNews.Publish) != 0)
+                {
+                    <hr/>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            @if (Model.PageViewModel.HasPreviousPage)
+                            {
+                                <li class="page-item disabled">
+                                    <a class="page-link" asp-controller="Home" asp-action="News" asp-route-page="1" tabindex="-1">Предыдущая</a>
+                                </li>
+                            }
+                            @for (int i = 1; i <= Model.PageViewModel.TotalPages; i++)
+                            {
+                                <li class="page-item @(Model.PageViewModel.PageNumber == i ? "active" : "no-active")">
+                                    <a class="page-link" asp-controller="Home" asp-action="News" asp-route-page="@i">@i</a>
+                                </li>
+                            }
+                            @if (Model.PageViewModel.PageNumber != Model.PageViewModel.TotalPages)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" asp-controller="Home" asp-action="News" asp-route-page="@Model.PageViewModel.TotalPages">Следующая</a>
+                                </li>
+                            }
+
+                        </ul>
+                    </nav>
+                }
+            </div>
+            <div class="col-md-4 col-xl-3">
+                <div class="blog-sidebar">
+                    <div class="sin-sidebar">
+                        <div class="sidebar-heading">
+                            <h5>Подписаться на рассылку</h5>
+                        </div>
+                        <form>
+                            <div class="search-box">
+                                <input type="email" name="email" id="email" placeholder="Email адрес">
+                                <input class="search-btn" type="button" asp-controller="Home" asp-action="EmailSubscribe" value="Подписаться сейчас">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="sin-sidebar">
+                        <div class="sidebar-heading">
+                            <h5>Последние новости</h5>
+                        </div>
+                        @if (_context.AspNetNews.Count(n => n.Status == StatusNews.Publish) != 0)
+                        {
+                            @foreach (AspNetNews newsItem in _context.AspNetNews.Where(n => n.Status == StatusNews.Publish).OrderByDescending(d => d.Date).Take(4).ToList())
+                            {
+                                <div class="sidebar-post">
+                                    <div class="sb-img">
+                                        <img src="@(Config.DomainName + _context.AspNetFiles.FirstOrDefault(f => f.Id == newsItem.PreviewPhoto).Path)" alt="@_context.AspNetFiles.FirstOrDefault(f => f.Id == newsItem.PreviewPhoto).Title">
+                                    </div>
+                                    <div class="sb-post-det">
+                                        <p>
+                                            <a asp-controller="Home" asp-action="NewsDetails" asp-route-url="@newsItem.Url">@newsItem.Header</a>
+                                        </p>
+                                        <span>@newsItem.Date.ToShortDateString()</span>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div style="width: 100%;">
+                                <h4 class="text-center">Список пуст.</h4>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--Blog area end -->

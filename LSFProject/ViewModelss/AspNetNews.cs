@@ -23,7 +23,7 @@ namespace LSFProject
         public int? Share { get; set; }
         public DateTime Date { get; set; }
         public string Author { get; set; }
-        public bool Blocked { get; set; }
+        public StatusNews Status { get; set; }
         public int Watching { get; set; }
 
         public virtual AspNetUser AuthorNavigation { get; set; }

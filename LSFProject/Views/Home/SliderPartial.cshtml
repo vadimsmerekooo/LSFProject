@@ -1,28 +1,36 @@
 ﻿<div class="homepage-s  owl-carousel owl-theme">
-
-
-    <div class="item" style="background: white;">
+    
+    
+    <div class="item" style="background-color: #B6CF4D;">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 bg-2 slider-ext-wrap">
-                    <div class="slider-text" style="margin-top: 50px;">
-                        <h1 class="animated flipInX" style="margin-top: 130px;">Попробуй одну из наших игр!</h1>
-                        @if (!User.Identity.IsAuthenticated)
-                        {
-                            <h3 class="animated flipInX text-center text-danger" style="margin-top: -20px;">Только для авторизированных пользователей!</h3>
-                        }
-                        <ul class="game-list">
-                            <li>
-                                <a asp-action="Index" asp-controller="Game"><img src="~/img/game/game-sort.png" /><h2 class="text-center text-dark">Сортировка предметов</h2></a>
-                            </li>
-                            <li>
-                                <a asp-action="Index" asp-controller="Game"><img src="~/img/game/game-sort.png" /><h2 class="text-center text-dark">Сортировка предметов</h2></a>
-                            </li>
-                        </ul>
+                    <div class="slider-text" style="margin-top: 5%;">
+                        <div class="slider-text-bg"></div>
+                        <h1 class="animated flipInX text-dark">Теоретические материалы для детей</h1>
+                        <p class="animated fadeInDown text-dark">Выбери подходящий раздел и начинай изучать основы безопасности и жизнедеятельности, проходи тесты и играй.</p>
+                        <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/obj-for-child" asp-route-razdelName="child" class="first-btn kids-care-btn bgc-orange animated fadeInRight">Островок безопасности</a>
+                        <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/test" asp-route-razdelName="child" class="first-btn  kids-care-btn bg-blue animated fadeInRight">Тесты</a>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="item" style="background-color: #B6CF4D;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 slider-ext-wrap bg-3">
+                    <div class="slider-text" style="margin-top: 5%;">
+                        <div class="slider-text-bg"></div>
+                        <h1 class="animated flipInX text-dark">Охрана труда для рабочих</h1>
+                        <p class="animated fadeInDown text-dark">Повторите технику безопасности на предприятии, станьте примером для окружающих и своих детей.</p>
+                        <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/obj-for-child" asp-route-razdelName="child" class="first-btn kids-care-btn bgc-orange animated fadeInRight">Пригодится, чтобы выжить...</a>
+                        <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/test" asp-route-razdelName="child" class="first-btn  kids-care-btn bg-blue animated fadeInRight">Тесты</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

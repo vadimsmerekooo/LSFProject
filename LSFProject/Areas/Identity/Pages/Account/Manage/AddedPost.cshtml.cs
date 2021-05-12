@@ -15,17 +15,14 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
     [Authorize(Roles = ("Admin,Manager"))]
     public class AddedPostModel : PageModel
     {
-        [BindProperty]
-        public InputModel Input { get; set; }
+        [BindProperty] public InputModel Input { get; set; }
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
         public string ReturnUrl { get; set; }
 
-        [TempData]
-        public string StatusMessage { get; set; }
-        [TempData]
-        public string ErrorMessage { get; set; }
+        [TempData] public string StatusMessage { get; set; }
+        [TempData] public string ErrorMessage { get; set; }
 
 
         private readonly UserManager<LSFUser> _userManager;
@@ -38,17 +35,24 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             public int Id { get; set; }
+
             [Required(ErrorMessage = "Не указан Заголовок!")]
             public string Header { get; set; }
+
             [Required(ErrorMessage = "Не указан превью текст!")]
             public string PreviewText { get; set; }
+
             public string PreviewPhoto { get; set; }
+
             [Required(ErrorMessage = "Не указан Url-адрес новости!")]
             public string Url { get; set; }
+
             public string Description { get; set; }
             public DateTime Date { get; set; }
+
             [Required(ErrorMessage = "Не указан Автор!")]
             public string Author { get; set; }
+
             public int Blocked { get; set; }
             public int Watching { get; set; }
         }
@@ -63,12 +67,15 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
                 {
                     if (_context.AspNetFiles.Any(p => p.Title == photo))
                     {
+                        if (_context.AspNetNews.Any(u => u.Url == Input.Url))
+                            Input.Url = Input.Url + new Random().Next(99999999);
+                        
                         AspNetNews news = new AspNetNews()
                         {
                             Author = (_userManager.FindByNameAsync(Input.Author).Result).Id,
                             // ReSharper disable once PossibleNullReferenceException
                             PreviewPhoto = _context.AspNetFiles.FirstOrDefault(p => p.Title == photo).Id,
-                            Blocked = false,
+                            Status = StatusNews.Moderation,
                             Date = DateTime.Now,
                             Description = editor,
                             Header = Input.Header,
@@ -77,17 +84,25 @@ namespace LSFProject.Areas.Identity.Pages.Account.Manage
                             Share = 0,
                             Url = Input.Url,
                             Watching = 0,
-
                         };
                         await _context.AspNetNews.AddAsync(news);
                         await _context.SaveChangesAsync();
 
-                        StatusMessage = "Новость успешно добавлена на сайт!";
+                        StatusMessage = "Новость успешно добавлена и отправлена на модерацию.";
+
+                        var link = Url.Action(nameof(LSFProject.Controllers.HomeController.NewsDetails), "Home",
+                            new {url = Input.Url}, Request.Scheme,
+                            Request.Host.ToString());
+                        EmailSend.SendEmailAsync("vadim.a.shkuratov@gmail.com", "Доабвлена новая новость на модерацию",
+                            System.IO.File.ReadAllText("wwwroot/AddedPostEmailPage.html")
+                                .Replace("UserEmail", _userManager.FindByNameAsync(User.Identity.Name).Result.Email)
+                                .Replace("linkNewPostModeration", link));
                         return RedirectToPage("./Posts");
                     }
                     else
                     {
-                        ErrorMessage = "Произошла ошибка, новость не добавлена! Фото для превью удалено или не найдено!";
+                        ErrorMessage =
+                            "Произошла ошибка, новость не добавлена! Фото для превью удалено или не найдено!";
                         return Page();
                     }
                 }

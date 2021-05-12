@@ -43,13 +43,27 @@
                 <div class="serch-wrapper float-right hide-sm-up">
                     <div class="search align-middle">
                         <input class="search-input" placeholder="Search" type="text">
-                        <a href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-search"></i>
+                        </a>
                     </div>
                 </div>
                 <ul class="social-icon">
-                    <li><a href="@Config.YouTube"><i class="fa fa-youtube"></i></a></li>
-                    <li><a href="@Config.Inst"><i class="fa fa-instagram"></i></a></li>
-                    <li><a href="@Config.Facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li>
+                        <a href="@Config.YouTube">
+                            <i class="fa fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Config.Inst">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Config.Facebook">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -68,53 +82,83 @@
                     </a>
                 </div>
                 <div class="accordion-wrapper hide-sm-up">
-                    <a href="#" class="mobile-open"><i class="fa fa-bars"></i></a>
+                    <a href="#" class="mobile-open">
+                        <i class="fa fa-bars"></i>
+                    </a>
                     <!--Mobile Menu start-->
 
                     <ul id="mobilemenu" class="accordion">
-                        <li class="mob-logo">
-                            <div style="margin: 0; position: relative;">
-                                <div class="account-logo-ellipse-4">
+
+
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li style="padding: 0px 42px;">
+                                <div class="row">
+                                    <div class="col" style="position: relative; width: 350px;">
+                                        <div class="account-logo-ellipse-4">
+                                        </div>
+                                        <div class="account-logo-ellipse-3">
+                                        </div>
+                                        <div class="account-logo-ellipse-2">
+                                        </div>
+                                        <div class="account-logo-ellipse-1">
+                                            @if (SignInManager.IsSignedIn(User) && _context.AspNetIcons.Any(x => x.UserId == UserManager.GetUserId(User)))
+                                            {
+                                                byte[] image = _context.AspNetIcons.FirstOrDefault(i => i.UserId == UserManager.GetUserId(User)).Icon;
+                                                <img class="account-logo-img" src="data:image/png;base64,@System.Convert.ToBase64String(image)" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="account-logo-img" src="@(Config.DomainName + "img/account/8ea1168fa53ct.jpg")"/>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="text-center col-7">
+                                        <h4>@UserManager.FindByNameAsync(User.Identity.Name).Result.Email</h4>
+                                        <partial name="UserLevelPartial"/>
+                                        <a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-primary">Перейти в профиль</a>
+                                    </div>
                                 </div>
-                                <div class="account-logo-ellipse-3">
-                                </div>
-                                <div class="account-logo-ellipse-2">
-                                </div>
-                                <div class="account-logo-ellipse-1">
-                                    @if (SignInManager.IsSignedIn(User) && _context.AspNetIcons.Any(x => x.UserId == UserManager.GetUserId(User)))
-                                    {
-                                        byte[] image = _context.AspNetIcons.FirstOrDefault(i => i.UserId == UserManager.GetUserId(User)).Icon;
-                                        <img class="account-logo-img" src="data:image/png;base64,@System.Convert.ToBase64String(image)" alt="">
-                                    }
-                                    else
-                                    {
-                                        <img class="account-logo-img" src="~/img/account/8ea1168fa53ct.jpg" />
-                                    }
-                                </div>
-                            </div>
-                            @if (SignInManager.IsSignedIn(User))
-                            {
-                                <div style="margin-left: 140px; height: 130px;" class="text-center">
-                                    <h4>@UserManager.FindByNameAsync(User.Identity.Name).Result.Email</h4>
-                                    <h5 style="margin: 10px 0">Ваш рейтинг: 124</h5>
-                                    <a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-primary" style="margin-top: 20px;">Перейти в профиль</a>
-                                </div>
-                            }
+                            </li>
+                        }
+                        <li>
+                            <a class="closeme" href="#">
+                                <i class="fa fa-times"></i>
+                            </a>
                         </li>
-                        <li><a class="closeme" href="#"><i class="fa fa-times"></i></a></li>
-                        <li class="fc-red out-link"><a asp-action="Index" asp-controller="Home">Главная</a></li>
-                        <li class="fc-green out-link"><a asp-action="Index" asp-controller="Home">Новости</a></li>
+                        <li class="fc-red out-link">
+                            <a asp-action="Index" asp-controller="Home">Главная</a>
+                        </li>
+                        <li class="fc-green out-link">
+                            <a asp-action="Index" asp-controller="Home">Новости</a>
+                        </li>
                         <li>
                             <div class="link font-orange">Остравок безопасности<i class="fa fa-chevron-down"></i></div>
                             <ul class="submenu font-orange">
-                                <li><a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/life-collective-safe" asp-route-razdelName="child">Личная и коллективная безопасность</a></li>
-                                <li><a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/safe-at-chs" asp-route-razdelName="child">Защита от ЧС</a></li>
-                                <li><a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/inside-and-safe" asp-route-razdelName="child">Окружающая среда и безопасность</a></li>
-                                <li><a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/health-life" asp-route-razdelName="child">Здоровый образ жизни</a></li>
-                                <li><a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/books" asp-route-razdelName="child">Литература</a></li>
-                                <li><a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/videos" asp-route-razdelName="child">Видео материалы</a></li>
-                                <li><a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/games" asp-route-razdelName="child">Развивающие игры</a></li>
-                                <li><a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/test" asp-route-razdelName="child">Тест</a></li>
+                                <li>
+                                    <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/life-collective-safe" asp-route-razdelName="child">Личная и коллективная безопасность</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/safe-at-chs" asp-route-razdelName="child">Защита от ЧС</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/inside-and-safe" asp-route-razdelName="child">Окружающая среда и безопасность</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/health-life" asp-route-razdelName="child">Здоровый образ жизни</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/books" asp-route-razdelName="child">Литература</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/videos" asp-route-razdelName="child">Видео материалы</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/games" asp-route-razdelName="child">Развивающие игры</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/test" asp-route-razdelName="child">Тест</a>
+                                </li>
 
                             </ul>
                         </li>
@@ -122,35 +166,69 @@
                         <li>
                             <div class="link font-per">Не пропаду!?!<i class="fa fa-chevron-down"></i></div>
                             <ul class="submenu font-per">
-                                <li><a href="#">Личная и коллективная безопасность</a></li>
-                                <li><a href="#">Защита от ЧС</a></li>
-                                <li><a href="#">Окружающая среда и безопасность</a></li>
-                                <li><a href="#">Здоровый образ жизни</a></li>
-                                <li><a href="#">Литература</a></li>
-                                <li><a href="#">Видео материалы</a></li>
-                                <li><a href="#">Развивающие игры</a></li>
-                                <li><a href="#">Тест</a></li>
+                                <li>
+                                    <a href="#">Личная и коллективная безопасность</a>
+                                </li>
+                                <li>
+                                    <a href="#">Защита от ЧС</a>
+                                </li>
+                                <li>
+                                    <a href="#">Окружающая среда и безопасность</a>
+                                </li>
+                                <li>
+                                    <a href="#">Здоровый образ жизни</a>
+                                </li>
+                                <li>
+                                    <a href="#">Литература</a>
+                                </li>
+                                <li>
+                                    <a href="#">Видео материалы</a>
+                                </li>
+                                <li>
+                                    <a href="#">Развивающие игры</a>
+                                </li>
+                                <li>
+                                    <a href="#">Тест</a>
+                                </li>
                             </ul>
                         </li>
 
                         <li>
                             <div class="link font-sky">Пригодится, чтобы выжить...<i class="fa fa-chevron-down"></i></div>
                             <ul class="submenu font-per">
-                                <li><a href="#">Личная и коллективная безопасность</a></li>
-                                <li><a href="#">Защита от ЧС</a></li>
-                                <li><a href="#">Здоровый образ жизни</a></li>
-                                <li><a href="#">Окружающая среда и безопасность</a></li>
-                                <li><a href="#">Литература</a></li>
-                                <li><a href="#">Видео материалы</a></li>
-                                <li><a href="#">Игры</a></li>
-                                <li><a href="#">Тест</a></li>
+                                <li>
+                                    <a href="#">Личная и коллективная безопасность</a>
+                                </li>
+                                <li>
+                                    <a href="#">Защита от ЧС</a>
+                                </li>
+                                <li>
+                                    <a href="#">Здоровый образ жизни</a>
+                                </li>
+                                <li>
+                                    <a href="#">Окружающая среда и безопасность</a>
+                                </li>
+                                <li>
+                                    <a href="#">Литература</a>
+                                </li>
+                                <li>
+                                    <a href="#">Видео материалы</a>
+                                </li>
+                                <li>
+                                    <a href="#">Игры</a>
+                                </li>
+                                <li>
+                                    <a href="#">Тест</a>
+                                </li>
                             </ul>
                         </li>
                         <li>
-                            <div class="link font-per"><a href="about-us.html">Форум</a></div>
+                            <div class="link font-per">
+                                <a href="about-us.html">Форум</a>
+                            </div>
 
                         </li>
-                        <partial name="_LoginPartialMobile" />
+                        <partial name="_LoginPartialMobile"/>
 
                     </ul>
                     <!--Mobile Menu end-->
@@ -201,13 +279,13 @@
                 <div class="mainmenu-two style-two float-left">
                     <ul id="navigation">
                         <li class="fc-orange">
-                            <a asp-controller="Home" asp-action="Index">Главная</a>
+                            <a asp-controller="Home" asp-action="Index">ГЛАВНАЯ</a>
                         </li>
                         <li class="fc-sky hav-sub">
-                            <a href="#news">Новости</a>
+                            <a asp-controller="Home" asp-action="News">НОВОСТИ</a>
                         </li>
                         <li class="fc-sky hav-sub">
-                            <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/obj-for-child" asp-route-razdelName="child">Островок безопасности<i class="fa fa-angle-down"></i></a>
+                            <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/obj-for-child" asp-route-razdelName="child">ОСТРОВОК БЕЗОПАСНОСТИ<i class="fa fa-angle-down"></i></a>
                             <div class="mega-menu">
                                 <div class="mega-catagory">
                                     <div class="mega-button">
@@ -233,8 +311,8 @@
                                     </div>
                                 </div>
                                 <div class="mega-bg">
-                                    <img src="~/img/icon/preloader.gif" width="70" style="margin-left: 40px;" />
-                                    <hr class="bg-red" style="height: 5px;" />
+                                    <img src="~/img/icon/preloader.gif" width="70" style="margin-left: 40px;"/>
+                                    <hr class="bg-red" style="height: 5px;"/>
                                 </div>
                             </div>
                         </li>
@@ -259,7 +337,7 @@
                                 </ul>
                             </li>*@
                         <li class="fc-sky hav-sub">
-                            <a href="#">Не пропаду!?!<i class="fa fa-angle-down"></i></a>
+                            <a href="#">НЕ ПРОПАДУ!?!<i class="fa fa-angle-down"></i></a>
                             <div class="mega-menu">
                                 <div class="mega-catagory">
                                     <div class="mega-button">
@@ -285,8 +363,8 @@
                                     </div>
                                 </div>
                                 <div class="mega-bg">
-                                    <img src="~/img/icon/preloader.gif" width="70" style="margin-left: 40px;" />
-                                    <hr class="bg-red" style="height: 5px;" />
+                                    <img src="~/img/icon/preloader.gif" width="70" style="margin-left: 40px;"/>
+                                    <hr class="bg-red" style="height: 5px;"/>
                                 </div>
                             </div>
                         </li>
@@ -304,7 +382,7 @@
                                 </ul>
                             </li>*@
                         <li class="fc-sky hav-sub">
-                            <a href="#">Пригодится, чтобы выжить...<i class="fa fa-angle-down"></i></a>
+                            <a href="#">ПРИГОДИТСЯ, ЧТОБЫ ВЫЖИТЬ...<i class="fa fa-angle-down"></i></a>
                             <div class="mega-menu">
                                 <div class="mega-catagory">
                                     <div class="mega-button">
@@ -330,8 +408,8 @@
                                     </div>
                                 </div>
                                 <div class="mega-bg">
-                                    <img src="~/img/icon/preloader.gif" width="70" style="margin-left: 40px;" />
-                                    <hr class="bg-red" style="height: 5px;" />
+                                    <img src="~/img/icon/preloader.gif" width="70" style="margin-left: 40px;"/>
+                                    <hr class="bg-red" style="height: 5px;"/>
                                 </div>
                             </div>
                         </li>
@@ -349,7 +427,7 @@
                                 </ul>
                             </li>*@
                         <li class="fc-sky hav-sub">
-                            <a asp-controller="Game" asp-action="Index">Форум</a>
+                            <a asp-controller="Game" asp-action="Index">ФОРУМ</a>
                         </li>
                     </ul>
                 </div>
@@ -359,11 +437,15 @@
                 <div class="search-reg">
                     <div class="reg-area" style="display: flex; padding: 0;">
                         <div class="search align-middle">
-                            <input class="search-input" placeholder="Поиск" type="text">
-                            <a href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                            <form method="post" asp-controller="Home" asp-action="SearchActionResult">
+                                <input id="searchinput" name="searchinput" class="search-input" placeholder="Поиск" type="text">
+                                <a href="javascript:void(0)">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </form>
                         </div>
                         <i class="fa fa-user" style="padding-top: 3px;"></i>
-                        <partial name="_LoginPartial.cshtml" />
+                        <partial name="_LoginPartial.cshtml"/>
                     </div>
                 </div>
             </div>

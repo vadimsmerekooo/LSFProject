@@ -1,0 +1,73 @@
+﻿@using LSFProject
+@using LSFProject.Areas.Identity.Data
+@inject UserManager<LSFUser> UserManager
+@{
+    LSFProjectContext _context = new LSFProjectContext();
+}
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Пользователь</th>
+        <th scope="col-3">Тест</th>
+        <th scope="col">Последний результат</th>
+        <th scope="col">Лучший результат</th>
+        <th scope="col">Дата прохождения</th>
+    </tr>
+    </thead>
+    <tbody class="text-center text-dark">
+    @{
+        int medal = 0;
+    }
+    @foreach (var itemTestResult in _context.AspNetTestResults.Where(test => test.TestId == 1).OrderByDescending(r => r.BestResultTest).Take(10))
+    {
+        if (medal != 3)
+        {
+            medal++;
+        }
+        <tr>
+            <td>
+                @if (medal < 4)
+                {
+                    <img src="~/img/icon/medal-@medal-.png"/>
+                    if (medal == 3)
+                    {
+                        medal++;
+                    }
+                }
+                else
+                {
+                    @(medal - 1)
+                }
+            </td>
+            @if (itemTestResult.UserId == UserManager.GetUserId(User))
+            {
+                <td>
+                    <a asp-page="./Index">@UserManager.FindByIdAsync(itemTestResult.UserId).Result.Email</a>
+                </td>
+            }
+            else
+            {
+                <td>
+                    <a asp-page="UserInfo" asp-route-userId="@itemTestResult.UserId">@UserManager.FindByIdAsync(itemTestResult.UserId).Result.Email</a>
+                </td>
+            }
+            <td>
+                @switch (itemTestResult.TestId)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                }
+            </td>
+            <td>@itemTestResult.LastResultTest</td>
+            <td>@itemTestResult.BestResultTest</td>
+            <td>@(itemTestResult.LastPlaythrough.ToShortDateString() + ", " + itemTestResult.LastPlaythrough.Hour + ":" + itemTestResult.LastPlaythrough.Minute)</td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,13 +1,101 @@
-﻿<div class="col-lg-8 col-xl-7 ">
-    <div class="tuton-top-inner">
-        <h2 class="heading-style-two">Lorem ipsum</h2>
-        <h6><i class="fa fa-hand-o-right"></i><strong>Lorem</strong> Ipsum is simply dummy text of the printing and typesetting industry.</h6>
-        <h6><i class="fa fa-hand-o-right"></i><strong>Lorem</strong> Ipsum is simply dummy text of the printing and typesetting industry.</h6>
-        <h6><i class="fa fa-hand-o-right"></i><strong>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</strong></h6>
+﻿@using Microsoft.AspNetCore.Identity
+@using LSFProject.Areas.Identity.Data
+@model RadioTest
+@inject UserManager<LSFUser> UserManager;
+@{
+    LSFProjectContext _context = new LSFProjectContext();
 
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+}
 
-        <p><strong>Lorem</strong> Ipsum is simply dummy text of the printing and typesetting industry.</p>
-    </div>
-    <hr>
-</div>
+<h1 class="text-center">Тестовые задания</h1>
+<hr/>
+<p>
+    Задания теста, собраны для всех разделов:
+    <ul class="ul-list">
+        <li>
+            <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/life-collective-safe" asp-route-razdelName="child">Личная и коллективная безопасность</a>
+        </li>
+        <li>
+            <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/safe-at-chs" asp-route-razdelName="child">Защита от ЧС</a>
+        </li>
+        <li>
+            <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/inside-and-safe" asp-route-razdelName="child">Окружающая среда и безопасность</a>
+        </li>
+        <li>
+            <a asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/health-life" asp-route-razdelName="child">Здоровый образ жизни</a>
+        </li>
+    </ul>
+    <br/>
+    Тест состоит из 10 вопросов, за каждый верно отвеченный вопрос, начисляться 1 балл.
+    <br/>
+    <span class="text-warning">Если ваш результат будет больше максимального из всех пользователей прошедших данный тест
+        или общее количество попыток прохождения теста больше 3, 
+        он для вас будет не доступен, до тех пор пока кто-то не наберет наибольший результат.</span>
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <h3 class="text-warning">Внимание! Тест доступен только для авторизированных пользователей!</h3>
+        <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Login">Авторизация</a>
+        <a class="btn btn-success" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+    }
+    <hr/>
+    @if ((int) ViewData["Model"] > 0)
+    {
+        var countTest = (int) ViewData["Model"];
+        var statusMessageClass = countTest < 4 ? "danger" : countTest >= 4 && countTest < 7 ? "warning" : "success";
+        <div class="alert alert-@statusMessageClass alert-dismissible" role="alert">
+            <p style="margin-left: 30px;">Всего вопросов: 10. Верно отвеченных: @countTest. К рейтингу добавлено: +@countTest xp.</p>
+            <hr/>
+            <partial name="UserLevelPartialxl"/>
+        </div>
+    }
+    <hr/>
+    <h3>Топ 10 пользователей прошедших тест.</h3>
+    <partial name="TestResultTableChild"/>
+</p>
+<hr/>
+
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+
+        if (_context.AspNetTestResults.Any(t => t.UserId == UserManager.GetUserId(User) && t.TestId == 1 && t.IsBlocked))
+        {
+            var countTest = _context.AspNetTestResults.FirstOrDefault(t => t.UserId == UserManager.GetUserId(User) && t.TestId == 1 && t.IsBlocked);
+            <div class="alert alert-success nice-bobs I LOVE YOU SOLNYSHKO inst: 8_little__princess_8 alert-dismissible" role="alert">
+                <p style="margin-left: 30px;">Для вас тест не доступен, так как ваш результат максимальный из всех прошедших данный тест. Если кто-то набер больше баллов чем ваш, тест будет снова доступен для прохождения. Ваш результат за данный тест: @countTest.BestResultTest.</p>
+            </div>
+        }
+        else
+        {
+            var testList = TestModel.GetTestChild().ToList();
+            <form method="post" asp-controller="Home" asp-action="ChekTest" asp-route-testId="1">
+                @foreach (TestModel testItem in testList)
+                {
+                    <div class="card" style="margin-bottom: 40px;">
+                        <div class="card-header text-white">
+                            @testItem.Title
+                        </div>
+                        <div class="card-body">
+                            @foreach (var answerItem in testItem.QuestionTest)
+                            {
+                                <div class="form_radio form_radio1">
+                                    <input id="form@(testList.IndexOf(testItem) + 1)-radio-@(testItem.QuestionTest.IndexOf(answerItem) + 1)" type="radio" name="radio@(testList.IndexOf(testItem) + 1)" value="@answerItem.Answer">
+                                    <label for="form@(testList.IndexOf(testItem) + 1)-radio-@(testItem.QuestionTest.IndexOf(answerItem) + 1)">@answerItem.Question</label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+                <button type="submit" class="btn btn-success text-white col">Отправить ответы</button>
+            </form>   
+        }
+    }
+}
+
+<hr/>
+<a class="btn" type="button" asp-controller="Home" asp-action="RazdelOBJ" asp-route-linkRazdel="child/videos" asp-route-razdelName="child" style="background: #8273C8; float: left; color: #ffffff; padding: 20px; margin: 20px;">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="display:inline-block;vertical-align:text-bottom">
+        <path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47    8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"></path>
+    </svg>
+    Видео материалы
+</a>

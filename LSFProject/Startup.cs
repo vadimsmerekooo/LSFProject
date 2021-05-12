@@ -12,9 +12,12 @@ namespace LSFProject
 {
     public class Startup
     {
+        private IConfiguration _config;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            _config = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -23,12 +26,14 @@ namespace LSFProject
         public void ConfigureServices(IServiceCollection services)
         {
             Configuration.Bind("ConfigurationSite", new Config());
-            services.AddControllersWithViews();
+
             services.Configure<SecurityStampValidatorOptions>(options =>
             {
                 options.ValidationInterval = TimeSpan.FromSeconds(5);
             });
-            Config.ConnectionString = "Data Source=SQL5102.site4now.net;Initial Catalog=DB_A7005B_diplomeproject;User Id=DB_A7005B_diplomeproject_admin;Password=1500009578403sem;MultipleActiveResultSets=true";
+            Config.ConnectionString =
+                "Data Source=SQL5102.site4now.net;Initial Catalog=DB_A7005B_diplomeproject;User Id=DB_A7005B_diplomeproject_admin;Password=1500009578403sem;MultipleActiveResultSets=true";
+
             // services.AddHttpsRedirection(options =>
             // {
             //     options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
@@ -42,6 +47,7 @@ namespace LSFProject
             //     options.ExcludedHosts.Add("us.example.com");
             //     options.ExcludedHosts.Add("www.example.com");
             // });
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +58,7 @@ namespace LSFProject
                 app.UseDeveloperExceptionPage();
                 app.UseHsts();
             }
+
             app.UseDeveloperExceptionPage();
 
             app.UseStatusCodePagesWithRedirects("/Error/{0}");
@@ -65,7 +72,8 @@ namespace LSFProject
 
 
             var options = new StaticFileOptions();
-            var contentTypeProvider = (FileExtensionContentTypeProvider)options.ContentTypeProvider ?? new FileExtensionContentTypeProvider();
+            var contentTypeProvider = (FileExtensionContentTypeProvider) options.ContentTypeProvider ??
+                                      new FileExtensionContentTypeProvider();
             contentTypeProvider.Mappings.Add(".unityweb", "application/octet-stream");
             options.ContentTypeProvider = contentTypeProvider;
             app.UseStaticFiles(options);
