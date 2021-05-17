@@ -2,74 +2,99 @@
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
-<ul class="nav nav-pills flex-column list-group">
-    <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Профиль</a></li>
-    <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="profile" asp-page="./ChangePassword">Изменение пароля</a></li>
-    <li class="nav-item"><a class="nav-link @ManageNavPages.InfoSecurePassNavClass(ViewContext)" id="securepost" asp-page="./InfoSecurePass">Секретный код</a></li>
-</ul>
-@if (User.IsInRole("Admin") || User.IsInRole("Manager"))
-{
-    <hr />
-    <h5 class="text-center">Панель сайта</h5>
-    <ul class="nav nav-pills flex-column list-group">
-        <li class="nav-item"><a class="nav-link @ManageNavPages.UserListNavClass(ViewContext) @ManageNavPages.EditRolesUserNavClass(ViewContext)" id="user-list" asp-page="./UserList">Список пользователей</a></li>
-        <li class="nav-item"><a class="nav-link @ManageNavPages.RoleNavClass(ViewContext) @ManageNavPages.CreateRoleNavClass(ViewContext)" id="roles" asp-page="./Role">Роли</a></li>
-        <li class="no-padding">
-            <hr />
-        </li>
 
-        <li class="nav-item nav-item-parent">
-            <a class="nav-link @ManageNavPages.PostsNavClass(ViewContext)" id="posts" asp-page="./Posts">Посты</a>
-            <hr style="margin: 0;" />
-            <ul class="list-group nav-item-children" style="margin-top: -1px;">
+<nav class="navbar navbar-expand-md navbar-light">
+
+    <a class="navbar-brand " href="#">Панель профиля</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav nav-pills flex-column list-group" style="width: 100%;">
+            <li class="nav-item">
+                <a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Профиль</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="profile" asp-page="./ChangePassword">Изменение пароля</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @ManageNavPages.InfoSecurePassNavClass(ViewContext)" id="securepost" asp-page="./InfoSecurePass">Секретный код</a>
+            </li>
+
+            @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+            {
                 <li>
-                    <a class="nav-link @ManageNavPages.AddedPostNavClass(ViewContext)" id="added-post" asp-page="./AddedPost">Добавить пост</a>
+                    <hr/>
+                    <h5 class="text-center">Панель сайта</h5>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link @ManageNavPages.UserListNavClass(ViewContext) @ManageNavPages.EditRolesUserNavClass(ViewContext)" id="user-list" asp-page="./UserList">Список пользователей</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @ManageNavPages.RoleNavClass(ViewContext) @ManageNavPages.CreateRoleNavClass(ViewContext)" id="roles" asp-page="./Role">Роли</a>
+                </li>
+                <li class="no-padding">
+                    <hr/>
+                </li>
+
+                <li class="nav-item nav-item-parent">
+                    <a class="nav-link @ManageNavPages.PostsNavClass(ViewContext)" id="posts" asp-page="./Posts">Посты</a>
+                    <hr style="margin: 0;"/>
+                    <ul class="list-group nav-item-children" style="margin-top: -1px;">
+                        <li>
+                            <a class="nav-link @ManageNavPages.AddedPostNavClass(ViewContext)" id="added-post" asp-page="./AddedPost">Добавить пост</a>
+                        </li>
+                        <li>
+                            <a class="nav-link @ManageNavPages.RemovePostsNavClass(ViewContext)" id="remove-posts" asp-page="./RemovePosts">Заблокированные посты</a>
+                        </li>
+                        <li>
+                            <a class="nav-link @ManageNavPages.ModerationPostsNavClass(ViewContext)" id="moderation-posts" asp-page="./ModerationPosts">Посты на модерации</a>
+                        </li>
+                    </ul>
+                    <hr style="margin: 0;"/>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @ManageNavPages.FilesNavClass(ViewContext)" asp-page="./Files">Фото/Видео/Файлы</a>
+                    <hr style="margin: 0;"/>
+                    <ul class="list-group nav-item-children" style="margin-top: -1px;">
+                        <li>
+                            <a class="nav-link @ManageNavPages.UploadPhotoNavClass(ViewContext)" id="added-post" asp-page="./UploadPhoto">Загрузить фото</a>
+                        </li>
+                    </ul>
+                    <hr style="margin: 0;"/>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @ManageNavPages.SlidersNavClass(ViewContext)" id="roles" asp-page="./Sliders">Слайдер</a>
+                </li>
+            }
+            @if (User.IsInRole("Admin") || User.IsInRole("MobileAdmin"))
+            {
                 <li>
-                    <a class="nav-link @ManageNavPages.RemovePostsNavClass(ViewContext)" id="remove-posts" asp-page="./RemovePosts">Заблокированные посты</a>
+                    <hr/>
+                    <h5 class="text-center">Панель админа приложения</h5>
                 </li>
-                <li>
-                    <a class="nav-link @ManageNavPages.ModerationPostsNavClass(ViewContext)" id="moderation-posts" asp-page="./ModerationPosts">Посты на модерации</a>
+
+                <li class="nav-item">
+                    <a class="nav-link @ManageNavPages.TargetsNavClass(ViewContext)" asp-page="./AspNetTargets">AspNetTargets</a>
+                    <hr style="margin: 0;"/>
+                    <ul class="list-group nav-item-children" style="margin-top: -1px;">
+                        <li>
+                            <a class="nav-link @ManageNavPages.AddTargetNavClass(ViewContext)" asp-page="./AddAspNetTarget">Add AspNetTarget</a>
+                        </li>
+                    </ul>
                 </li>
-            </ul>
-            <hr style="margin: 0;" />
-        </li>
-        <li class="nav-item">
-            <a class="nav-link @ManageNavPages.FilesNavClass(ViewContext)" asp-page="./Files">Фото/Видео/Файлы</a>
-            <hr style="margin: 0;" />
-            <ul class="list-group nav-item-children" style="margin-top: -1px;">
-                <li>
-                    <a class="nav-link @ManageNavPages.UploadPhotoNavClass(ViewContext)" id="added-post" asp-page="./UploadPhoto">Загрузить фото</a>
+                <hr style="margin: 0;"/>
+                <li class="nav-item">
+                    <a class="nav-link @ManageNavPages.ZnaksNavClass(ViewContext)" asp-page="./Znaks">Знаки</a>
+                    <hr style="margin: 0;"/>
+                    <ul class="list-group nav-item-children" style="margin-top: -1px;">
+                        <li>
+                            <a class="nav-link @ManageNavPages.UploadZnaksNavClass(ViewContext)" asp-page="./UploadZnak">Добавить знак</a>
+                        </li>
+                    </ul>
+                    <hr style="margin: 0;"/>
                 </li>
-            </ul>
-            <hr style="margin: 0;" />
-        </li>
-        <li class="nav-item"><a class="nav-link @ManageNavPages.SlidersNavClass(ViewContext)" id="roles" asp-page="./Sliders">Слайдер</a></li>
-    </ul>
-}
-@if (User.IsInRole("Admin") || User.IsInRole("MobileAdmin"))
-{
-    <hr />
-    <h5 class="text-center">Панель админа приложения</h5>
-    <ul class="nav nav-pills flex-column list-group">
-        <li class="nav-item">
-            <a class="nav-link @ManageNavPages.TargetsNavClass(ViewContext)" asp-page="./AspNetTargets">AspNetTargets</a>
-            <hr style="margin: 0;" />
-            <ul class="list-group nav-item-children" style="margin-top: -1px;">
-                <li>
-                    <a class="nav-link @ManageNavPages.AddTargetNavClass(ViewContext)" asp-page="./AddAspNetTarget">Add AspNetTarget</a>
-                </li>
-            </ul>
-            <hr style="margin: 0;" />
-        <li class="nav-item">
-            <a class="nav-link @ManageNavPages.ZnaksNavClass(ViewContext)" asp-page="./Znaks">Знаки</a>
-            <hr style="margin: 0;" />
-            <ul class="list-group nav-item-children" style="margin-top: -1px;">
-                <li>
-                    <a class="nav-link @ManageNavPages.UploadZnaksNavClass(ViewContext)" asp-page="./UploadZnak">Добавить знак</a>
-                </li>
-            </ul>
-            <hr style="margin: 0;" />
-        </li>
-    </ul>
-}
+            }
+        </ul>
+    </div>
+</nav>

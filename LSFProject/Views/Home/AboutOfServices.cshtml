@@ -1,9 +1,35 @@
 ﻿@{
     ViewData["Title"] = "Про МЧС, МВД, Министерство здравоохранения";
+    LSFProjectContext _context = new LSFProjectContext();
 }
-<div class="container-fluid container-fluid-site" style="width: 80%;">
+
+
+<!--Breadcrumb area start-->
+
+<div class="text-bread-crumb d-flex align-items-center style-six blue">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">@ViewData["Title"]</h2>
+                <div class="bread-crumb-line">
+                    <span>
+                        <a asp-controller="Home" asp-action="Index">Главная /</a>
+                    </span>@ViewData["Title"]
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Breadcrumb area end-->
+<!--Blog area start -->
+
+<section class="blog-page">
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-8 col-xl-9">
     <p class="about-of-service" style="float: left; ">
-        <img src="~/img/MHS-big.png" width="200px" height="200px" />
+        <img src="~/img/MHS-big.png" width="200px" height="200px"/>
         <h1>Назначение МЧС Республики Беларусь</h1>
         <h2>
             Министерство по чрезвычайным ситуациям Республики Беларусь (МЧС) является республиканским органом
@@ -74,7 +100,7 @@
     </p>
     <span class="about-of-service-line"></span>
     <p class="about-of-service" style="float: right; ">
-        <img src="~/img/MVD-big.png" width="200px" height="200px" />
+        <img src="~/img/MVD-big.png" width="200px" height="200px"/>
         <h1>Назначение МВД Республики Беларусь</h1>
         <h2>
             Органы внутренних дел – это государственные правоохранительные органы, осуществляющие борьбу с преступностью,
@@ -141,7 +167,8 @@
     </p>
     <span class="about-of-service-line"></span>
     <p class="about-of-service" style="float: left; ">
-        <img src="~/img/Ambulance-big.png" width="200px" height="200px" /> <h1>Служба скорой медицинской помощи (далее - СМП)</h1>
+        <img src="~/img/Ambulance-big.png" width="200px" height="200px"/>
+        <h1>Служба скорой медицинской помощи (далее - СМП)</h1>
         <h2>
             Работает круглосуточно, обеспечивая неотложную помощь взрослому и детскому населению, как на месте происшествия,
             так и в пути следования в стационар при состояниях, угрожающих здоровью или жизни, вызванных внезапными
@@ -201,3 +228,52 @@
         </h2>
     </p>
 </div>
+<div class="col-md-4 col-xl-3">
+    <div class="blog-sidebar">
+        <div class="sin-sidebar">
+            <div class="sidebar-heading">
+                <h5>Подписаться на рассылку</h5>
+            </div>
+            <form>
+                <div class="search-box">
+                    <input type="email" name="email" id="email" placeholder="Email адрес">
+                    <input class="search-btn" type="button" asp-controller="Home" asp-action="EmailSubscribe" value="Подписаться сейчас">
+                </div>
+            </form>
+        </div>
+        <div class="sin-sidebar">
+            <div class="sidebar-heading">
+                <h5>Последние новости</h5>
+            </div>
+            @if (_context.AspNetNews.Count(n => n.Status == StatusNews.Publish) != 0)
+            {
+                foreach (AspNetNews newsItem in _context.AspNetNews.Where(n => n.Status == StatusNews.Publish).OrderByDescending(d => d.Date).Take(4).ToList())
+                {
+                    <div class="sidebar-post">
+                        <div class="sb-img">
+                            <img src="@(Config.DomainName + _context.AspNetFiles.FirstOrDefault(f => f.Id == newsItem.PreviewPhoto).Path)" alt="@_context.AspNetFiles.FirstOrDefault(f => f.Id == newsItem.PreviewPhoto).Title">
+                        </div>
+                        <div class="sb-post-det">
+                            <p>
+                                <a asp-controller="Home" asp-action="NewsDetails" asp-route-url="@newsItem.Url">@newsItem.Header</a>
+                            </p>
+                            <span>@newsItem.Date.ToShortDateString()</span>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div style="width: 100%;">
+                    <h4 class="text-center">Список пуст.</h4>
+                </div>
+            }
+
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+</section>
+<!--Blog area end -->

@@ -488,7 +488,32 @@ namespace LSFProject.Controllers
         [HttpPost]
         public IActionResult SearchActionResult(string searchinput)
         {
-            return View();
+            var users = _context.AspNetUsers.Where(user =>
+                user.Email.Contains(searchinput.Trim())
+                || user.Id.Contains(searchinput.Trim())
+                || user.UserName.Contains(searchinput.Trim())
+                || user.Email.Contains(searchinput.Trim())).ToList();
+            var news = _context.AspNetNews.Where(newsx =>
+                newsx.Author.Contains(searchinput.Trim())
+                || newsx.Description.Contains(searchinput.Trim())
+                || newsx.Header.Contains(searchinput.Trim())
+                || newsx.Id.Equals(searchinput.Trim())
+                || newsx.Url.Contains(searchinput.Trim())
+                || newsx.PreviewText.Contains(searchinput.Trim())).ToList();
+            var categoryes = _context.AspNetNewsCategories.Where(cat =>
+                cat.Category.Contains(searchinput.Trim())).ToList();
+
+            
+            SearchViewModel searchViewModel = new SearchViewModel()
+            {
+                SearchQuery = searchinput,
+                Categoryes = categoryes,
+                News = news,
+                Users = users
+            };
+            
+            
+            return View(searchViewModel);
         }
     }
 }

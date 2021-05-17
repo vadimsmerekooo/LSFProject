@@ -464,3 +464,4 @@ D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\UserL
 D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\UserLevelPartialxl.cshtml.g.cs
 D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\TestResultTable.cshtml.g.cs
 D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\TestResultTableChild.cshtml.g.cs
+D:\GitHub\LSFProject\LSFProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\SearchActionResult.cshtml.g.cs

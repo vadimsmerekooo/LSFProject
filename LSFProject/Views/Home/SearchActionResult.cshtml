@@ -1,6 +1,7 @@
-﻿@{
+﻿@model SearchViewModel
+@{
     LSFProjectContext _context = new LSFProjectContext();
-    ViewData["Title"] = "Новости";
+    ViewData["Title"] = "Поиск по запросу " + @Model.SearchQuery;
 }
 <!--Breadcrumb area start-->
 
@@ -26,66 +27,69 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 col-xl-9">
-                <div class="row">
-                    @if (_context.AspNetNews.Count(b => b.Status == StatusNews.Publish) == 0)
-                    {
-                        <div class="text-center" style="width: 100%;">
-                            <h3 class="text-center">Список пуст!</h3>
-                        </div>
-                    }
-                    @foreach (AspNetNews newsItem in _context.AspNetNews.Where(n => n.Status == StatusNews.Publish).OrderByDescending(d => d.Date).ToList())
-                    {
-                        <div class="col-md-4 col-md-6 col-xl-4">
-                            <div class="single-news wow fadeInUp" data-wow-delay=".3s">
-                                <img src="@(Config.DomainName + _context.AspNetFiles.FirstOrDefault(f => f.Id == newsItem.PreviewPhoto).Path)" alt="@_context.AspNetFiles.FirstOrDefault(f => f.Id == newsItem.PreviewPhoto).Title">
-                                <div class="news-det">
-                                    <h4>@newsItem.Header</h4>
-                                    <p>@newsItem.PreviewText</p>
-                                    <div class="news-meta">
-                                        <span>
-                                            <i class="fa fa-comment"></i>
-                                            @_context.AspNetNewsComments.Where(id => id.NewsId == newsItem.Id).ToList().Count() Коментарии
-                                        </span>
-                                        <span>
-                                            <i class="fa fa-share-alt-square"></i>
-                                            @newsItem.Share Репосты
-                                        </span>
-                                        <a asp-controller="Home" asp-action="NewsDetails" asp-route-url="@newsItem.Url">
-                                            <i class="fa fa-angle-right"></i>
-                                        </a>
-                                    </div>
+                @if (Model.Users.Count != 0)
+                {
+                    <div class="row">
+                        <h2>Найденые пользователи: @Model.SearchQuery</h2>
+                        <hr/>
+                        <br/>
+                    </div>
+                    <div class="row">
+                        @foreach (AspNetUser user in Model.Users)
+                        {
+                            <div class="card" style="width: 18rem; align-items: center; margin: 30px;">
+                                @if (_context.AspNetIcons.Any(i => i.Id == user.Icon))
+                                {
+                                    <img class="card-img-top account-big-logo-img" src="data:image/png;base64,@System.Convert.ToBase64String(_context.AspNetIcons.FirstOrDefault(icon => icon.UserId == user.Id).Icon)"/>
+                                }
+                                else
+                                {
+                                    <img class="card-img-top account-big-logo-img" src="~/img/account/8ea1168fa53ct.jpg"/>
+                                }
+                                <div class="card-body">
+                                    <h5 class="card-title">@user.Email</h5>
+                                    <p class="card-text">Создан: @user.DateCreate, Очков опыта(xp): @user.LevelXp</p>
+                                    <a asp-area="Identity" asp-page="/Account/Manage/UserInfo" asp-route-userId="@user.Id" class="btn btn-primary">Просмотреть профиль</a>
                                 </div>
                             </div>
+                        }
+                    </div>
+                }
+                <hr/>
 
-                        </div>
-                    }
-                </div>
-                @if (_context.AspNetNews.Count(b => b.Status == StatusNews.Publish) != 0)
+                @if (Model.News.Count != 0)
                 {
-                    <hr/>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            @if (Model.PageViewModel.HasPreviousPage)
-                            {
-                                <li class="page-item disabled">
-                                    <a class="page-link" asp-controller="Home" asp-action="News" asp-route-page="1" tabindex="-1">Предыдущая</a>
-                                </li>
-                            }
-                            @for (int i = 1; i <= Model.PageViewModel.TotalPages; i++)
-                            {
-                                <li class="page-item @(Model.PageViewModel.PageNumber == i ? "active" : "no-active")">
-                                    <a class="page-link" asp-controller="Home" asp-action="News" asp-route-page="@i">@i</a>
-                                </li>
-                            }
-                            @if (Model.PageViewModel.PageNumber != Model.PageViewModel.TotalPages)
-                            {
-                                <li class="page-item">
-                                    <a class="page-link" asp-controller="Home" asp-action="News" asp-route-page="@Model.PageViewModel.TotalPages">Следующая</a>
-                                </li>
-                            }
+                    <div class="row">
+                        <h2>Найденые новости</h2>
+                    </div>
+                    <div class="row">
+                        @foreach (AspNetNews newsItem in Model.News.Where(n => n.Status == StatusNews.Publish))
+                        {
+                            <div class="col-md-4 col-md-6 col-xl-4">
+                                <div class="single-news wow fadeInUp" data-wow-delay=".3s">
+                                    <img src="@(Config.DomainName + _context.AspNetFiles.FirstOrDefault(f => f.Id == newsItem.PreviewPhoto).Path)" alt="@_context.AspNetFiles.FirstOrDefault(f => f.Id == newsItem.PreviewPhoto).Title">
+                                    <div class="news-det">
+                                        <h4>@newsItem.Header</h4>
+                                        <p>@newsItem.PreviewText</p>
+                                        <div class="news-meta">
+                                            <span>
+                                                <i class="fa fa-comment"></i>
+                                                @_context.AspNetNewsComments.Where(id => id.NewsId == newsItem.Id).ToList().Count() Коментарии
+                                            </span>
+                                            <span>
+                                                <i class="fa fa-share-alt-square"></i>
+                                                @newsItem.Share Репосты
+                                            </span>
+                                            <a asp-controller="Home" asp-action="NewsDetails" asp-route-url="@newsItem.Url">
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        </ul>
-                    </nav>
+                            </div>
+                        }
+                    </div>
                 }
             </div>
             <div class="col-md-4 col-xl-3">

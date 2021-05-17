@@ -95,6 +95,8 @@ namespace LSFProject.Areas.Identity.Pages.Account
                     }
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _context.AspNetUsers.FirstOrDefault(u => u.UserName == Input.Login).DateCreate = DateTime.Now;
+                    _context.AspNetUsers.FirstOrDefault(u => u.UserName == Input.Login).LastEntry = DateTime.Now.AddMinutes(1);
+                    _context.AspNetUsers.FirstOrDefault(u => u.UserName == Input.Login).Rating = 0;
                     _context.AspNetUsers.FirstOrDefault(u => u.UserName == Input.Login).LevelXp = 1;
                     _context.SaveChanges();
                     return LocalRedirect(returnUrl);

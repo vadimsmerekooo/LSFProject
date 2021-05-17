@@ -8406,6 +8406,16 @@ input.full-width {
     text-align: center;
     margin-top: 10px;
 }
+.account-big-logo-img {
+    width: 180px;
+    height: 180px;
+    text-align: center;
+    -moz-border-radius: 90px;
+    -webkit-border-radius: 90px;
+    border-radius: 90px;
+    text-align: center;
+    margin: 10px;
+}
 
 .account-button {
     width: 139px;
